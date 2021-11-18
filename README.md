@@ -70,7 +70,7 @@ The keyword **CONTEXT** applies to Zettel IDs satisfying the above conditions on
 ## 2. Body: an atomic note
 
 -   Some authors recommend limiting the body to a single “unit of thought.”
--   Links \[\to other Zettels\]\] and external links can go here.
+-   Links \[\[to other Zettels\]\] and external links can go here.
 -   Footnotes and endnotes become links \[\[to other Zettels\]\] in the body.
 -   In a footnote or endnote Zettel, the ID `immutableID` is added to **CONTEXT**.
 
