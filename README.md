@@ -60,7 +60,7 @@ The keyword **CONTEXT** followed by a comma-separated list of  Zettel IDs such t
 -   continues `ID`;  
 -   comments on (or raises a question about) an aspect of `ID`; or,
 -   is continued by `ID`.
--   No other Zettel ID belongs with **CONTEXT**,
+-   No other Zettel ID belongs with **CONTEXT**.
 
 The keyword **CONTEXT** applies to Zettel IDs satisfying the above conditions only. Zettels that might provide context for ```immutableID``` in other senses of the term 'context' are excluded. 
 
