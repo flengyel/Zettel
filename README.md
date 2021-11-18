@@ -6,7 +6,7 @@ As of November 18, 2021, the template was developed for Zettlr 2.0.3 + Pandoc 2.
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-For convenience, the template is provided within this README.md, as well as separately within the Zettel repository.
+For convenience, the evaluated Markdown template is provided within this README.md below. The unevaluated Markdown template 20211118010533.md is also provided within this repository.
 
 ---
 
