@@ -4,9 +4,9 @@ This repository contains a Zettel template for use with a software implementatio
 
 As of November 18, 2021, the template was developed for Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10; it has not been tested with other software. 
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
-
 For convenience, the evaluated Markdown template is provided within this README.md below. The unevaluated Markdown template 20211118010533.md is also provided within this repository.
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 ---
 
