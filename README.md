@@ -33,7 +33,7 @@ Revision v2.1 following remarks by (Simpson 2021), with additional citations.
 ### 1.a YAML frontmatter: optional
 
 \-\-\-  
-reference-section-title: References 
+reference-section-title: References<br /> 
 \-\-\-
 
 > If there are Pandoc-style references in the Zettel body, add the preceding YAML frontmatter header to the beginning of `immutableID`. References will appear as the last section of the document in Pandoc output. 
