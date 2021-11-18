@@ -30,7 +30,7 @@ Revision v2.1 following remarks by (Simpson 2021), with additional citations.
 
 > The meta-variables ‘`immutableID`’ and ‘`title`’ are indexicals in the meta-language. The preceding sentence is in the  meta-meta-language since it quotes meta-linguistic terms. The  header of this Zettel is in the object language. For the utility  of keeping the object language, meta-language and  meta-meta-language separate, see (Chakraborty and Dutta 2019).
 
-### 1.a YAML frontmatter: optional
+### 1.a. YAML frontmatter: optional
 
 \-\-\-  
 reference-section-title: References<br /> 
@@ -55,7 +55,7 @@ reference-section-title: References<br />
 
 ###   1.c.2. CONTEXT Zettel IDs
 
-The keyword **CONTEXT** followed by a comma-separated list of  Zettel IDs such that for each `ID` in the list, `immutableID` either:
+The keyword **CONTEXT** followed by a comma-separated list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
 
 -   continues `ID`;  
 -   comments on (or raises a question about) an aspect of `ID`; or,
