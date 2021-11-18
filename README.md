@@ -1,4 +1,5 @@
 # Zettel
+![](https://github.com/flengyel/Zettel/blob/main/f277683c33c80bdd60626e8c88557aba.png)
 
 This repository contains a Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The template is intended to be self documenting. Further documentation and sample Zettels may be added to the repository in the future.
 
