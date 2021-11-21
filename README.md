@@ -19,7 +19,7 @@ This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 Inte
 
 **CONTEXT** [[20211118010533]] Zettel template v2.1
 
-A Zettel has three parts: a header, a body, and a footer.  The header starts with optional YAML and includes a level 1 (H1) header with a timestamp ID and a title; a list of hashtag keywords; and a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel). This text is part of the body. Footnotes and endnotes become links to other Zettels in the body. That leaves the References section for the footer. The References section below can be omitted, generated with a references manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.1; or by hand, as below. 
+A Zettel has three parts: a header, a body, and a footer.  The header starts with an optional YAML header and includes a level 1 (H1) header with a timestamp ID and a title; a list of hashtag keywords; and a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel). This text is part of the body. Footnotes and endnotes become links to other Zettels in the body. That leaves the References section for the footer. The References section below can be omitted, generated with a references manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.1; or by hand, as below. 
 
 -   This Zettel format only applies to Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10 and has not been tested with other software.  
 -   Filenames have the format `timestamp.md` in my implementation.
