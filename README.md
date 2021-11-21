@@ -31,15 +31,16 @@ The following checklist in Markdown is a first attempt (Gawande 2010).
 - [ ] Replace the title with your title.
 - [ ] Replace the hashtags above with your own #hashtag keywords
 - [ ] Replace the link after the **CONTEXT** keyword with a link to a Zettel Z such that this Zettel   
-    - [ ] continues Z;
-    - [ ] comments on an aspect of Zettel Z or raises a question on an aspect of Zettel Z (if there is one). 
+    - [ ] continues Z; or
+    - [ ] comments on an aspect of Zettel Z or raises a question on an aspect of Zettel Z; or
+    - [ ] if there is no such prior Zettel Z, and this Zettel starts a new topic, remove the **CONTEXT** line entirely. 
 - [ ] Replace the body (including this cheklist) with own text and Markdown in the body. 
 - [ ] Are there footnotes or endnotes? 
     - [ ] Footnotes and endnotes become links to other Zettels within the body. 
 - [ ] If there are literature citations from a citation manager (Zotero is assumed here) 
     - [ ] Add citations Pandoc format. 
         - [ ] Verify that the Zotero Citation Database is exported in CSL JSON format and specified in Preferences → Export → Citation Database;
-        - [ ] a YAML header is added to the beginning of this document (see [[20211118010533]] Zettel template v2.1); or
+        - [ ] Add a YAML header to beginning of this document (see [[20211118010533]] Zettel template v2.1); or
     - [ ] A references section can be added by hand, as below.
 
 # References
