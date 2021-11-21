@@ -34,7 +34,7 @@ The following checklist in Markdown is a first attempt (Gawande 2010).
     - [ ] continues Z; or
     - [ ] comments on (or raises a question about) an aspect of Zettel Z; otherwise,
     - [ ] if there is no such prior Zettel Z, and this Zettel starts a new topic, remove the **CONTEXT** line entirely. 
-- [ ] Replace the body (including this cheklist) with own text and Markdown in the body. 
+- [ ] Replace the body (including this cheklist) with your own text and Markdown in the body. 
 - [ ] Are there footnotes or endnotes? 
     - [ ] Footnotes and endnotes become links within the body to other Zettels. 
 - [ ] If there are literature citations from a citation manager (Zotero is assumed here) 
