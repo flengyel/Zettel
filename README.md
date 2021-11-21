@@ -32,7 +32,7 @@ The following checklist in Markdown is a first attempt (Gawande 2010).
 - [ ] Replace the hashtags above with your own #hashtag keywords
 - [ ] Replace the link after the **CONTEXT** keyword with a link to a Zettel Z such that this Zettel   
     - [ ] continues Z; or
-    - [ ] comments on an aspect of Zettel Z or raises a question on an aspect of Zettel Z; or
+    - [ ] comments on (or raises a question about) an aspect of Zettel Z; otherwise,
     - [ ] if there is no such prior Zettel Z, and this Zettel starts a new topic, remove the **CONTEXT** line entirely. 
 - [ ] Replace the body (including this cheklist) with own text and Markdown in the body. 
 - [ ] Are there footnotes or endnotes? 
