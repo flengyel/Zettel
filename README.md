@@ -23,7 +23,7 @@ A Zettel has three parts: a header, a body, and a footer.  The header starts wit
 
 -   This Zettel format only applies to Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10 and has not been tested with other software.  
 -   Filenames have the format `timestamp.md` in my implementation.
--   Every Zettel is a note. Literature and Permanent notes considered harmful (Ahrens 2017, anonymous 2021). 
+-   Every Zettel is a note. Literature and Permanent notes (Ahrens 2017) considered harmful (anonymous 2021). 
 
 The following checklist in Markdown is a first attempt (Gawande 2010). 
 
