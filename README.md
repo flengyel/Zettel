@@ -117,7 +117,7 @@ The keyword **CONTEXT** applies to Zettel IDs satisfying the above conditions on
 -   Footnotes and endnotes become links \[\[to other Zettels\]\] in the body.
 -   In a footnote or endnote Zettel, the ID `immutableID` is added to **CONTEXT**.
 
-> To my knowledge, there is no standard “unit of thought” maintained at the [National Institute of Standards and Technology](https://www.nist.gov/); the [Bureau international des poids et mesures](https://www.bipm.org/en/home); or elsewhere.  What a “unit of thought” could mean is time-, context- and writer-dependent. Perhaps an appropriate “unit of thought” is the schema of  Cognitive Load Theory (CLT) (Plass, Moreno, and Brünken 2010).  Zettels that follow instructional design principles from CLT should: manage intrinsic cognitive load; stimulate germane cognitive load; and, minimize extraneous cognitive load (Clark,  Nguyen, and Sweller 2006). Ahrens encourages Zettel writers to use  their own words (Ahrens 2017). Arhens leaves no room for direct  quotation in Zettels, even in “Literature Notes.” Literature and  Permanent Notes considered harmful: see the comments of @ctietze,  @sfast, and @MartinBB in reply to (anonymous 2021). Hans Georg-Moeller  speculates that Luhmann’s Zettelkasten contributed to an  “unnecessarily convoluted, poorly structured, highly repetitive” writing style lacking a “clear narrative development” (Moeller 2012, chap. 2). An antidote to unclear writing is *Style: Lessons  in Clarity and Grace* (Williams and Bizup 2017). Avoid *The Elements of Style* (Pullum 2010, 2014). Sascha Fast recommends writing for your future self (Fast 2021). Cory Doctorow maintains that writing and  research are distinct, and recommends writing the placeholder TK inline instead of stopping to research (Doctorow 2009). At this  point, Zettel writing could use a checklist (Gawande 2010).
+> To my knowledge, there is no standard “unit of thought” maintained at the [National Institute of Standards and Technology](https://www.nist.gov/); the [Bureau international des poids et mesures](https://www.bipm.org/en/home); or elsewhere. Ahrens encourages Zettel writers to use their own words (Ahrens 2017). Arhens leaves no room for direct quotation in Zettels, even in “Literature Notes.” Literature and  Permanent Notes considered harmful: see the comments of @ctietze,  @sfast, and @MartinBB in reply to (anonymous 2021). Hans Georg-Moeller  speculates that Luhmann’s Zettelkasten contributed to an  “unnecessarily convoluted, poorly structured, highly repetitive” writing style lacking a “clear narrative development” (Moeller 2012, chap. 2). An antidote to unclear writing is *Style: Lessons  in Clarity and Grace* (Williams and Bizup 2017). Avoid *The Elements of Style* (Pullum 2010, 2014). Sascha Fast recommends writing for your future self (Fast 2021). Cory Doctorow maintains that writing and  research are distinct, and recommends writing the placeholder TK inline instead of stopping to research (Doctorow 2009). At this  point, Zettel writing could use a checklist (Gawande 2010).
 
 
 ## 3.  Footer: References
@@ -134,7 +134,6 @@ anonymous. 2021. “Literature Notes, Where Do They Go Once They Become Permanen
 
 Chakraborty, Mihir K., and Soma Dutta. 2019. *Theory of graded consequence: a general framework for logics of uncertainty*. Logic in Asia: Studia Logica Library. Singapore: Springer.
 
-Clark, Ruth Colvin, Frank Nguyen, and John Sweller. 2006. *Efficiency in learning: evidence-based guidelines to manage cognitive load*. Essential resources for training and HR professionals. San Francisco, CA: Pfeiffer, a Wiley imprint.
 
 Doctorow, Cory. 2009. “Cory Doctorow: Writing in the Age of Distraction.” January 7, 2009. http://www.locusmag.com/Features/2009/01/cory-doctorow-writing-in-age-of.html
 
@@ -145,8 +144,6 @@ Fast, Sascha. 2021. “Write for Your Future Self.” July 29, 2021. https://for
 Gawande, Atul. 2010. *The checklist manifesto: how to get things right*. New York, N.Y: Metropolitan Books.
 
 Moeller, Hans-Georg. 2012. *The radical Luhmann*. New York: Columbia University Press.
-
-Plass, Jan L., Roxana Moreno, and Roland Brünken, eds. 2010. *Cognitive load theory*. 1. publ. Cambridge: Cambridge University Press.
 
 Pullum, Geoffrey K. 2010. “The Land of the Free and *The Elements of Style*.” *English Today* 26 (2): 34–44. https://doi.org/10.1017/S0266078410000076
 
