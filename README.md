@@ -98,7 +98,7 @@ reference-section-title: References<br />
 
 ###   1.c.2. CONTEXT Zettel IDs
 
-The keyword **CONTEXT** followed by a comma-separated list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
+The keyword **CONTEXT** followed by a list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
 
 -   continues `ID`;  
 -   comments on (or raises a question about) an aspect of `ID`; or,
@@ -107,7 +107,7 @@ The keyword **CONTEXT** followed by a comma-separated list of wikilinks of Zette
 
 The keyword **CONTEXT** applies to Zettel IDs satisfying the above conditions only. Zettels that might provide context for ```immutableID``` in other senses of the term 'context' are excluded. 
 
-> The **CONTEXT** header section is adaptation of Niklas Luhmann’s Folgezettel ID system to digital Zettelkasten. Folgezettel IDs are  spanning tree coordinates for the graph of Zettels of a Zettelkasten (c.f. [[[20211030133016](https://forum.zettelkasten.de/discussion/comment/13422/#Comment_13422)]]  Folgezettel Formalized). In addition to specifying the location of a Zettel in a distinguished spanning tree, a Folgezettel ID indicates whether that Zettel: continues a  prior Zettel; comments on or raises a question about an aspect of a prior Zettel; or, begins a new topic. This last case is not covered under **CONTEXT**. Under consideration: an additional keyword **PROTEXT** for IDs for which ```immutableID``` provides the **CONTEXT**. 
+> The **CONTEXT** header section is adaptation of Niklas Luhmann’s Folgezettel ID system to digital Zettelkasten. Folgezettel IDs are  spanning tree coordinates for the graph of Zettels of a Zettelkasten (c.f. [[[20211030133016](https://forum.zettelkasten.de/discussion/comment/13422/#Comment_13422)]]  Folgezettel Formalized). In addition to specifying the location of a Zettel in a distinguished spanning tree, a Folgezettel ID indicates whether that Zettel: continues a  prior Zettel; comments on or raises a question about an aspect of a prior Zettel; or, begins a new topic. If the current Zettel with ID `immutableID` begins a new topic, link to an index with ID [[00000000000000]] (for example). The index Zettel serves as the default context that `immutableID` "continues."
 
 
 ## 2. Body: an atomic note
