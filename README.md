@@ -101,8 +101,9 @@ reference-section-title: References<br />
 The keyword **CONTEXT** followed by a list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
 
 -   continues `ID`;  
--   comments on (or raises a question about) an aspect of `ID`; or,
--   is continued by `ID`.
+-   comments on (or raises a question about) an aspect of `ID`; 
+-   is continued by `ID`; or,
+-   begins a new topic and `ID` is the wikilink of an index.
 -   No other Zettel ID belongs with **CONTEXT**.
 
 The keyword **CONTEXT** applies to Zettel IDs satisfying the above conditions only. Zettels that might provide context for ```immutableID``` in other senses of the term 'context' are excluded. 
