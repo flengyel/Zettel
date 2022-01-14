@@ -3,9 +3,9 @@
 
 ---
 
-This repository contains a Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The template is intended to be self documenting. Further documentation and sample Zettels may be added to the repository in the future.
+This repository contains a Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The template is intended to be self-documenting. Further documentation and sample Zettels may be added to the repository in the future.
 
-As of November 18, 2021, the template was developed for Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10; it has not been tested with other software. 
+As of November 18, 2021, the template was developed for Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10; it has not been tried with other software. 
 
 For convenience, the evaluated Markdown template is provided within this README.md below. The unevaluated Markdown template 20211118010533.md is also provided within this repository. An abbreviated template is given first.
 
@@ -19,7 +19,7 @@ This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 Inte
 
 **CONTEXT** [[20211118010533]] Zettel template v2.1
 
-A Zettel has three parts: a header, a body, and a footer.  The header starts with an optional YAML header and includes a level 1 (H1) header with a timestamp ID and a title; a list of hashtag keywords; and a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel). This text is part of the body. Footnotes and endnotes become links within the body to other Zettels. That leaves the References section for the footer. The References section below can be omitted, generated with a references manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.1; or added by hand, as below. 
+A Zettel has three parts: a header, a body, and a footer.  The header starts with an optional YAML header and includes a level 1 (H1) header with a timestamp ID and a title; a list of hashtag keywords; and a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel). This text is part of the body. Footnotes and endnotes become links within the body to other Zettels. That leaves the References section for the footer. The References section below can be omitted, generated with a reference manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.1; or added by hand, as below. 
 
 -   This Zettel format only applies to Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10 and has not been tested with other software.  
 -   Filenames have the format `timestamp.md` in my implementation.
@@ -27,13 +27,16 @@ A Zettel has three parts: a header, a body, and a footer.  The header starts wit
 
 The following checklist in Markdown is a first attempt (Gawande 2010). 
 
+- [ ] Does this Zettel raise or answer a worthwhile question?
+      If so, proceed.
+
 - [ ] Replace the header timestamp ID with your own ID. 
 - [ ] Replace the title with your title.
 - [ ] Replace the hashtags above with your own #hashtag keywords
 - [ ] Replace the link after the **CONTEXT** keyword with a link to a Zettel Z such that this Zettel   
     - [ ] continues Z; or
     - [ ] comments on (or raises a question about) an aspect of Zettel Z; otherwise,
-    - [ ] if there is no such prior Zettel Z, and this Zettel starts a new topic, remove the **CONTEXT** line entirely. 
+    - [ ] if there is no such prior Zettel Z, and this Zettel starts a new topic, link to an index. 
 - [ ] Replace the body (including this cheklist) with your own text and Markdown in the body. 
 - [ ] Are there footnotes or endnotes? 
     - [ ] Footnotes and endnotes become links within the body to other Zettels. 
@@ -61,7 +64,7 @@ Gawande, Atul. 2010. *The checklist manifesto: how to get things right*. New Yor
 
 Revision v2.1 following remarks by (Simpson 2021), with additional citations.
 
--   This Zettel format only applies to Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10 and has not been tested with other software.  
+-   This Zettel format only applies to Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10 and has not been tried with other software.  
 -   Filenames have the format `timestamp.md` in my implementation.
 
 ## 1. Header: in 3 + 1 parts
