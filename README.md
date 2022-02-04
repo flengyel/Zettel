@@ -139,8 +139,6 @@ Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost wr
 
 Chakraborty, Mihir K., and Soma Dutta. 2019. *Theory of graded consequence: a general framework for logics of uncertainty*. Logic in Asia: Studia Logica Library. Singapore: Springer.
 
-Clark, Ruth Colvin, Frank Nguyen, and John Sweller. 2006. *Efficiency in learning: evidence-based guidelines to manage cognitive load*. Essential resources for training and HR professionals. San Francisco, CA: Pfeiffer, a Wiley imprint.
-
 Doctorow, Cory. 2009. “Cory Doctorow: Writing in the Age of Distraction.” January 7, 2009. http://www.locusmag.com/Features/2009/01/cory-doctorow-writing-in-age-of.html
 
 Fast, Sascha. 2018. “The Difference Between Good and Bad Tags.” Blog. *Zettelkasten* (blog). September 24, 2018. https://zettelkasten.de/posts/object-tags-vs-topic-tags
