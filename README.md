@@ -61,8 +61,11 @@ Gawande, Atul. 2010. *The checklist manifesto: how to get things right*. New Yor
 **CONTEXT** [[20211118010533]] Zettel template v2.1
 
 Revision v2.4 Context and hashtag sections reordered. The context section is now first, since it is important to know where the Zettel fits into the "slip-box."
+
 Revision v2.3 Errors of interpretation of Ahrens corrected. Humiliating, damning errors.
+
 Revision v2.2 after rereading S&ouml;nke Ahrens on the three categories of notes and on consideration of the Three Dicta of (Winebrenner 2022). 
+
 Revision v2.1 following remarks by (Simpson 2021), with additional citations.
 
 -   This Zettel format applies to Zettlr  versions 2.0.3 through 2.2.1 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10.   
