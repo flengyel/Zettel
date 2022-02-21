@@ -34,9 +34,10 @@ Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost wr
 
 # 202202040853 Zettel template v2.5
 
- #zettel #zettelkasten #ruleofthrees #folgezettel #replace #these 
-
 CONTEXT [[20211118010533]] Zettel template v2.1
+
+ #replace #these #hashtags  
+
 
 -   This Zettel format applies to Zettlr  versions 2.0.3 through 2.2.1 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10.   
 -   Filenames have the format `timestamp.md` in my implementation.
