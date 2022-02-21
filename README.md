@@ -5,7 +5,7 @@
 
 This repository contains a Zettel template and an abbreviated Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The templates are intended to be self-documenting. Further documentation and sample Zettels may be added to the repository in the future.
 
-As of November 18, 2021, the template was developed for Zettlr 2.0.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10; it has not been tried with other software. 
+As of February 21, 2021, the template was developed for Zettlr 2.2.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10; it has not been tried with other software. 
 
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
@@ -14,11 +14,11 @@ This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 Inte
 
 # 20211119115201 Abbreviated Zettel template v2.5
 
-**CONTEXT** [[20211118010533]] Zettel template v2.5
+CONTEXT [[20211118010533]] Zettel template v2.5
 
 #replace #these
 
-A Zettel has three parts: a header, a body, and a footer.  The header starts with an optional YAML header and includes a level 1 (H1) header with a timestamp ID and a title; a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel); and a list of hashtag keywords. This text is part of the body. Footnotes and endnotes become links within the body to other Zettels. That leaves the References section for the footer. The References section below can be omitted, generated with a reference manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.1; or added by hand, as below. 
+A Zettel has three parts: a header, a body, and a footer.  The header starts with an optional YAML header and includes a level 1 (H1) header with a timestamp ID and a title; a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel); and a list of hashtag keywords. This text is part of the body. Footnotes and endnotes become links within the body to other Zettels. That leaves the References section for the footer. The References section below can be omitted, generated with a reference manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.5; or added by hand, as below. 
 
 -   This Zettel format only applies to Zettlr 2.2.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10 and has not been used with other software.  
 -   Filenames have the format `timestamp.md` in my implementation.
@@ -36,17 +36,7 @@ Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost wr
 
  #zettel #zettelkasten #ruleofthrees #folgezettel #replace #these 
 
-**CONTEXT** [[20211118010533]] Zettel template v2.1
-
-Revision v2.5 Removal of checklist. This was unnecessary.
-
-Revision v2.4 Context and hashtag sections reordered. The context section is now first, since it is important to know where the Zettel fits into the "slip-box."
-
-Revision v2.3 Errors of interpretation of Ahrens corrected. 
-
-Revision v2.2 after rereading S&ouml;nke Ahrens on the three categories of notes and on consideration of the Three Dicta of (Winebrenner 2022). 
-
-Revision v2.1 following remarks by (Simpson 2021), with additional citations.
+CONTEXT [[20211118010533]] Zettel template v2.1
 
 -   This Zettel format applies to Zettlr  versions 2.0.3 through 2.2.1 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10.   
 -   Filenames have the format `timestamp.md` in my implementation.
@@ -55,7 +45,7 @@ Revision v2.1 following remarks by (Simpson 2021), with additional citations.
 
 -   An optional YAML frontmatter header with commands to Zettlr and Pandoc;
 -   a Level 1 (H1) header containing an immutable ID, referred to in this Zettel by `immutableID`, followed by a title, referred to in this Zettel by `title`;
--   the keyword **CONTEXT** followed by a list of IDs of prior Zettels providing the immediate context for `immutableID` (see 1.c.2 below); and,
+-   the keyword CONTEXT followed by a list of IDs of prior Zettels providing the immediate context for `immutableID` (see 1.c.2 below); and,
 -   a list of keywords in #hashtag format.
 
 
@@ -71,7 +61,6 @@ reference-section-title: References
 
 \# `immutableID` `title`
 
-\[\[20210424174054\]\] Zettlr title format \#+ImmutableID+Title,
 
 > The value of `immutableID` doesn’t change, although `title` might  change. This syntax relies on enabling the Zettlr  `Preferences → Display` setting “If present, use the first heading  level 1 instead of the filename.” This will display the IDs and  titles of Zettel markdown files in the Zettlr file manager pane.  Without this setting, the file manager will only show the Zettlr  filenames, which in my implementation are IDs.
 
@@ -107,7 +96,6 @@ The keyword CONTEXT applies to Zettel IDs satisfying the above conditions only. 
 
 ## 3.  Footer: References
 
-\[\[20210803113219\]\] Zotero: citing BetterBibTeX references in Zettlr
 
 > Pandoc style references in the body are resolved under References, provided the `immutableID` contains a Pandoc citation and the YAML header of 1.a.
 
