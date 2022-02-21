@@ -117,8 +117,6 @@ Pullum, Geoffrey K. 2010. “The Land of the Free and *The Elements of Style*.�
 
 ———. 2014. “Fear and Loathing of the English Passive.” *Language & Communication* 37 (July): 60–74. https://doi.org/10.1016/j.langcom.2013.08.009
 
-Simpson, Will. 2021. “Comment 13603 on Zettel Format.” Blog. *Zettelkasten Forum* (blog). November 15, 2021. https://forum.zettelkasten.de/discussion/comment/13603/#Comment_13603
-
 Williams, Joseph M., and Joseph Bizup. 2017. *Style: lessons in clarity and grace*. Twelfth edition. Always learning. Boston Columbus Indianapolis New York San Francisco Amsterdam Cape Town Dubai London Madrid Milan Munich Paris: Pearson.**
 
 Winebrenner, Caleb. 2022. “Field Report #4: I spent six months using a Zettelkasten to write my thesis. Here’s what I learned.” _Zettelkasten_ (blog). January 28, 2022. https://zettelkasten.de/posts/field-report-4-what-i-learned-writing-thesis-with-zettelkasten/.
