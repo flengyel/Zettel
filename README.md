@@ -3,7 +3,7 @@
 
 ---
 
-This repository contains a Zettel template and an abbreviated Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The templates are intended to be self-documenting. Further documentation and sample Zettels may be added to the repository in the future.
+This repository contains a Zettel template and an abbreviated Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The templates are intended to be self-documenting. Further documentation and sample Zettels may be added to the repository in the future. See the wiki for software configuration notes.
 
 As of February 21, 2021, the template was developed for Zettlr 2.2.3 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10; it has not been tried with other software. 
 
@@ -70,8 +70,7 @@ reference-section-title: References
 The keyword CONTEXT followed by a list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
 
 -   continues `ID`;  
--   comments on (or raises a question about) an aspect of `ID`; 
--   is continued by `ID`; or,
+-   comments on (or raises a question about) an aspect of `ID`; or,
 -   begins a new topic and `ID` is the wikilink of an index.
 -   No other Zettel ID belongs with CONTEXT.
 
