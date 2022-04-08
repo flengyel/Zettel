@@ -381,6 +381,12 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+% For Zettlr file header includes
+$if(more-header-includes)$
+$for(more-header-includes)$
+$more-header-includes$
+$endfor$
+$endif$
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -458,7 +464,6 @@ $endif$
 
 $for(include-before)$
 $include-before$
-
 $endfor$
 $if(toc)$
 $if(toc-title)$
