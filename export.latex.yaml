@@ -2,9 +2,9 @@
 # ====================
 # Conversion: Markdown --> LaTeX document
 # More info: https://pandoc.org/MANUAL.html
-reader: markdown
+reader: markdown-latex_macros
 writer: latex
-self-contained: false
+self-contained: true
 variables: 
   # Sets the size of the document's pages.
   papersize: a4 # Possible values: a0-a6, b0-b6, c0-c6,b0j, letter, executive, legal
@@ -30,16 +30,7 @@ variables:
   - \newtheorem*{prop*}{Proposition}
   - \newtheorem*{cor*}{Corollary}
   - \newtheorem*{fact*}{Fact}
-  - \newcommand{\asterism}{
-        \smash{
-            \raisebox{-.5ex}{
-                \setlength{\tabcolsep}{-.5pt}
-                \begin{tabular}{@{}cc@{}}
-                    \multicolumn2c*\\[-2ex]*&*
-                \end{tabular}
-            }
-        }
-    }
+# use more-header-includes: in Zettlr markdown 
 include-before-body: []
 include-after-body: []
 include-in-header: []
@@ -50,7 +41,7 @@ file-scope: false
 top-level-division: chapter
 wrap: none
 columns: 78
-dpi: 72
+dpi: 300
 toc: false
 toc-depth: 2
 number-sections: false
