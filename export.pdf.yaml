@@ -2,7 +2,7 @@
 # ====================
 # Conversion: Markdown --> PDF (requires TeX suite to be installed)
 # More info: https://pandoc.org/MANUAL.html
-reader: markdown
+reader: markdown-latex_macros
 writer: pdf
 self-contained: true
 variables:
@@ -30,18 +30,9 @@ variables:
   - \newtheorem*{prop*}{Proposition}
   - \newtheorem*{cor*}{Corollary}
   - \newtheorem*{fact*}{Fact}
-  -  \newcommand{\asterism}{
-        \smash{
-            \raisebox{-.5ex}{
-                \setlength{\tabcolsep}{-.5pt}
-                \begin{tabular}{@{}cc@{}}
-                    \multicolumn2c*\\[-2ex]*&*
-                \end{tabular}
-            }
-        }
-    }
   # This next was almost needed: we copied a dash instead of a minus sign!
   # - \DeclareUnicodeCharacter{2212}{\textendash}
+  # Use the YAML header more-header-includes: for LaTeX preamble additions in Zettlr markdown
 metadata-files: []
 include-before-body: []
 include-after-body: []
