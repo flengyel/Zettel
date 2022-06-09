@@ -16,6 +16,8 @@ variables:
   - euler-digits
   - euler-hat-accent
   fontsize: 12pt
+  geometry: margin=1.5in
+  indent: true
   header-includes: 
   - \usepackage{LatexColors.incl}
   - \usepackage{newpxtext}
@@ -30,9 +32,26 @@ variables:
   - \newtheorem*{prop*}{Proposition}
   - \newtheorem*{cor*}{Corollary}
   - \newtheorem*{fact*}{Fact}
-  # This next was almost needed: we copied a dash instead of a minus sign!
-  # - \DeclareUnicodeCharacter{2212}{\textendash}
-  # Use the YAML header more-header-includes: for LaTeX preamble additions in Zettlr markdown
+  - |
+    \newcommand{\asterism}{
+      \smash{
+        \raisebox{-.5ex}{
+          \setlength{\tabcolsep}{-.5pt}
+          \begin{tabular}{@{}cc@{}}
+             \multicolumn2c*\\[-2ex]*&*
+           \end{tabular}
+        }
+      }
+    }
+  - |
+    \providecommand{\subtitle}[1]{
+    \usepackage{titling}
+    \posttitle{
+      \par\large#1\end{center}}
+    }
+# use more-header-includes: in Zettlr markdown   
+# This next was almost needed: we copied a dash instead of a minus sign!
+# - \DeclareUnicodeCharacter{2212}{\textendash}
 metadata-files: []
 include-before-body: []
 include-after-body: []
