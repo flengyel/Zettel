@@ -59,7 +59,7 @@ bibliography: []
 filters:
 - type: citeproc
 file-scope: false
-top-level-division: chapter
+top-level-division: default
 wrap: none
 columns: 78
 dpi: 300
