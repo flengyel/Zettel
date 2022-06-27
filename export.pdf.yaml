@@ -1,11 +1,11 @@
 # ZETTLR DEFAULTS FILE
 # ====================
-# Conversion: Markdown --> LaTeX document
+# Conversion: Markdown --> PDF (requires TeX suite to be installed)
 # More info: https://pandoc.org/MANUAL.html
 reader: markdown-latex_macros
-writer: latex
+writer: pdf
 self-contained: true
-variables: 
+variables:
   # Sets the size of the document's pages.
   papersize: a4 # Possible values: a0-a6, b0-b6, c0-c6,b0j, letter, executive, legal
   # Further variables are documented here: https://pandoc.org/MANUAL.html#variables-for-latex
@@ -51,7 +51,10 @@ variables:
     \posttitle{
       \par\large#1\end{center}}
     }
-# use more-header-includes: in Zettlr markdown 
+# use more-header-includes: in Zettlr markdown   
+# This next was almost needed: we copied a dash instead of a minus sign!
+# - \DeclareUnicodeCharacter{2212}{\textendash}
+metadata-files: []
 include-before-body: []
 include-after-body: []
 include-in-header: []
@@ -59,12 +62,13 @@ bibliography: []
 filters:
 - type: citeproc
 file-scope: false
-top-level-division: chapter
-wrap: none
-columns: 78
+top-level-division: default
+# DO NOT USE XELATEX. XELATEX CANNOT HANDLE EULER AND NEWPXTEXT PROPERLY!!!
+# pdf-engine: xelatex # Change this if you want to use a different engine, e.g. pdflatex 
+pdf-engine: pdflatex # xelatex does not work well with the fonts chosen
 dpi: 300
-toc: false
-toc-depth: 2
+toc: false # Include a table of contents?
+toc-depth: 2 # 2 means to only include headings level 1 and 2 in the ToC
 number-sections: false
 number-offset:
 - 0
