@@ -16,15 +16,17 @@ variables:
   - euler-digits
   - euler-hat-accent
   fontsize: 12pt
-  geometry: margin=1.5in
-  indent: true
+  geometry: margin=1in
+  indent: false
   header-includes: 
   - \usepackage{LatexColors.incl}
   - \usepackage{newpxtext}
   - \usepackage{tikz}
   - \usepackage{tikz-cd}
+  - \usepackage{pgflibraryarrows} 
   - \usetikzlibrary{matrix}
   - \usetikzlibrary{arrows.meta}
+  - \usetikzlibrary{arrows}
   - \usetikzlibrary{decorations.pathmorphing}
   - \usepackage{nicematrix}
   - \newtheorem*{thm*}{Theorem}
