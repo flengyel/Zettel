@@ -1,50 +1,23 @@
 # Zettel
 
 
-This repository contains a Zettel template and an abbreviated Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). The templates are intended to be self-documenting. See the [Zettel wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and additional info.
+This repository contains a Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). See the [Zettel wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and examples.
 
 
+# 202202040853 Zettel template v2.6
 
-
-This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
-
----
-
-# 20211119115201 Abbreviated Zettel template v2.5.1
-
-CONTEXT [[20211118010533]] Zettel template v2.5
-
-#replace #these
-
-A Zettel has three parts: a header, a body, and a footer.  The header starts with an optional YAML header and includes a level 1 (H1) header with a timestamp ID and a title; a CONTEXT line that links to a Zettel that this Zettel continues or comments (or raises a question about) on an aspect of that Zettel (if there such a Zettel); and a list of hashtag keywords. This text is part of the body. Footnotes and endnotes become links within the body to other Zettels. That leaves the References section for the footer. The References section below can be omitted, generated with a reference manager such as Zotero and a YAML header [[20211118010533]] Zettel template v2.5; or added by hand, as below. 
-
--   This Zettel format applies to [Zettlr 2.3.0](https://zettlr.com) + Pandoc 2.18 + MikTeX 21.2-x64 + [Zotero 6.0.9](https://www.zotero.org/support/changelog) + [BetterBibTex 6.7.15](https://retorque.re/zotero-better-bibtex/) under Windows 10 and has not been used with other software.  
--   Filenames have the format `ID.md` in my implementation, where the format of `ID` is defined in [0.1.0.22.0305.1829 ID Format](https://github.com/flengyel/Zettel/wiki/0.1.0.22.0305.1829-ID-Format).
--   See [From Fleeting Notes to Project Notes - zettelkasten.de](https://zettelkasten.de/posts/concepts-sohnke-ahrens-explained/) for definitions of terms in (Ahrens 2017) 
-
-
-# References
-
-Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost writing, learning and thinking: for students, academics and nonfiction book writers_. North Charleston, SC: CreateSpace.
-
-
----
-
-# 202202040853 Zettel template v2.5.1
-
-CONTEXT [[20211118010533]] Zettel template v2.5
+[[0.1.0.22.0305.1829]] ID Format
 
  #replace #these #hashtags  
 
-
--   This Zettel format applies to Zettlr  versions 2.0.3 through 2.2.1 + Pandoc 2.16.1 + MikTeX 21.2-x64 + Zotero 5.0.96.3 + BetterBibTex  5.6.8 under Windows 10.   
+  
 -   Filenames have the format `ID.md` in my implementation, where the format of `ID` is defined in [0.1.0.22.0305.1829 ID Format](https://github.com/flengyel/Zettel/wiki/0.1.0.22.0305.1829-ID-Format).
 
 ## 1. Header: in 3 + 1 parts
 
 -   An optional YAML frontmatter header with commands to Zettlr and Pandoc;
 -   a Level 1 (H1) header containing an immutable ID, referred to in this Zettel by `immutableID`, followed by a title, referred to in this Zettel by `title`;
--   the keyword CONTEXT followed by a list of IDs of prior Zettels providing the immediate context for `immutableID` (see 1.c.2 below); and,
+-   a list of IDs of prior Zettels providing context for `immutableID` (see 1.c.2 below); and,
 -   a list of keywords in #hashtag format.
 
 
@@ -61,21 +34,17 @@ reference-section-title: References
 \# `immutableID` `title`
 
 
-> The value of `immutableID` doesn’t change, although `title` might  change. This syntax relies on enabling the Zettlr  `Preferences → Display` setting “If present, use the first heading  level 1 instead of the filename.” This will display the IDs and  titles of Zettel markdown files in the Zettlr file manager pane.  Without this setting, the file manager will only show the Zettlr  filenames, which in my implementation are IDs.
+> The value of `immutableID` doesn’t change, although `title` might  change. This syntax relies on enabling the Zettlr `Preferences → Display` setting “If present, use the first heading  level 1 instead of the filename.” This will display the IDs and  titles of Zettel markdown files in the Zettlr file manager pane.  Without this setting, the file manager will only show the Zettlr  filenames, which in my implementation are IDs.
 
 ###   1.c.1. CONTEXT Zettel IDs
 
-The keyword CONTEXT followed by a list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
+A list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
 
 -   continues `ID`;  
 -   comments on (or raises a question about) an aspect of `ID`; or,
 -   begins a new topic and `ID` is the wikilink of an index.
--   No other Zettel ID belongs with CONTEXT.
 
-The keyword CONTEXT applies to Zettel IDs satisfying the above conditions only. Zettels that might provide context for ```immutableID``` in other senses of the term 'context' are excluded. 
-
-> The CONTEXT header section is adaptation of Niklas Luhmann’s Folgezettel ID system to digital Zettelkasten. Folgezettel IDs are  spanning tree coordinates for the graph of Zettels of a Zettelkasten (c.f. [[[20211030133016](https://forum.zettelkasten.de/discussion/comment/13422/#Comment_13422)]]  Folgezettel Formalized). In addition to specifying the location of a Zettel in a distinguished spanning tree, a Folgezettel ID indicates whether that Zettel: continues a  prior Zettel; comments on or raises a question about an aspect of a prior Zettel; or, begins a new topic. If the current Zettel with ID `immutableID` begins a new topic, link to an index with ID [[00000000000000]] (for example). The index Zettel serves as the default context that `immutableID` "continues."
-
+> The CONTEXT header section is adaptation of Niklas Luhmann’s Folgezettel ID system to digital Zettelkasten. Folgezettel IDs are  spanning tree coordinates for the graph of Zettels of a Zettelkasten. 
 
 ### 1.c.2. Keywords in \#hashtag format
 
