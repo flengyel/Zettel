@@ -4,15 +4,15 @@
 This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). See the [Zettel wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and examples.
 
 
-# 202202040853 Zettel template v2.6
+# ZKM.0.4.0.22.0204 Zettel (Point Note) template template v2.7
 
-[[[0.1.0.22.0305.1829](https://github.com/flengyel/Zettel/wiki/0.1.0.22.0305.1829-ID-Format)]] ID Format    
-[[[0.0.22.0306.1900](https://github.com/flengyel/Zettel/wiki/0.0.22.0306.1900-Cross-cutting-categories-in-Zettelkasten)]] Cross-cutting categories in Zettelkasten
+[[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index) ID format and alphabetic index
 
  #replace #these #hashtags  
 
   
--   Filenames have the format `ID.md` in my implementation, where the format of `ID` is defined in [[[0.1.0.22.0305.1829](https://github.com/flengyel/Zettel/wiki/0.1.0.22.0305.1829-ID-Format)]] ID Format.
+-   Filenames have the format `ID.md` in my implementation, where the format of `ID` is defined in [[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index) ID format and alphabetic index
+
 
 ## 1. Header: in 3 + 1 parts
 
