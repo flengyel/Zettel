@@ -6,7 +6,9 @@ This repository contains a self-documenting Zettel template for use with a softw
 
 # ZKM.0.4.0.22.0204 Zettel (Point Note) template template v2.7
 
-[[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index) ID format and alphabetic index
+[[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index) ID format and alphabetic index  
+[[0000.0000.00YZ]]() Y-Z  
+[[0000.0000.0STU]]() S-T-U
 
  #replace #these #hashtags  
 
