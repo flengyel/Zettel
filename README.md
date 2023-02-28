@@ -4,7 +4,7 @@
 This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). See the [Zettel wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and examples.
 
 
-# ZKM.0.4.0.22.0204 Zettel (Point Note) template template v2.7
+# ZKM.4.0.22.0204 Zettel (Point Note) template template v2.7
 
 [[[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)] ID format and alphabetic index  
 [[[0000.0000.00YZ]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)] Y-Z  
