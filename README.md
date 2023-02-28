@@ -45,7 +45,8 @@ A list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutabl
 
 -   continues `ID`;  
 -   comments on (or raises a question about) an aspect of `ID`; or,
--   begins a new topic and `ID` is the wikilink of an index.
+-   begins a new topic;  
+-  `ID` is the wikilink of an [alphabetic index note](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index).
 
 > The CONTEXT header section is adaptation of Niklas Luhmann’s Folgezettel ID system to digital Zettelkasten. Folgezettel IDs are  spanning tree coordinates for the graph of Zettels of a Zettelkasten. 
 
