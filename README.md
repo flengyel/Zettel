@@ -58,7 +58,7 @@ A list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutabl
 
 \#keyword \#example
 
-> Paraphrasing Sascha Fast in (Fast 2018), hashtags should be as specific to `immutableID` as possible.
+> Paraphrasing Sascha Fast in (Fast, 2018), hashtags should be as specific to `immutableID` as possible.
 
 ## 2. Body: a self-contained note
 
