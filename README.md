@@ -5,6 +5,8 @@ This repository contains a self-documenting Zettel template for use with a softw
 
 See the [Zettel wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and examples.
 
+This work is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel 
+
 
 # ZKM.4.0.22.0204 Zettel (Point Note) template template v2.7
 
