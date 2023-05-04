@@ -8,7 +8,7 @@ See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for software conf
 Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel 
 
 
-# ZKM.4.0.22.0204 Zettel template v2.8
+# ZKM.4.0.23.0504 Zettel template v2.8
 
 [[[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)] ID format and alphabetic index  
 [[[0000.0000.00YZ]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)] Y-Z  
