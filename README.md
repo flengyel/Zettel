@@ -1,14 +1,12 @@
 # Zettel
 
-
-This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). Strongly recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). 
+This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). Recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). 
 
 See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and examples.
 
 Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel 
 
-
-# ZKM.4.0.23.0504 Zettel template v2.8
+# ZKM.4.0.23.0504 Zettel template v3.0
 
 [[[ZKID.0.23.0225]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)] ID format and alphabetic index  
 [[[0000.0000.00YZ]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)] Y-Z  
@@ -56,17 +54,17 @@ A list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutabl
 
 > Paraphrasing Sascha Fast in (Fast, 2018), hashtags should be as specific to `immutableID` as possible.
 
-## 2. Body: a self-contained note
+## 2. Body: the body should have a single focus
 
 - Links \[\[to other Zettels\]\] and external links can go here.
 - Footnotes and endnotes become links \[\[to other Zettels\]\] in the body.
-- In a footnote or endnote Zettel, the ID `immutableID` is added to CONTEXT.
+- Link the ID `immutableID` of this Zettel within each separate footnote or endnote Zettel.
 
-> Ahrens recommends limiting each Zettel to a screenful of text (a test that this Zettel fails). Arhens identifies three types of notes: fleeting, permanent, and project notes (Ahrens, 2017). See [From Fleeting Notes to Project Notes - zettelkasten.de](https://zettelkasten.de/posts/concepts-sohnke-ahrens-explained/) for the definition of these terms. Ahrens advises Zettel writers to read with pen and paper in hand, to take fleeting notes judiciously, and to reformulate their fleeting notes as Zettels in their own words before committing them as permanent notes to their Zettelkasten (Ahrens, 2017). Since Ahrens omits concrete examples of Zettels, this template attempts to address that omission. Zettels will require rewriting and reorganization before using them in long-form articles and projects—see the Three Dicta of (@Winebrenner 2022). Ahrens describes a bottom-up process for drawing upon the Zettelkasten in larger writing projects (Ahrens, 2017). Niklas Luhmann himself did not follow Ahrens' advice: Hans Georg-Moeller speculates that Luhmann's Zettelkasten contributed to an "unnecessarily convoluted, poorly structured, highly repetitive" writing style lacking a "clear narrative development" (Moeller 2012, chap. 2). For a clear guide to writing style, see Style: Lessons in Clarity and Grace (Williams & Bizup, 2017). Avoid The Elements of Style (Pullum 2010, 2014). Sascha Fast recommends writing for your future self (Fast, 2021). Cory Doctorow states that writing and research are distinct and recommends writing the placeholder "TK" inline instead of stopping to research (Doctorow, 2009).
+> Ahrens recommends limiting each Zettel to a screenful of text (a test that this Zettel fails). Arhens identifies five note types under three descriptive categores: fleeting, permanent, and project notes (Ahrens, 2017). See [From Fleeting Notes to Project Notes - zettelkasten.de](https://zettelkasten.de/posts/concepts-sohnke-ahrens-explained/) for the definition of these terms. Ahrens advises Zettel writers to read with pen and paper in hand, to take fleeting notes judiciously, and to reformulate their fleeting notes as Zettels in their own words before committing them as permanent notes to their Zettelkasten (Ahrens, 2017). Since Ahrens omits concrete examples of Zettels, this template attempts to address that omission. Zettels will require rewriting and reorganization before using them in long-form articles and projects—see the Three Dicta of (@Winebrenner 2022). Ahrens describes a bottom-up process for drawing upon the Zettelkasten in larger writing projects (Ahrens, 2017). Niklas Luhmann himself did not follow Ahrens' advice: Hans Georg-Moeller speculates that Luhmann's Zettelkasten contributed to an "unnecessarily convoluted, poorly structured, highly repetitive" writing style lacking a "clear narrative development" (Moeller 2012, chap. 2). For a clear guide to writing style, see Style: Lessons in Clarity and Grace (Williams & Bizup, 2017). Avoid The Elements of Style (Pullum 2010, 2014). Sascha Fast recommends writing for your future self (Fast, 2021). Cory Doctorow states that writing and research are distinct and recommends writing the placeholder "TK" inline instead of stopping to research (Doctorow, 2009).
 
-## 3.  Footer: References
+## 3. References
 
-> Pandoc style references in the body are resolved under References, provided the `immutableID` contains a Pandoc citation and the YAML header of 1.a.
+> Pandoc style references in the body are resolved under the References section (without the "3."), provided the `immutableID` contains a Pandoc citation and the YAML header of 1.a. If the YAML header were present, the references section would appear as follows.
 
 ## References
 
