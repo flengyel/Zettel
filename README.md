@@ -37,18 +37,17 @@ Each Zettel should start with an H1 header:
 # immutableID title
 ```
 
-The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed. Some users prefer to use timestamps. My immutable IDs are described here.
+The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed. The `immutableID` must be unique to each Zettel. Example IDs are provided in the Zettel Wiki. 
 
 ### 1.3 Context Zettel IDs
 
 Provide a list of IDs for Zettels that relate to the current Zettel. For example:
 
 ```markdown
-[[previousZettelID1]]   
-[[previousZettelID2]]   
-[[previousZettelID3]]
+[[ID1]]  Title of previous Zettel with ID1     
+[[ID2]]  Title of previous Zettel with ID2   
+[[ID3]]  Title of previous Zettel with ID3
 ```
-
 These IDs serve to contextualize the current Zettel within the larger Zettelkasten.
 
 ### 1.4 Hashtags
@@ -56,7 +55,7 @@ These IDs serve to contextualize the current Zettel within the larger Zettelkast
 Include relevant hashtags for the Zettel content:
 
 ```markdown
-#yourHashtag1 #yourHashtag2
+ #yourHashtag1 #yourHashtag2
 ```
 
 Use specific hashtags that directly pertain to the content of the current Zettel.
