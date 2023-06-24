@@ -2,8 +2,6 @@
 
 This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). Recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). 
 
-See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for software configuration notes, definitions of terms, and examples.
-
 Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel 
 
 # [[ImmutableID]] Zettel Template v4.0
@@ -39,7 +37,7 @@ Each Zettel should start with an H1 header:
 # immutableID title
 ```
 
-The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed.
+The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed. Some users prefer to use timestamps. My immutable IDs are described here.
 
 ### 1.3 Context Zettel IDs
 
