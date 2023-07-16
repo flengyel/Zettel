@@ -4,11 +4,19 @@ This repository contains a self-documenting Zettel template for use with a softw
 
 Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel 
 
-# [[ImmutableID]] Zettel Template v4.0
+# # ZKM.4c.0.23.0624 Zettel Template 4.0
+
+[[ZKID.1.0.22.0305]] ID Format  
+[[0000.0000.0STU]] S-T-U  
+[[0000.0000.00YZ]] Y-Z  
+
+ #zettelkasten-method #template #zettel-template
 
 **Note:** This template serves as a guide for creating a Zettel using the Zettelkasten Method. It assumes a software-based implementation. Refer to [Zettelkasten.de](https://zettelkasten.de/posts/overview/) and [Zettelkasten.de forum](https://forum.zettelkasten.de) for detailed explanations of the method.
 
 For software configuration notes, definitions of terms, and more examples, refer to the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
+
+License: [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
 ## 1. Header
 
@@ -37,18 +45,20 @@ Each Zettel should start with an H1 header:
 # immutableID title
 ```
 
-The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed. The `immutableID` must be unique to each Zettel. Example IDs are provided in the Zettel Wiki. 
+The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed.
 
 ### 1.3 Context Zettel IDs
 
-Provide a list of IDs for Zettels that relate to the current Zettel. For example:
+Provide a list of H1 headers (without the leading hash mark) of Zettels that relate to the current Zettel. For example:
 
 ```markdown
-[[ID1]]  Title of previous Zettel with ID1     
-[[ID2]]  Title of previous Zettel with ID2   
-[[ID3]]  Title of previous Zettel with ID3
+[[previousZettelID1]] Title1
+[[previousZettelID2]] Title2  
+[[previousZettelID3]] Title3
+...
 ```
-These IDs serve to contextualize the current Zettel within the larger Zettelkasten.
+
+These IDs contextualize the current Zettel within the larger Zettelkasten.
 
 ### 1.4 Hashtags
 
@@ -74,4 +84,3 @@ For example:
 ## References
 Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost writing, learning and thinking: for students, academics and nonfiction book writers_. North Charleston, SC: CreateSpace.
 ```
-
