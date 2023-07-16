@@ -49,7 +49,7 @@ The `immutableID` remains unchanged throughout the life of the Zettel, while the
 
 ### 1.3 Context Zettel IDs
 
-Provide a list of H1 headers (without the leading hash mark) of Zettels that relate to the current Zettel. For example:
+Provide a list of wiki links and titles of Zettels that relate to the current Zettel. For example:
 
 ```markdown
 [[previousZettelID1]] Title1
