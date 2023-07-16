@@ -6,7 +6,7 @@ Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Li
 
 # # ZKM.4c.0.23.0624 Zettel Template 4.0
 
-[[ZKID.1.0.22.0305]] ID Format  
+[[[ZKID.1.0.22.0305](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index)]] ID Format  
 [[0000.0000.0STU]] S-T-U  
 [[0000.0000.00YZ]] Y-Z  
 
