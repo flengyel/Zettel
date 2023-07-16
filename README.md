@@ -14,7 +14,7 @@ Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Li
 
 **Note:** This template serves as a guide for creating a Zettel using the Zettelkasten Method. It assumes a software-based implementation. Refer to [Zettelkasten.de](https://zettelkasten.de/posts/overview/) and [Zettelkasten.de forum](https://forum.zettelkasten.de) for detailed explanations of the method.
 
-For software configuration notes, definitions of terms, and more examples, please take a look at the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
+For software configuration notes, definitions of terms, and more examples, please look at the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
 
 License: [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
 
