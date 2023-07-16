@@ -16,8 +16,6 @@ Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Li
 
 For software configuration notes, definitions of terms, and more examples, please look at the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
 
-License: [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
-
 ## 1. Header
 
 The header consists of four parts:
