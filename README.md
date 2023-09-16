@@ -91,7 +91,7 @@ The previous Zettel Template was simplified by ChatGPT-4, based on the template 
 
 ---
 
-# ZKM.4.0.23.0609 Zettel template v3.0
+# # ZKM.4.0.23.0609 Zettel template v3.0
 
 [[ZKM.4.0.23.0504]] Zettel template v2.8  
 [[ZKM.4a.0.23.0504]] Note on Zettel Template 2.8  
