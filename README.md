@@ -1,14 +1,14 @@
 # Zettel
 
-This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). Recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). 
+This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If you find the terminology of literature notes and permanent notes vague or confusing, it's not your fault--see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). 
 
 This README.md is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel. You don't need to credit me if your notes instantiate the template. If you copy and publish this template or derive a template from this one and publish it, then CC BY-SA 4.0 applies.  
 
 Version 5.0 of the Zettel Template was based on a simplification by [ChatGPT-4](https://chat.openai.com) of Zettel Template 3.0--a prior version. Version 5.0 includes a YAML header for compatibility with Zettlr and Obsidian.
 
-## NOTE
 
-For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). Immediately below is a simplified Zettel template. A more detailed Zettel template follows the simplified template. 
+
+Immediately below is a simplified Zettel template. A more detailed Zettel template follows the simplified template. 
 
 ---
 
