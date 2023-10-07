@@ -20,7 +20,7 @@ reference-section-title: References
 ```
 # ZKM.4d.0.23.1007 Zettel Template 5.0
 
-[[ZKID.1.0.22.0305]] ID Format  
+[[[ZKID.0.23.0225]]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index#zkid0230225-id-format) ID Format  
 [[ZKM.4c.0.23.0624]] Zettel Template 4.0  
 [[0000.0000.00YZ]] Y-Z  
 
@@ -100,6 +100,7 @@ Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost wr
 
 # # ZKM.4d1.0.23.0609 Zettel template 5a
 
+[[[ZKID.0.23.0225]]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index#zkid0230225-id-format) ID Format  
 [[ZKM.4d.0.23.1007]] Zettel template 5.0  
 [[0000.0000.00YZ]] Y-Z  
 
