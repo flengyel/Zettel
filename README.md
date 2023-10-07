@@ -6,6 +6,12 @@ Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International Li
 
 Version 5.0 of the Zettel Template was based on a simplification by [ChatGPT-4](https://chat.openai.com) of Zettel Template 3.0--a prior version. Version 5.0 includes a YAML header for compatibility with Zettlr and Obsidian.
 
+## NOTE
+
+For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
+
+---
+
 ```yaml
 ---
 title: "ZKM.4d.0.23.1007 Zettel Template 5.0"
@@ -24,7 +30,7 @@ reference-section-title: References
  
 **Note:** This template serves as a guide for creating a Zettel using the Zettelkasten Method. It assumes a software-based implementation. Refer to [Zettelkasten.de](https://zettelkasten.de/posts/overview/) and [Zettelkasten.de forum](https://forum.zettelkasten.de) for detailed explanations of the method.
 
-For software configuration notes, definitions of terms, and more examples, refer to the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
+For software configuration notes, definitions of terms, and more examples, please see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
 
 ## 1. Header
 
@@ -36,7 +42,7 @@ The header consists of four parts:
 - **1.4 Hashtags**: List of relevant keywords.
 
 ### 1.1 YAML Frontmatter 
-The Zettel template includes YAML frontmatter for compatibility with Zettlr and Obsidian. If there are Pandoc-style references in the Zettel body, the `reference-section-title:` YAML variable will cause a Reference section with citations to appear at the end of the document. 
+The Zettel template includes YAML frontmatter for compatibility with Zettlr and Obsidian. If the Zettel body includes Pandoc-style references, the `reference-section-title:` YAML variable will cause a Reference section with citations to appear at the end of the document. 
 
 ```yaml
 ---
