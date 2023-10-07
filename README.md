@@ -4,7 +4,7 @@ This repository contains a self-documenting Zettel template for use with a softw
 
 Licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel 
 
-Version 4.0 of the Zettel Template was a simplification by [ChatGPT-4](https://chat.openai.com) of Zettel Template 3.0, which follows Zettel Template 4.0 below.
+Version 5.0 of the Zettel Template was based on a simplification by [ChatGPT-4](https://chat.openai.com) of Zettel Template 3.0--a prior version. Version 5.0 includes a YAML header for compatibility with Zettlr and Obsidian.
 
 ```yaml
 ---
