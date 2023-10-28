@@ -3,6 +3,7 @@ import yaml
 
 # Initialize stats dictionary
 validation_stats = {
+    'good_zettels': 0,
     'invalid_yaml_header': 0,
     'invalid_title_format': 0,
     'h1_mismatch': 0,
@@ -82,6 +83,7 @@ def zettel_validate(text, filename_without_extension=''):
     if len(issues) > 0:
         print('\n'.join(issues))
         return False
+    validation_stats['good_zettels'] += 1
     return True
 
 if __name__=="__main__":
