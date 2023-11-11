@@ -2,6 +2,8 @@ import os
 from zettel_validate import zettel_validate, validation_stats
 import matplotlib.pyplot as plt
 from collections import Counter
+import datetime
+import seaborn as sns
 
 # Initialize the word frequency bins
 word_freq_bins = {
@@ -17,7 +19,14 @@ word_freq_bins = {
     '1001+': 0
 }
 
+word_counts = []
+# Dictionary to store word count frequency
+word_count_freq = Counter()
+
 zettel_directory = 'C:\\Users\\fleng\\OneDrive\\Documents\\Zettelkasten'
+
+plt.style.use('ggplot')
+plt.rcParams.update({'figure.autolayout': True})
 
 # Use os.listdir to get the list of all files and directories in zettel_directory
 for file in os.listdir(zettel_directory):
@@ -36,7 +45,9 @@ for file in os.listdir(zettel_directory):
                 print(file, zettel_validate(text, filename_without_extension=os.path.splitext(file)[0]))
                 # Count the number of words in the Zettel
                 word_count = len(text.split())
-                
+                word_counts.append(word_count)
+                word_count_freq.update([len(text.split())])    
+
                 # Categorize the Zettel based on the number of words into the word frequency bins
                 if word_count <= 20:
                     word_freq_bins['1-20'] += 1
@@ -62,6 +73,7 @@ for file in os.listdir(zettel_directory):
 # Display validation stats
 print(f"Validation stats: {validation_stats}")
 
+plt.rcParams.update({'font.size': 12})
 # Plot pie chart for validation stats
 labels = validation_stats.keys()
 sizes = validation_stats.values()
@@ -73,13 +85,15 @@ ax1.axis('equal')
 plt.title('Zettel Validation Stats')
 plt.show()
 
-# Plot histogram for word frequencies
-labels = list(word_freq_bins.keys())
-values = list(word_freq_bins.values())
-plt.bar(labels, values)
-plt.xlabel('Word Count Ranges')
-plt.ylabel('Number of Zettels')
-plt.title('Word Frequency Histogram')
+
+# Extracting word counts as a list for KDE
+word_counts = list(word_count_freq.elements())
+
+# Plotting the word frequency density using seaborn for KDE
+plt.figure(figsize=(15, 7))
+sns.kdeplot(word_counts, color='black', bw_adjust=0.5)
+plt.title('Word Frequency Density '+ datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+plt.xlabel('Number of Words')
+plt.ylabel('Density')
+plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.show()
-
-
