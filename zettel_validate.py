@@ -1,5 +1,5 @@
 import re
-import pyYAML as yaml
+import yaml
 
 # Initialize stats dictionary
 validation_stats = {
