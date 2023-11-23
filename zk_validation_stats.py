@@ -79,3 +79,6 @@ plt.ylabel('Number of Zettels')
 plt.xticks(rotation=45)
 plt.tight_layout()  # Adjust the layout to fit the x labels
 plt.show()
+
+# Display validation stats
+print(f"Validation stats: {validation_stats}")
