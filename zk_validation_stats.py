@@ -1,9 +1,12 @@
 import os
-from zettel_validate import zettel_validate, validation_stats
+from zettel_validate import ZettelValidator 
 import matplotlib.pyplot as plt
 from collections import Counter
 import seaborn as sns
 
+# Define the word frequency bins
+MAXBIN_LEFT_ENDPOINT = 1001
+MAXBIN_LABEL = str(MAXBIN_LEFT_ENDPOINT) + '+'
 # Initialize the word frequency bins
 word_freq_bins = {
     '1-20': 0,
@@ -15,7 +18,7 @@ word_freq_bins = {
     '251-500': 0,
     '501-750': 0,
     '751-1000': 0,
-    '1001+': 0
+    MAXBIN_LABEL: 0
 }
 
 # List to store word counts
@@ -26,6 +29,8 @@ zettel_directory = 'C:\\Users\\fleng\\OneDrive\\Documents\\Zettelkasten'
 
 # Apply the ggplot style
 sns.set(style="whitegrid")
+
+validator = ZettelValidator() # instantiate the ZettelValidation class
 
 # Use os.listdir to get the list of all files and directories in zettel_directory
 for file in os.listdir(zettel_directory):
@@ -39,7 +44,7 @@ for file in os.listdir(zettel_directory):
             text = f.read()
             
             # Call zettel_validate function and print the result
-            zettel_validate(text, filename_without_extension=os.path.splitext(file)[0])
+            validator.validate(text, fn=os.path.splitext(file)[0])
             
             # Count the number of words in the Zettel
             word_count = len(text.split())
@@ -47,8 +52,8 @@ for file in os.listdir(zettel_directory):
             
             # Categorize the Zettel based on the number of words into the word frequency bins
             for bin_range, count in word_freq_bins.items():
-                if bin_range == '1001+':
-                    if word_count > 1000:
+                if bin_range == MAXBIN_LABEL: 
+                    if word_count >= MAXBIN_LEFT_ENDPOINT:
                         word_freq_bins[bin_range] += 1
                 else:
                     lower, upper = map(int, bin_range.split('-'))
@@ -56,8 +61,8 @@ for file in os.listdir(zettel_directory):
                         word_freq_bins[bin_range] += 1
 
 # Plot pie chart for validation stats
-labels = validation_stats.keys()
-sizes = validation_stats.values()
+labels = validator._stats.keys()
+sizes = validator._stats.values()
 explode = [0.1 if size > 0 else 0 for size in sizes]  # Explode segments with non-zero sizes
 
 plt.figure(figsize=(8, 8))
@@ -67,8 +72,8 @@ plt.title('Zettel Validation Stats')
 plt.show()
 
 # Plot histogram for word frequencies using the bins defined
-bin_edges = [1, 21, 41, 61, 81, 101, 251, 501, 751, 1001]
-bin_labels = ['1-20', '21-40', '41-60', '61-80', '81-100', '101-250', '251-500', '501-750', '751-1000', '1001+']
+bin_edges = [1, 21, 41, 61, 81, 101, 251, 501, 751, MAXBIN_LEFT_ENDPOINT]
+bin_labels = ['1-20', '21-40', '41-60', '61-80', '81-100', '101-250', '251-500', '501-750', '751-1000', MAXBIN_LABEL]
 bin_values = [word_freq_bins[bl] for bl in bin_labels]
 
 plt.figure(figsize=(10, 6))
@@ -81,4 +86,11 @@ plt.tight_layout()  # Adjust the layout to fit the x labels
 plt.show()
 
 # Display validation stats
-print(f"Validation stats: {validation_stats}")
+validator.show_issues()
+print(f"Total number of Zettels: {len(word_counts)}")
+print(f"Total number of words: {sum(word_counts)}")
+print(f"Average number of words per Zettel: {sum(word_counts) / len(word_counts)}")
+print(f"Minimum number of words in a Zettel: {min(word_counts)}")
+print(f"Maximum number of words in a Zettel: {max(word_counts)}")
+print(f"Most common word count: {Counter(word_counts).most_common(1)[0]}")
+print(f"Least common word count: {Counter(word_counts).most_common()[-1]}")

@@ -1,103 +1,140 @@
 import re
 import yaml
 
-# Initialize stats dictionary
-validation_stats = {
-    'good_zettels': 0,
-    'invalid_yaml_header': 0,
-    'invalid_title_format': 0,
-    'h1_mismatch': 0,
-    'missing_wikilinks': 0,
-    'missing_hashtags': 0,
-    'filename_id_mismatch': 0
-}
 
-def zettel_validate(text, filename_without_extension=''):
-    global validation_stats
+class ZettelValidator():
+    # Initialize stats dictionary
+    _stats = {
+        'good_zettels': 0,
+        'invalid_yaml_header': 0,
+        'invalid_title_format': 0,
+        'h1_mismatch': 0,
+        'missing_wikilinks': 0,
+        'missing_hashtags': 0,
+        'filename_id_mismatch': 0
+    }
+
+    _issues = [] 
+    _fn = ''
+
+
+    @property
+    def statisics(self):
+        return self._stats  
+
+    @property
+    def status(self: any) -> int:
+        return len(self._issues)
     
-    issues=[]
+    def append(self, key: str, issue: str) -> None:
+        self._issues.append(f"{self._fn}: {issue}")
+        self._stats[key] += 1
     
-    # Extract YAML header
-    yaml_header_match = re.search(r'---\n(.*?)\n---', text, re.DOTALL)
-    if not yaml_header_match:
-        issues.append(f"{filename_without_extension}: Invalid or missing YAML header")
-        validation_stats['invalid_yaml_header'] += 1
-    try:
-        yaml_header = yaml_header_match.group(1)
-    except  AttributeError:
-        print('\n'.join(issues))
-        return False
-    
-    try:
-        header_dict = yaml.safe_load(yaml_header)
-    except yaml.YAMLError:
-        issues.append(f"{filename_without_extension}: YAML header parsing exception")
-        validation_stats['invalid_yaml_header'] += 1
-        print('\n'.join(issues))
-        return False
+    def show_issues(self) -> None:
+        print('\n'.join(self._issues))
         
-    # Validate YAML header fields
-    if 'title' not in header_dict or 'reference-section-title' not in header_dict:
-        issues.append(f"{filename_without_extension}: YAML header missing title: or reference-section-title:")
-        validation_stats['invalid_yaml_header'] += 1
         
-    title = header_dict.get('title', '')
-    ref_section_title = header_dict.get('reference-section-title', '')
-       
-    # Validate title
-    title_match = re.fullmatch(r'((\w{1,4}\.){2,}\d\w{3}) (.+)', title)
-    if not title_match:
-        issues.append(f"{filename_without_extension}: Invalid title format")
-        validation_stats['invalid_title_format'] += 1
-    else:
-        captured_id, _, captured_title = title_match.groups()
+    def __init__(self: any) -> None:
+        self._issues = []
+
+    def validate(self, text:str, fn:str='') -> bool:     
+        # set the filename of the zettel
+        self._fn = fn
+
+        # Extract YAML header
+        yaml_header_match = re.search(r'^---\n(.*)\n---\n', text, re.DOTALL)
+        if not yaml_header_match:
+            self.append('invalid_yaml_header', 'Invalid or missing YAML header')
+        try:
+            yaml_header = yaml_header_match.group(1)
+        except AttributeError:
+            self.show_issues()
+            return False  # give up, invalid YAML header
+        
+        try:
+            header_dict = yaml.safe_load(yaml_header) # parse YAML header
+        except yaml.YAMLError:
+            self.append('invalid_yaml_header', 'YAML header parsing exception')
+            self.show_issues()
+            return False  # give up, invalid YAML header 
+        
+        # Validate YAML header fields
+        if 'title' not in header_dict or 'reference-section-title' not in header_dict:
+            self.append('invalid_yaml_header', 'YAML header missing title: or reference-section-title:')
+        
+        title = header_dict.get('title', '')
+        
+        # Validate title
+        title_match = re.fullmatch(r'((\w{1,4}\.){2,}\d\w{3}) (.+)', title)
+        captured_id = ''
+        if not title_match:
+            self.append('invalid_title_format', 'Invalid title format')
+        else:
+            captured_id, _, _ = title_match.groups()
         
         # Verify that filename matches ID
-        if filename_without_extension:
-            if filename_without_extension != captured_id:
-                # Add a new validation error type for filename mismatch
-                issues.append(f"{filename_without_extension}: Filename ID mismatch")
-                validation_stats['filename_id_mismatch'] += 1
-           
-    # Extract content after YAML header
-    content = text[yaml_header_match.end():].strip()
+        if fn and fn != captured_id:
+        # Add a new validation error type for filename mismatch
+            self.append('filename_id_mismatch', f'Filename ID {captured_id} mismatch')
+                
+        # Extract content after YAML header
+        content = text[yaml_header_match.end():].strip()
     
-    # Validate H1 header
-    h1_header_match = re.match(r'# ' + re.escape(title) + r'\n', content)
-    if not h1_header_match:
-        issues.append(f"{filename_without_extension}: H1 header YAML ID mismatch")
-        validation_stats['h1_mismatch'] += 1
+        # Validate H1 header
+        h1_header_match = re.match(r'# ' + re.escape(title) + r'\n', content)
+        if not h1_header_match:
+            self.append('h1_mismatch', 'H1 header mismatch')
     
-    # Extract and validate wikilinks
-    wikilinks = re.findall(r'\[\[(.*?)\]\]', content)
-    if len(wikilinks) == 0:
-        issues.append(f"{filename_without_extension}: Missing wikilinks")
-        validation_stats['missing_wikilinks'] += 1
-    
-    # Extract and validate hashtags
-    hashtags = re.findall(r' (#[\w]+)', content)
-    if len(hashtags) == 0:
-        issues.append(f"{filename_without_extension}: Missing or improperly indented hashtags")
-        validation_stats['missing_hashtags'] += 1
-    
-    if len(issues) > 0:
-        print('\n'.join(issues))
-        return False
-    validation_stats['good_zettels'] += 1
-    return True
+        # Extract and validate wikilinks
+        wikilinks = re.findall(r'\[\[(.*?)\]\]', content)
+        if len(wikilinks) == 0:
+            self.append('missing_wikilinks', 'Missing wikilinks')
+        
+        # Extract and validate hashtags
+        hashtags = re.findall(r' (#[\w]+)', content)
+        if len(hashtags) == 0:
+            self.append('missing_hashtags', 'Missing hashtags')
+          
+        if self.status:
+            print('\n'.join(self._issues))
+            return False
+        
+        self._stats['good_zettels'] += 1
+        return True
 
 if __name__=="__main__":
+
     sample_text = '''---
 title: Math.2.0.21.1220.2213 Matrix Determinant Lemma
 reference-section-title: References
 ---
 # Math.2.0.21.1220.2213 Matrix Determinant Lemma
 
-[[Game.1a.0.21.0613]] The core of a cooperative game
-[[Math.0000.0000]] Mathematics
+[[Game.1a.0.21.0613]] The core of a cooperative game  
+[[Math.0000.0000]] Mathematics  
 
  #matrices #linearalgebra'''
 
-    result = zettel_validate(sample_text)
-    print(f"Validation result: {result}")
-    print(f"Validation stats: {validation_stats}")
+    print(sample_text)
+    zv = ZettelValidator()
+    
+    sample_text_id = "Math.2.0.21.1220.2213"
+    print(f"Validation result: {zv.validate(sample_text, sample_text_id)}") # The ID should be the filename
+                                 
+    print(f"Validation stats: {zv.statisics}")
+
+    bad_text = '''---
+title: Math.2.0.21.1220.4444 Matrix Determinant Lemma
+reference-section-title: References
+---
+# Math.2.0.21.1220.4444 Matrix Determinant Lemma
+
+[[Game.1a.0.21.0613]] The core of a cooperative game  
+[[Math.0000.0000]] Mathematics  
+
+ #matrices #linearalgebra'''
+
+    print(bad_text)
+    
+    print(f"Validation result: {zv.validate(bad_text,sample_text_id)}")  # The ID should be the filename   
+    print(f"Validation stats: {zv.statisics}")
