@@ -36,16 +36,14 @@ validator = ZettelValidator() # instantiate the ZettelValidation class
 for file in os.listdir(zettel_directory):
     # Form the full path to the file
     full_path = os.path.join(zettel_directory, file)
-    
     # Check if it's a file and if it has a .md extension
     if os.path.isfile(full_path) and file.endswith('.md'):
-        # Open and read the file
+        #print(f"Processing {full_path}...")
         with open(full_path, 'r', encoding='utf-8') as f:
             text = f.read()
-            
             # Call zettel_validate function and print the result
-            validator.validate(text, fn=os.path.splitext(file)[0])
-            
+            validator.validate(text, fn=file.split('.md')[0])
+            f.close()
             # Count the number of words in the Zettel
             word_count = len(text.split())
             word_counts.append(word_count)  # Append word count to the list
@@ -86,8 +84,8 @@ plt.tight_layout()  # Adjust the layout to fit the x labels
 plt.show()
 
 # Display validation stats
-validator.show_issues()
-print(f"Total number of Zettels: {len(word_counts)}")
+
+print(validator.statisics)
 print(f"Total number of words: {sum(word_counts)}")
 print(f"Average number of words per Zettel: {sum(word_counts) / len(word_counts)}")
 print(f"Minimum number of words in a Zettel: {min(word_counts)}")

@@ -36,10 +36,12 @@ class ZettelValidator():
         
     def __init__(self: any) -> None:
         self._issues = []
+        self._fn = ''
 
     def validate(self, text:str, fn:str='') -> bool:     
         # set the filename of the zettel
-        self._fn = fn
+        self._fn = fn # set the ID of the zettel
+        self._issues = [] # reset the issues list
 
         # Extract YAML header
         yaml_header_match = re.search(r'^---\n(.*)\n---\n', text, re.DOTALL)
@@ -65,12 +67,12 @@ class ZettelValidator():
         title = header_dict.get('title', '')
         
         # Validate title
-        title_match = re.fullmatch(r'((\w{1,4}\.){2,}\d\w{3}) (.+)', title)
+        title_match = re.fullmatch(r'((\w{1,5}\.)([\w]{1,4}\.)+\d\w{3}) (.+)', title)
         captured_id = ''
         if not title_match:
             self.append('invalid_title_format', 'Invalid title format')
         else:
-            captured_id, _, _ = title_match.groups()
+            captured_id, _, _, _ = title_match.groups()
         
         # Verify that filename matches ID
         if fn and fn != captured_id:
@@ -81,7 +83,8 @@ class ZettelValidator():
         content = text[yaml_header_match.end():].strip()
     
         # Validate H1 header
-        h1_header_match = re.match(r'# ' + re.escape(title) + r'\n', content)
+        # ignore spaces
+        h1_header_match = re.match(r'# ' + re.escape(title), content)
         if not h1_header_match:
             self.append('h1_mismatch', 'H1 header mismatch')
     
@@ -93,7 +96,7 @@ class ZettelValidator():
         # Extract and validate hashtags
         hashtags = re.findall(r' (#[\w]+)', content)
         if len(hashtags) == 0:
-            self.append('missing_hashtags', 'Missing hashtags')
+            self.append('missing_hashtags', 'Missing or non-indented hashtags')
           
         if self.status:
             print('\n'.join(self._issues))
@@ -108,7 +111,7 @@ if __name__=="__main__":
 title: Math.2.0.21.1220.2213 Matrix Determinant Lemma
 reference-section-title: References
 ---
-# Math.2.0.21.1220.2213 Matrix Determinant Lemma
+# Math.2.0.21.1220.2213 Matrix Determinant Lemma    
 
 [[Game.1a.0.21.0613]] The core of a cooperative game  
 [[Math.0000.0000]] Mathematics  
