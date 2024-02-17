@@ -47,7 +47,7 @@ for file in os.listdir(zettel_directory):
 # Visualization and statistics display functions would follow here
 
 # Displaying word frequency bins
-plt.figure(figsize=(10, 5)) # Set the size of the plot
+plt.figure(figsize=(10, 7.5)) # Set the size of the plot
 plt.bar(word_freq_bins.keys(), word_freq_bins.values(), color='skyblue')
 plt.title('Word Frequency Bins')
 plt.xlabel('Word Count')
