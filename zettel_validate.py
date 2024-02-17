@@ -112,8 +112,9 @@ reference-section-title: References
     print(sample_text)
     
     sample_text_id = "Math.2.0.21.1220.2213"
+
+    zv = ZettelValidator()
     print(f"Validation result: {zv.validate(sample_text, sample_text_id)}") # The ID should be the filename
-                                 
     print(f"Validation stats: {zv.statistics}")
 
     bad_text = '''---
@@ -129,6 +130,5 @@ reference-section-title: References
 
     print(bad_text)
 
-    zv = ZettelValidator()
     print(f"Validation result: {zv.validate(bad_text,sample_text_id)}")  # The ID should be the filename   
     print(f"Validation stats: {zv.statistics}")

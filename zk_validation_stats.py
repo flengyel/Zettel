@@ -3,102 +3,66 @@ from zettel_validate import ZettelValidator
 import matplotlib.pyplot as plt
 from collections import Counter
 import seaborn as sns
+from statistics import median
 
-def median_word_count(word_counts):
+def calculate_median_word_count(word_counts):
     """Calculate the median word count from a list of word counts"""
-    sorted_word_counts = sorted(word_counts)
-    length = len(sorted_word_counts)
-    if length % 2 == 0:
-        return (sorted_word_counts[length // 2 - 1] + sorted_word_counts[length // 2]) / 2
+    return median(word_counts)
+
+def initialize_word_freq_bins(max_bin_left_endpoint=1001, bin_width=50):
+    """Initialize word frequency bins"""
+    word_freq_bins = {f"{i}-{i+49}": 0 for i in range(1, max_bin_left_endpoint, bin_width)}
+    word_freq_bins[f"{max_bin_left_endpoint}+"] = 0
+    return word_freq_bins
+
+def categorize_word_count(word_count, word_freq_bins, max_bin_left_endpoint):
+    """Categorize the Zettel based on the number of words into the word frequency bins"""
+    if word_count >= max_bin_left_endpoint:
+        word_freq_bins[f"{max_bin_left_endpoint}+"] += 1
     else:
-        return sorted_word_counts[length // 2]
-
-# Define the word frequency bins
-MAXBIN_LEFT_ENDPOINT = 1001
-MAXBIN_LABEL = str(MAXBIN_LEFT_ENDPOINT) + '+'
-BIN_WIDTH = 50
-# Initialize the word frequency bins
-word_freq_bins = dict()
-for i in range(1, MAXBIN_LEFT_ENDPOINT, BIN_WIDTH):
-    word_freq_bins[str(i) + '-' + str(i+49)] = 0
-word_freq_bins[MAXBIN_LABEL] = 0
-
-
-# List to store word counts
-word_counts = []
-
-# Directory where the Zettelkasten notes are stored
-zettel_directory = 'C:\\Users\\fleng\\OneDrive\\Documents\\Zettelkasten'
+        bin_label = f"{(word_count // 50) * 50 + 1}-{(word_count // 50) * 50 + 50}"
+        if bin_label in word_freq_bins:
+            word_freq_bins[bin_label] += 1
 
 # Apply the ggplot style
 sns.set(style="whitegrid")
 
-validator = ZettelValidator() # instantiate the ZettelValidation class
+# Initialize
+validator = ZettelValidator()
+word_counts = []
+word_freq_bins = initialize_word_freq_bins()
 
-
-# Use os.listdir to get the list of all files and directories in zettel_directory
+# Directory processing
+zettel_directory = 'C:\\Users\\fleng\\OneDrive\\Documents\\Zettelkasten'
 for file in os.listdir(zettel_directory):
-    # Form the full path to the file
     full_path = os.path.join(zettel_directory, file)
-    # Check if it's a file and if it has a .md extension
     if os.path.isfile(full_path) and file.endswith('.md'):
-        #print(f"Processing {full_path}...")
         with open(full_path, 'r', encoding='utf-8') as f:
             text = f.read()
-            # Call zettel_validate function and print the result
-            validator.validate(text, fn=file.split('.md')[0])
-            f.close()
-            # Count the number of words in the Zettel
-            word_count = len(text.split())
-            word_counts.append(word_count)  # Append word count to the list
-            
-            # Categorize the Zettel based on the number of words into the word frequency bins
-            for bin_range, count in word_freq_bins.items():
-                if bin_range == MAXBIN_LABEL: 
-                    if word_count >= MAXBIN_LEFT_ENDPOINT:
-                        word_freq_bins[bin_range] += 1
-                else:
-                    lower, upper = map(int, bin_range.split('-'))
-                    if lower <= word_count <= upper:
-                        word_freq_bins[bin_range] += 1
+        validator.validate(text, fn=file.split('.md')[0])
+        word_count = len(text.split())
+        word_counts.append(word_count)
+        categorize_word_count(word_count, word_freq_bins, 1001)
 
-# Plot pie chart for validation stats
-labels = validator._stats.keys()
-sizes = validator._stats.values()
-explode = [0.1 if size > 0 else 0 for size in sizes]  # Explode segments with non-zero sizes
+# Visualization and statistics display functions would follow here
 
-plt.figure(figsize=(8, 8))
-plt.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%', shadow=True, startangle=90)
-plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle
-plt.title('Zettel Validation Stats')
-plt.show()
-
-# Plot bar chart for word count frequency
-bin_labels = []
-for i in range(1, MAXBIN_LEFT_ENDPOINT, BIN_WIDTH):
-    bin_labels.append(str(i) + '-' + str(i+49))
-bin_labels.append(MAXBIN_LABEL)
-
-         
-bin_values = [word_freq_bins[bl] for bl in bin_labels]
-
-plt.figure(figsize=(10, 6))
-plt.bar(bin_labels, bin_values, color='skyblue', edgecolor='black')
-plt.title('Word Count Frequency by Zettel')
-plt.xlabel('Word Count Bins')
+# Displaying word frequency bins
+plt.figure(figsize=(10, 5)) # Set the size of the plot
+plt.bar(word_freq_bins.keys(), word_freq_bins.values(), color='skyblue')
+plt.title('Word Frequency Bins')
+plt.xlabel('Word Count')
 plt.ylabel('Number of Zettels')
-plt.xticks(rotation=45)
-plt.tight_layout()  # Adjust the layout to fit the x labels
+plt.xticks(rotation=90)
 plt.show()
 
-# Display validation stats
 
+
+# Displaying validation stats and word count statistics
 print(validator.statistics)
 print(f"Total number of words: {sum(word_counts)}")
-print(f"Average number of words per Zettel: {sum(word_counts) / len(word_counts)}")
-print(f"Median number of words in a Zettel: {median_word_count(word_counts)}")   
-print(f"Minimum number of words in a Zettel: {min(word_counts)}")
-print(f"Maximum number of words in a Zettel: {max(word_counts)}")
-print(f"Most common word count: {Counter(word_counts).most_common(1)[0]}")
-print(f"Least common word count: {Counter(word_counts).most_common()[-1]}")
-
+print(f"Average number of words per Zettel: {sum(word_counts) / len(word_counts) if word_counts else 0}")
+print(f"Median number of words in a Zettel: {calculate_median_word_count(word_counts)}")
+print(f"Minimum number of words in a Zettel: {min(word_counts, default=0)}")
+print(f"Maximum number of words in a Zettel: {max(word_counts, default=0)}")
+print(f"Most common word count: {Counter(word_counts).most_common(1)[0] if word_counts else 'N/A'}")
+print(f"Least common word count: {Counter(word_counts).most_common()[-1] if word_counts else 'N/A'}")
