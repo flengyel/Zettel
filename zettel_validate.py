@@ -4,16 +4,14 @@ import yaml
 
 class ZettelValidator():
     # Initialize stats dictionary
-    _stats = {
-        'good_zettels': 0,
-        'invalid_yaml_header': 0,
-        'invalid_title_format': 0,
-        'h1_mismatch': 0,
-        'missing_wikilinks': 0,
-        'missing_hashtags': 0,
-        'filename_id_mismatch': 0
-    }
-
+    _stats = dict( )
+    _stats['good_zettels'] = 0
+    _stats['invalid_yaml_header'] = 0
+    _stats['invalid_title_format'] = 0
+    _stats['h1_mismatch'] = 0
+    _stats['missing_wikilinks'] = 0
+    _stats['missing_hashtags'] = 0
+    _stats['filename_id_mismatch'] = 0
     _issues = [] 
     _fn = ''
 
@@ -37,7 +35,9 @@ class ZettelValidator():
     def __init__(self: any) -> None:
         self._issues = []
         self._fn = ''
-
+        for key in self._stats:
+            self._stats[key] = 0    
+            
     def validate(self, text:str, fn:str='') -> bool:     
         # set the filename of the zettel
         self._fn = fn # set the ID of the zettel
