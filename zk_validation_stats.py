@@ -4,22 +4,25 @@ import matplotlib.pyplot as plt
 from collections import Counter
 import seaborn as sns
 
+def median_word_count(word_counts):
+    """Calculate the median word count from a list of word counts"""
+    sorted_word_counts = sorted(word_counts)
+    length = len(sorted_word_counts)
+    if length % 2 == 0:
+        return (sorted_word_counts[length // 2 - 1] + sorted_word_counts[length // 2]) / 2
+    else:
+        return sorted_word_counts[length // 2]
+
 # Define the word frequency bins
 MAXBIN_LEFT_ENDPOINT = 1001
 MAXBIN_LABEL = str(MAXBIN_LEFT_ENDPOINT) + '+'
+BIN_WIDTH = 50
 # Initialize the word frequency bins
-word_freq_bins = {
-    '1-20': 0,
-    '21-40': 0,
-    '41-60': 0,
-    '61-80': 0,
-    '81-100': 0,
-    '101-250': 0,
-    '251-500': 0,
-    '501-750': 0,
-    '751-1000': 0,
-    MAXBIN_LABEL: 0
-}
+word_freq_bins = dict()
+for i in range(1, MAXBIN_LEFT_ENDPOINT, BIN_WIDTH):
+    word_freq_bins[str(i) + '-' + str(i+49)] = 0
+word_freq_bins[MAXBIN_LABEL] = 0
+
 
 # List to store word counts
 word_counts = []
@@ -31,6 +34,7 @@ zettel_directory = 'C:\\Users\\fleng\\OneDrive\\Documents\\Zettelkasten'
 sns.set(style="whitegrid")
 
 validator = ZettelValidator() # instantiate the ZettelValidation class
+
 
 # Use os.listdir to get the list of all files and directories in zettel_directory
 for file in os.listdir(zettel_directory):
@@ -69,9 +73,13 @@ plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle
 plt.title('Zettel Validation Stats')
 plt.show()
 
-# Plot histogram for word frequencies using the bins defined
-bin_edges = [1, 21, 41, 61, 81, 101, 251, 501, 751, MAXBIN_LEFT_ENDPOINT]
-bin_labels = ['1-20', '21-40', '41-60', '61-80', '81-100', '101-250', '251-500', '501-750', '751-1000', MAXBIN_LABEL]
+# Plot bar chart for word count frequency
+bin_labels = []
+for i in range(1, MAXBIN_LEFT_ENDPOINT, BIN_WIDTH):
+    bin_labels.append(str(i) + '-' + str(i+49))
+bin_labels.append(MAXBIN_LABEL)
+
+         
 bin_values = [word_freq_bins[bl] for bl in bin_labels]
 
 plt.figure(figsize=(10, 6))
@@ -88,7 +96,9 @@ plt.show()
 print(validator.statisics)
 print(f"Total number of words: {sum(word_counts)}")
 print(f"Average number of words per Zettel: {sum(word_counts) / len(word_counts)}")
+print(f"Median number of words in a Zettel: {median_word_count(word_counts)}")   
 print(f"Minimum number of words in a Zettel: {min(word_counts)}")
 print(f"Maximum number of words in a Zettel: {max(word_counts)}")
 print(f"Most common word count: {Counter(word_counts).most_common(1)[0]}")
 print(f"Least common word count: {Counter(word_counts).most_common()[-1]}")
+
