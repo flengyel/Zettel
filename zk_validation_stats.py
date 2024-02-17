@@ -93,7 +93,7 @@ plt.show()
 
 # Display validation stats
 
-print(validator.statisics)
+print(validator.statistics)
 print(f"Total number of words: {sum(word_counts)}")
 print(f"Average number of words per Zettel: {sum(word_counts) / len(word_counts)}")
 print(f"Median number of words in a Zettel: {median_word_count(word_counts)}")   
