@@ -6,180 +6,111 @@ This README.md and the Zettek wiki are licensed under the [Creative Commons Attr
 
 The code is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
 
-Version 5.0 of the Zettel Template was based on a simplification by [ChatGPT-4](https://chat.openai.com) of Zettel Template 3.0--a prior version. Version 5.0 includes a YAML header for compatibility with Zettlr and Obsidian.
-
-Immediately below is a simplified Zettel template. A more detailed Zettel template follows the simplified template.
-
----
-
 ```yaml
 ---
-title: "ZKM.4d.0.23.1007 Zettel Template 5.0"
+# Version: 2024.02.28.1
+# This self-documenting Zettel template specifies the format of 
+# a Zettel suitable for a digital Zettelkasten. The Zettel is
+# organized as a Markdown file, beginning with this YAML 
+# frontmatter followed by self-documenting Markdown sections 
+# in the order of presentation. The YAML frontmatter contains
+# commands to Zettlr, Pandoc, and Obsidian and includes, 
+# at minimum, the following variables: `title:` and 
+# `reference-section-title:` 
+
+title: "ZTEMP.1.0.24.0228 Zettel Template"
+
+# The value of the `title:` variable is a quoted string, 
+# consisting of a unique, immutable ID, in this case 
+# `ZTEMP.1.0.24.0228`, followed by the Zettel title, in this case
+# "Zettel Template" Immutable, unique IDs may have 
+# different formats, according to personal preference. 
+# Timestamps are a popular choice, followed by Folgezettel. 
+
 reference-section-title: References
+
+# The `reference-section-title:` variable is a command to Pandoc.
+# If Zettel is exported through Pandoc and the Zettel body includes 
+# Pandoc-style citations, the `reference-section-title:` variable 
+# will cause Pandoc to add a References section with citations to the
+# end of the exported document. 
 ---
 ```
 
-# \# ZKM.4d.0.23.1007 Zettel Template 5.0
+# ZTEMP.1.0.24.0228 Zettel Template
 
-[[[ZKID.0.23.0225]]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index#zkid0230225-id-format) ID Format  
-[[ZKM.4c.0.23.0624]] Zettel Template 4.0  
-[[0000.0000.00YZ]] Y-Z  
-
- #zettelkasten-method #template #zettel-template
-
-**Note:** This template serves as a guide for creating a Zettel using the Zettelkasten Method. It assumes a software-based implementation. Refer to [Zettelkasten.de](https://zettelkasten.de/posts/overview/) and [Zettelkasten.de forum](https://forum.zettelkasten.de) for detailed explanations of the method.
-
-For software configuration notes, definitions of terms, and more examples, please see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki).
-
-## 1. Header
-
-The header consists of four parts:
-
-- **1.1 YAML Frontmatter**: Commands to Zettlr, Obsidian, and Pandoc.
-- **1.2 Level 1 (H1) Header**: Contains an immutable ID and a title.
-- **1.3 Context Zettel IDs**: IDs of prior Zettels providing context.
-- **1.4 Hashtags**: List of relevant keywords.
-
-### 1.1 YAML Frontmatter
-
-The Zettel template includes YAML frontmatter for compatibility with Zettlr and Obsidian. If the Zettel body includes Pandoc-style references, the `reference-section-title:` YAML variable will cause a Reference section with citations to appear at the end of the document. The YAML frontmatter can be automated with a Zettlr snippet. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for details.
-
-```yaml
----
-title: immutableID title
-reference-section-title: References
----
-```
-
-### 1.2 H1 Header: Immutable ID and Title
-
-Each Zettel should start with an H1 header:
-
+The Zettel body begins an H1 header. In my system, the H1 header duplicates the immutable, unique ID and title with the following syntax; however, this choice is optional.
 ```markdown
 # immutableID title
 ```
+Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the **SEE ALSO** section below.
 
-The `immutableID` remains unchanged throughout the life of the Zettel, while the `title` can be updated as needed.
+## Customization notes
 
-### 1.3 Context Zettel IDs
+_This section guides personalizing your Zettel template. Adjust these elements to suit your note-taking preferences and workflow. For example, while this template places the immutable ID to the left of the title, some users prefer it to the right._
 
-Provide a list of wiki links to Zettels that relate to the current Zettel. For example:
+## Definitions
 
-```markdown
-[[previousZettelID1]] Title1  
-[[previousZettelID2]] Title2  
-[[previousZettelID3]] Title3
-```
+### Reference Element Types
 
-These IDs contextualize the current Zettel within the larger Zettelkasten.
+- **WikiLink**: A markdown link used within Zettels to interlink them within the Zettelkasten system. It is enclosed in double square brackets and typically includes a unique identifier followed by the title of the linked Zettel.
 
-### 1.4 Hashtags
+- **Title-only WikiLink**: This format includes the WikiLink followed immediately by the title of the linked Zettel without additional annotations or explanations, adhering strictly to the format: `[[UniqueID]] Zettel Title`.
+  
+- **Hashtags**: Hashtags are for thematic categorization and quick reference within your Zettelkasten. Hashtags typically occur in the SEE ALSO section of a Zettel.
 
-Include relevant hashtags for the Zettel content:
+- **Pandoc citations**: Pandoc citations have the form `[@citeKey],` where `citeKey` is a citation Key for a citation maintained within a digital references management system such as Zotero or a manually created and maintained reference database.
 
-```markdown
- #yourHashtag1 #yourHashtag2
-```
+### Types of Notes in Zettelkasten
 
-Use specific hashtags that directly pertain to the content of the current Zettel.
+1. **Single-focus Zettels**: Focus on one main idea or topic for clarity and precision. Single-focus Zettels form the core of the Zettelkasten.
 
-## 2. Body
+2. **Structure Notes**: Outline and connect Single-focus Zettels under broader themes. They contain sections with annotated WikiLinks to individual Zettels.
 
-The body should focus on a single concept or idea. Include links to other Zettels or external resources where appropriate. Limit the length of each Zettel to a screenful of text for readability.
+3. **Index Notes**: Serve as navigational tools within the Zettelkasten, marked by IDs starting with `0000.0000.0` and typically annotated with their title only.
 
-## 3. References
+## More on customization
 
-If you use Pandoc-style citations in your Zettel, a References section will be automatically created. For this to happen, include the YAML frontmatter mentioned in Section 1.1.
+_The list of title-only WikiLinks in the SEE ALSO section is just a starting point. Feel free to modify these links or hashtags to organize your notes better._
 
-For example:
+## Revised Zettel Construction Guidelines
 
-```markdown
-## References
-Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost writing, learning and thinking: for students, academics and nonfiction book writers_. North Charleston, SC: CreateSpace.
-```
+1. **ID and Title**:
+   - Start with a unique ID and clear title for each Zettel to ensure clarity and retrievability.
 
----
+2. **Main Body**:
+   - Prioritize writing Zettels with the author's future self in mind, emphasizing clarity and utility for the author rather than a general reader.
+   - **Single-focus Zettels**: Maintain a strict focus on one main idea or topic, crafting content for future clarity and utility. Annotate WikiLinks where they contribute to the topic's context, except for Index Note references. Links within the main body of a Single-focus Zettel should be directly related to the Zettel's central theme or idea and provide immediate, contextual support by offering additional information, evidence, or related viewpoints directly relevant to the Zettel's focus.
+   - **Structure Notes**: Organize and link related Single-focus Zettels under thematic sections, starting each section with a relevant annotated WikiLink.
+   - **Index Notes**: These are used for navigation with a simple title annotation, listing relevant Single-focus or Structure Notes for easy access.
 
-# \# ZKM.4d1.0.23.0609 Zettel template 5a
+3. **SEE ALSO Section**:
+   - The SEE ALSO section serves as a gateway for expanded exploration and understanding, offering the reader pathways to discover related concepts and themes that might not be central to Zettel's current focus but are valuable for a broader understanding or future research.
+   - The separation between the Main Body and the SEE ALSO section helps maintain the focus and clarity of the main content while still providing avenues for further exploration and connectivity within the Zettelkasten.
+   - The SEE ALSO section should contain title-only WikiLinks that are not directly tied to the central theme of the Zettel but are still relevant to the broader thematic landscape of the note, including:
+     - **Index Note WikiLinks**: Title-only WikiLinks to Index Notes that help with navigation and alphanumeric categorization but are not directly related to the Zettel's main content.
+     - **Distantly Related Zettel Links**: Title-only WikiLinks to Zettels that provide additional context and support for the ideas presented or suggest further research but are not essential to understanding the primary focus of the current Zettel.
+     - **Hashtags and Metadata**: The SEE ALSO can also include relevant hashtags and metadata that aid in organizing and retrieving Zettels within the Zettelkasten system.
 
-[[[ZKID.0.23.0225]]](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index#zkid0230225-id-format) ID Format  
-[[ZKM.4d.0.23.1007]] Zettel template 5.0  
+4. **References**:
+   - List external sources or additional reading materials to support content validity and facilitate further exploration.
+
+## SEE ALSO
+
+[[0000.0000.0000]] INDEX  
+[[0000.0000.0ABC]] A-B-C  
+[[0000.0000.0DEF]] D-E-F  
+[[0000.0000.0GHI]] G-H-I  
+[[0000.0000.0JKL]] J-K-L  
+[[0000.0000.0MNO]] M-N-O  
+[[0000.0000.0PQR]] P-Q-R  
+[[0000.0000.0STU]] S-T-U  
+[[0000.0000.0VWX]] V-W-X  
 [[0000.0000.00YZ]] Y-Z  
+[[0000.0000.0009]] 0-9  
 
  #replace #these #hashtags  
-  
-- Filenames have the format `ID.md` in my implementation, where the ID format is defined in [[ZKID.1.0.22.0305]] ID Format
-
-## 1. Header: in 4 parts
-
-- YAML frontmatter header with commands to Zettlr and Pandoc;
-- a Level 1 (H1) header containing an immutable ID, referred to in this Zettel by `immutableID`, followed by a title, referred to in this Zettel by `title`;
-- a list of IDs of prior Zettels providing context for `immutableID` (see 1.c.2 below); and,
-- a list of keywords in #hashtag format.
-
-### 1.a YAML frontmatter
-
-> The Zettel template includes YAML frontmatter for compatibility with Zettlr and Obsidian. If the Zettel body includes Pandoc-style references, the `reference-section-title:` YAML variable will cause a Reference section with citations to appear at the end of the document. The YAML frontmatter can be automated with a Zettlr snippet. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for details.
-
-```yaml
----
-title: immutableID title
-reference-section-title: References
----
-```
-
-### 1.b. An immutableID and title at heading level 1
-
-\# `immutableID` `title`
-
-> The value of `immutableID` doesn’t change, although `title` might  change. This syntax relies on enabling the Zettlr `Preferences → Display` setting “Title or first heading level 1 if applicable.” This will display the IDs and titles of Zettel markdown files in the Zettlr file manager pane.  Without this setting, the file manager will only show the Zettlr filenames, which, in my implementation, are IDs.
-
-### 1.c.1. CONTEXT Zettel IDs
-
-A list of wikilinks of Zettel IDs such that for each `ID` in the list, `immutableID` either:
-
-- continues `ID`;  
-- comments on (or raises a question about) an aspect of `ID`; or,
-- begins a new topic;  
-- `ID` is the wikilink of an [alphabetic index note](https://github.com/flengyel/Zettel/wiki/ID-regex-and-alphabetic-index).
-
-> The CONTEXT header section is adaptation of Niklas Luhmann’s Folgezettel ID system to digital Zettelkasten. Folgezettel IDs are  spanning tree coordinates for the graph of Zettels of a Zettelkasten.
-
-### 1.c.2. Keywords in \#hashtag format
-
-\#keyword \#example
-
-> Paraphrasing Sascha Fast (Fast, 2018), hashtags should be as specific to `immutableID` as possible.
-
-## 2. Body: the body should have a single focus
-
-- Links \[\[to other Zettels\]\] and external links can go here.
-- Footnotes and endnotes become links \[\[to other Zettels\]\] in the body.
-- Link the ID `immutableID` of this Zettel within each separate footnote or endnote Zettel.
-
-> Ahrens recommends limiting each Zettel to a screenful of text (a test that this Zettel fails). Arhens identifies five note types under three descriptive categories: fleeting, permanent, and project notes (Ahrens, 2017). See [From Fleeting Notes to Project Notes - zettelkasten.de](https://zettelkasten.de/posts/concepts-sohnke-ahrens-explained/) for the definition of these terms. Ahrens advises Zettel writers to read with pen and paper in hand, to take fleeting notes judiciously, and to reformulate their fleeting notes as Zettels in their own words before committing them as permanent notes to their Zettelkasten (Ahrens, 2017). Since Ahrens omits concrete examples of Zettels, this template attempts to address that omission. Zettels will require rewriting and reorganization before using them in long-form articles and projects—see the Three Dicta of (@Winebrenner 2022). Ahrens describes a bottom-up process for drawing upon the Zettelkasten in larger writing projects (Ahrens, 2017). Niklas Luhmann himself did not follow Ahrens' advice: Hans Georg-Moeller speculates that Luhmann's Zettelkasten contributed to an "unnecessarily convoluted, poorly structured, highly repetitive" writing style lacking a "clear narrative development" (Moeller 2012, chap. 2). For a clear guide to writing style, see Style: Lessons in Clarity and Grace (Williams & Bizup, 2017). Avoid The Elements of Style (Pullum 2010, 2014). Sascha Fast recommends writing for your future self (Fast, 2021). Cory Doctorow states that writing and research are distinct and recommends writing the placeholder "TK" inline instead of stopping to research (Doctorow, 2009).
-
-## 3. References
-
-> Pandoc style references in the body are resolved under the References section (without the "3."), provided the `immutableID` contains a Pandoc citation and the YAML header of 1.a. If the YAML header were present, the references section would appear as follows.
 
 ## References
 
-Ahrens, Sönke. 2017. _How to take smart notes: one simple technique to boost writing, learning and thinking: for students, academics and nonfiction book writers_. North Charleston, SC: CreateSpace.
-
-Doctorow, Cory. 2009. “Cory Doctorow: Writing in the Age of Distraction.” January 7, 2009. [http://www.locusmag.com/Features/2009/01/cory-doctorow-writing-in-age-of.html
-Doctorow, Cory. 2009. “Cory Doctorow: Writing in the Age of Distraction.” January 7, 2009.](http://www.locusmag.com/Features/2009/01/cory-doctorow-writing-in-age-of.html)
-
-Fast, Sascha. 2018. “The Difference Between Good and Bad Tags.” Blog. _Zettelkasten.de_ (blog). September 24, 2018. [https://zettelkasten.de/posts/object-tags-vs-topic-tags](https://zettelkasten.de/posts/object-tags-vs-topic-tags)
-
-Fast, Sascha. 2021. “Write for Your Future Self.” July 29, 2021. [https://forum.zettelkasten.de/discussion/comment/12480/#Comment_12480](https://forum.zettelkasten.de/discussion/comment/12480/#Comment_12480)
-
-Moeller, Hans-Georg. 2012. _The radical Luhmann_. New York: Columbia University Press.
-
-Pullum, Geoffrey K. 2010. “The Land of the Free and _The Elements of Style_.” _English Today_ 26 (2): 34–44. [https://doi.org/10.1017/S0266078410000076](https://doi.org/10.1017/S0266078410000076)
-
-———. 2014. “Fear and Loathing of the English Passive.” _Language & Communication_ 37 (July): 60–74. [https://doi.org/10.1016/j.langcom.2013.08.009](https://doi.org/10.1016/j.langcom.2013.08.009)
-
-Williams, Joseph M., and Joseph Bizup. 2017. _Style: lessons in clarity and grace_. Twelfth edition. Always learning. Boston Columbus Indianapolis New York San Francisco Amsterdam Cape Town Dubai London Madrid Milan Munich Paris: Pearson.
-
-Winebrenner, Caleb. 2022. “Field Report #4: I spent six months using a Zettelkasten to write my thesis. Here’s what I learned.” _Zettelkasten_ (blog). January 28, 2022. [https://zettelkasten.de/posts/field-report-4-what-i-learned-writing-thesis-with-zettelkasten/](https://zettelkasten.de/posts/field-report-4-what-i-learned-writing-thesis-with-zettelkasten/).
+- Ahrens, Sönke. 2017. _How to take smart notes_. North Charleston, SC: CreateSpace.
