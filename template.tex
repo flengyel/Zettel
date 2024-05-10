@@ -15,6 +15,15 @@ $endif$
 $if(papersize)$
   $papersize$paper,
 $endif$
+
+% ADDED BY FL 2024 May 09
+$if(documentclass-format-options)$
+  $for(documentclass-format-options)$
+    $documentclass-format-options$$sep$,
+  $endfor$
+$endif$
+% END of ADDITION.
+
 $if(beamer)$
   ignorenonframetext,
 $if(handout)$
@@ -81,12 +90,14 @@ $endif$
 $if(beamerarticle)$
 \usepackage{beamerarticle} % needs to be loaded first
 $endif$
+
 % MODIFICATIONS FOR ZETTLR BY FL 2022/06/26
 \usepackage{tabularray}
 \UseTblrLibrary{amsmath}
 \usepackage{amssymb,amsthm}
 %\usepackage{amsmath,amssymb}
 % (END OF MODIFICATIONS FOR ZETTLR BY FL)
+
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -348,13 +359,16 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
 % MODIFICATIONS FOR ZETTLR BY FL 2022/06/26
+% Conditionally include more header includes if specified
 $if(more-header-includes)$
-$for(more-header-includes)$
-$more-header-includes$
-$endfor$
+  $for(more-header-includes)$
+    $more-header-includes$
+  $endfor$
 $endif$
 % (END OF MODIFICATIONS FOR ZETTLR BY FL 2022/06/26)
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
