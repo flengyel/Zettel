@@ -10,13 +10,16 @@ class ZettelValidator:
             'invalid_yaml_header': 0,
             'invalid_title_format': 0,
             'h1_mismatch': 0,
+            'missing_see_also': 0,
             'missing_wikilinks': 0,
             'missing_hashtags': 0,
             'filename_id_mismatch': 0,
+            'order_issue': 0,
         }
         # Precompile regular expressions
         self._yaml_header_regex = re.compile(r'^---\n(.*)\n---\n', re.DOTALL)
-        self._title_regex = re.compile(r'((\w{1,5}\.)([\w]{1,4}\.)+\d\w{3}) (.+)')
+        self._title_regex = re.compile(r'((\w{1,5}\d{13,})|((\w{1,5}\.)(\w{1,4}\.)+\w{4})) (.+)')
+        self._see_also_regex = re.compile(r'## SEE ALSO')
         self._wikilink_regex = re.compile(r'\[\[(.*?)\]\]')
         self._hashtag_regex = re.compile(r' (#[\w]+)')
 
@@ -42,7 +45,7 @@ class ZettelValidator:
             return False
         yaml_header = yaml_header_match.group(1)
         try:
-            header_dict = yaml.safe_load(yaml_header) # parse YAML header
+            header_dict = yaml.safe_load(yaml_header)  # parse YAML header
         except yaml.YAMLError:
             self.append_issue('invalid_yaml_header', 'YAML header parsing exception')
             return False  # give up, invalid YAML header
@@ -68,33 +71,55 @@ class ZettelValidator:
 
     def validate_content(self, text: str, yaml_header_end: int) -> bool:
         content = text[yaml_header_end:].strip()
+        sections = ['h1', 'see_also', 'wikilinks', 'hashtags']
+        section_order = []
+        
         h1_header_match = re.match(r'# ' + re.escape(self.title), content)
-        if not h1_header_match:
+        if h1_header_match:
+            section_order.append('h1')
+        else:
             self.append_issue('h1_mismatch', 'H1 header mismatch')
-        if not self._wikilink_regex.findall(content):
+
+        see_also_match = self._see_also_regex.search(content)
+        if see_also_match:
+            section_order.append('see_also')
+        else:
+            self.append_issue('missing_see_also', "Missing SEE ALSO subsection")
+
+        wikilinks_match = self._wikilink_regex.search(content)
+        if wikilinks_match:
+            section_order.append('wikilinks')
+        else:
             self.append_issue('missing_wikilinks', 'Missing wikilinks')
-        if not self._hashtag_regex.findall(content):
+
+        hashtags_match = self._hashtag_regex.search(content)
+        if hashtags_match:
+            section_order.append('hashtags')
+        else:
             self.append_issue('missing_hashtags', 'Missing or non-indented hashtags')
+
+        if section_order != sections:
+            self.append_issue('order_issue', 'Sections are not in the required order')
+
         return not self.status
 
     def validate(self, text: str, fn: str = '') -> bool:
         self._fn = fn
         self._issues = []
-        if not self.validate_yaml_header(text):
-            self.show_issues()
-            return False
-        if not self.validate_title_format():
-            self.show_issues()
-            return False
-        if not self.validate_filename_id_mismatch(fn):
-            self.show_issues()
-            return False
+        valid_yaml = self.validate_yaml_header(text)
+        valid_title = self.validate_title_format()
+        valid_filename = self.validate_filename_id_mismatch(fn)
         yaml_header_match = self._yaml_header_regex.search(text)
-        if not self.validate_content(text, yaml_header_match.end()):
-            self.show_issues()
-            return False
-        self._stats['good_zettels'] += 1
-        return True
+        if yaml_header_match:
+            valid_content = self.validate_content(text, yaml_header_match.end())
+        else:
+            valid_content = False
+
+        if valid_yaml and valid_title and valid_filename and valid_content:
+            self._stats['good_zettels'] += 1
+
+        self.show_issues()
+        return self.status == 0
 
 # Comment out the execution part to prevent running in this environment
 if __name__ == "__main__":
@@ -104,24 +129,30 @@ reference-section-title: References
 ---
 # Math.2.0.21.1220.2213 Matrix Determinant Lemma    
 
+Some text.
+
+## SEE ALSO
+
 [[Game.1a.0.21.0613]] The core of a cooperative game  
 [[Math.0000.0000]] Mathematics  
 
  #matrices #linearalgebra'''
 
-    print(sample_text)
+#    print(sample_text)
     
     sample_text_id = "Math.2.0.21.1220.2213"
 
     zv = ZettelValidator()
-    print(f"Validation result: {zv.validate(sample_text, sample_text_id)}") # The ID should be the filename
-    print(f"Validation stats: {zv.statistics}")
+#    print(f"Validation result: {zv.validate(sample_text, sample_text_id)}")  # The ID should be the filename
+#    print(f"Validation stats: {zv.statistics}")
 
     bad_text = '''---
 title: Math.2.0.21.1220.4444 Matrix Determinant Lemma
 reference-section-title: References
 ---
 # Math.2.0.21.1220.4444 Matrix Determinant Lemma
+
+More text.
 
 [[Game.1a.0.21.0613]] The core of a cooperative game  
 [[Math.0000.0000]] Mathematics  
@@ -130,5 +161,5 @@ reference-section-title: References
 
     print(bad_text)
 
-    print(f"Validation result: {zv.validate(bad_text,sample_text_id)}")  # The ID should be the filename   
+    print(f"Validation result: {zv.validate(bad_text, sample_text_id)}")  # The ID should be the filename   
     print(f"Validation stats: {zv.statistics}")
