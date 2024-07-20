@@ -1,5 +1,5 @@
-import re
-import yaml
+import re 
+import yaml # type: ignore
 
 class ZettelValidator:
     def __init__(self):

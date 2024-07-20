@@ -1,8 +1,8 @@
 import os
 from zettel_validate import ZettelValidator 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 from collections import Counter
-import seaborn as sns
+import seaborn as sns # type: ignore
 from statistics import median
 
 def calculate_median_word_count(word_counts):
