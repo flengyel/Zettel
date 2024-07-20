@@ -37,12 +37,14 @@ reference-section-title: References
 ---
 ```
 
-# ZTEMP.1.0.24.0228 Zettel Template
+\# ZTEMP.1.0.24.0228 Zettel Template
 
 The Zettel body begins an H1 header. In my system, the H1 header duplicates the immutable, unique ID and title with the following syntax; however, this choice is optional.
+
 ```markdown
 # immutableID title
 ```
+
 Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the **SEE ALSO** section below.
 
 ## Customization notes
