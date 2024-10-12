@@ -2,30 +2,37 @@
 
 This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If you find the terminology of literature notes and permanent notes vague or confusing, it's not your fault--see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). Also, see [Note Taking Traditions](https://notemaking.substack.com/) by Chris Aldrich.
 
+NOTE: As of October 2024 I have switched to Obsidian version 1.6.7 from Zettlr 3.2.2. Zettlr was too slow to work with on my Windows 11 system. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for updated software configuration notes, which are under construction as I bring them up to date.
+
 This README.md and the Zettek wiki are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel. You don't need to credit me if your notes instantiate the template. If you copy and publish this template or derive a template from this one and publish it, then CC BY-SA 4.0 applies.  
 
 The code is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
 
 ```yaml
 ---
-# Version: 2024.02.28.1
+# Version: 2024.10.12.1
 # This self-documenting Zettel template specifies the format of 
 # a Zettel suitable for a digital Zettelkasten. The Zettel is
 # organized as a Markdown file, beginning with this YAML 
 # frontmatter followed by self-documenting Markdown sections 
 # in the order of presentation. The YAML frontmatter contains
 # commands to Zettlr, Pandoc, and Obsidian and includes, 
-# at minimum, the following variables: `title:` and 
+# at minimum, the following variables: `id:`. `title:` and 
 # `reference-section-title:` 
 
-title: "ZTEMP.1.0.24.0228 Zettel Template"
+id: ZTEMP.1.0.24.1012
+
+# The value of the `id:` variable is a the unique, immutable ID of the Zettel.  
+# Immutable, unique IDs may have different formats, according to personal preference. 
+# Timestamps are a popular choice, followed by Folgezettel. 
+
+
+title: "ZTEMP.1.0.24.0228 H1 header title - Zettel Template"
 
 # The value of the `title:` variable is a quoted string, 
 # consisting of a unique, immutable ID, in this case 
-# `ZTEMP.1.0.24.0228`, followed by the Zettel title, in this case
-# "Zettel Template" Immutable, unique IDs may have 
-# different formats, according to personal preference. 
-# Timestamps are a popular choice, followed by Folgezettel. 
+# `ZTEMP.1.0.24.0228`, followed by the H1 header title, in this case
+# "Zettel Template"
 
 reference-section-title: References
 
@@ -37,12 +44,12 @@ reference-section-title: References
 ---
 ```
 
-\# ZTEMP.1.0.24.0228 Zettel Template
+\# Zettel Template
 
-The Zettel body begins an H1 header. In my system, the H1 header duplicates the immutable, unique ID and title with the following syntax; however, this choice is optional.
+The Zettel body begins an H1 header. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
 
 ```markdown
-# immutableID title
+# H1 header title - Zettel template
 ```
 
 Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the **SEE ALSO** section below.
@@ -95,7 +102,7 @@ _The list of title-only WikiLinks in the SEE ALSO section is just a starting poi
      - **Hashtags and Metadata**: The SEE ALSO can also include relevant hashtags and metadata that aid in organizing and retrieving Zettels within the Zettelkasten system.
 
 4. **References**:
-   - List external sources or additional reading materials to support content validity and facilitate further exploration.
+   - List external sources or additional reading materials to support content validity and facilitate further exploration. This section is optional if Pandoc citations are present, since Pandoc will generate it.
 
 ## SEE ALSO
 
