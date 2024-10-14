@@ -67,8 +67,8 @@ if (title_id && title_id === note_name) {
 
 // Construct the updated line by inserting the title directly after the WikiLink, preserving all other content
 let prefix = current_line.slice(0, note_link_match.index + note_link_match[0].length);
-let suffix = current_line.slice(note_link_match.index + note_link_match[0].length).trim();
-let updated_line = `${prefix} ${note_title} ${suffix}`.trim();
+let suffix = current_line.slice(note_link_match.index + note_link_match[0].length);
+let updated_line = prefix + ' '+ note_title + suffix;
 file_lines[current_line_num] = updated_line;
 
 // Join the updated lines and write back to the file
