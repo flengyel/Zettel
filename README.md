@@ -46,7 +46,7 @@ reference-section-title: References
 
 ```markdown
 # H1 header title - Zettel Template
-
+```
 The Zettel body begins an H1 header. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
 
 
@@ -121,4 +121,3 @@ _The list of title-only WikiLinks in the SEE ALSO section is just a starting poi
 ## References
 
 - Ahrens, Sönke. 2017. _How to take smart notes_. North Charleston, SC: CreateSpace.
-```
