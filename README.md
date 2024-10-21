@@ -48,8 +48,6 @@ reference-section-title: References
 # H1 header title - Zettel Template
 ```
 The Zettel body begins an H1 header. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
-
-
 Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the **SEE ALSO** section below.
 
 ## Customization notes
@@ -74,7 +72,7 @@ _Adjust the template to fit your note-taking style. For instance, place the immu
 
 ## Revised Zettel Construction Guidelines
 
-ID and Title: Start with a unique ID and descriptive title for each Zettel.  
+ID and Title: Start with a unique ID and descriptive title for each Zettel.  Bob Doto writes that a note title "should be a declarative statement rather than a descriptor" (Doto 2024, 56).
 
 ### Main Body:
 
@@ -113,4 +111,4 @@ Lists external sources or additional reading. This section is optional if Pandoc
 ## References
 
 - Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
-- Doto, Bob. 2024. _A System for Writing_. 
+- Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
