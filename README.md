@@ -54,53 +54,45 @@ Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the
 
 ## Customization notes
 
-_This section guides personalizing your Zettel template. Adjust these elements to suit your note-taking preferences and workflow. For example, while this template places the immutable ID to the left of the title, some users prefer it to the right._
+_Adjust the template to fit your note-taking style. For instance, place the immutable ID wherever you prefer._
 
 ## Definitions
 
 ### Reference Element Types
 
-- **WikiLink**: A markdown link used within Zettels to interlink them within the Zettelkasten system. It is enclosed in double square brackets and typically includes a unique identifier followed by the title of the linked Zettel.
+- WikiLink: A markdown link within Zettels, enclosed in double brackets (e.g., [[UniqueID]] Zettel Title), used to interlink notes.
+- Title-only WikiLink: A WikiLink followed immediately by the title, without extra annotations.
+- Hashtags: For thematic categorization, typically used in the SEE ALSO section.
+- Pandoc citations: References in the form [@citeKey] are linked to a citation database like Zotero.
 
-- **Title-only WikiLink**: This format includes the WikiLink followed immediately by the title of the linked Zettel without additional annotations or explanations, adhering strictly to the format: `[[UniqueID]] Zettel Title`.
-  
-- **Hashtags**: Hashtags are for thematic categorization and quick reference within your Zettelkasten. Hashtags typically occur in the SEE ALSO section of a Zettel.
-
-- **Pandoc citations**: Pandoc citations have the form `[@citeKey],` where `citeKey` is a citation Key for a citation maintained within a digital references management system such as Zotero or a manually created and maintained reference database.
 
 ### Types of Notes in Zettelkasten
 
-1. **Single-focus Zettels**: Focus on one main idea or topic for clarity and precision. Single-focus Zettels form the core of the Zettelkasten.
-
-2. **Structure Notes**: Outline and connect Single-focus Zettels under broader themes. They contain sections with annotated WikiLinks to individual Zettels.
-
-3. **Index Notes**: Serve as navigational tools within the Zettelkasten, marked by IDs starting with `0000.0000.0` and typically annotated with their title only.
-
-## More on customization
-
-_The list of title-only WikiLinks in the SEE ALSO section is just a starting point. Feel free to modify these links or hashtags to organize your notes better._
+- Single-focus Zettels: Focus on one main idea or topic.
+- Structure Notes: Outline and connect Single-focus Zettels under broader themes; contain sections with annotated WikiLinks.
+- Index Notes: Navigational tools marked by IDs starting with 0000.0000.0; annotated with their title only.
 
 ## Revised Zettel Construction Guidelines
 
-1. **ID and Title**:
-   - Start with a unique ID and clear title for each Zettel to ensure clarity and retrievability.
+ID and Title: Start with a unique ID and descriptive title for each Zettel.  
 
-2. **Main Body**:
-   - Prioritize writing Zettels with the author's future self in mind, emphasizing clarity and utility for the author rather than a general reader.
-   - **Single-focus Zettels**: Maintain a strict focus on one main idea or topic, crafting content for future clarity and utility. Annotate WikiLinks where they contribute to the topic's context, except for Index Note references. Links within the main body of a Single-focus Zettel should be directly related to the Zettel's central theme or idea and provide immediate, contextual support by offering additional information, evidence, or related viewpoints directly relevant to the Zettel's focus.
-   - **Structure Notes**: Organize and link related Single-focus Zettels under thematic sections, starting each section with a relevant annotated WikiLink.
-   - **Index Notes**: These are used for navigation with a simple title annotation, listing relevant Single-focus or Structure Notes for easy access.
+### Main Body:
 
-3. **SEE ALSO Section**:
-   - The SEE ALSO section serves as a gateway for expanded exploration and understanding, offering the reader pathways to discover related concepts and themes that might not be central to Zettel's current focus but are valuable for a broader understanding or future research.
-   - The separation between the Main Body and the SEE ALSO section helps maintain the focus and clarity of the main content while still providing avenues for further exploration and connectivity within the Zettelkasten.
-   - The SEE ALSO section should contain title-only WikiLinks that are not directly tied to the central theme of the Zettel but are still relevant to the broader thematic landscape of the note, including:
-     - **Index Note WikiLinks**: Title-only WikiLinks to Index Notes that help with navigation and alphanumeric categorization but are not directly related to the Zettel's main content.
-     - **Distantly Related Zettel Links**: Title-only WikiLinks to Zettels that provide additional context and support for the ideas presented or suggest further research but are not essential to understanding the primary focus of the current Zettel.
-     - **Hashtags and Metadata**: The SEE ALSO can also include relevant hashtags and metadata that aid in organizing and retrieving Zettels within the Zettelkasten system.
+1. Single-focus Zettels: Focus on one main idea. Annotate WikiLinks when they add context, except for Index Note references. Links should be directly related to the central theme.
+2. Structure Notes: Organize and link related Single-focus Zettels under thematic sections, starting each with an annotated WikiLink.
+3. Index Notes: Used for navigation with a simple title annotation, listing relevant notes.
 
-4. **References**:
-   - List external sources or additional reading materials to support content validity and facilitate further exploration. This section is optional if Pandoc citations are present, since Pandoc will generate it.
+### SEE ALSO Section:
+
+- Separates additional links from the main content to maintain focus.
+- Contains title-only WikiLinks not directly tied to the Zettel's central theme, including:
+- Index Note WikiLinks: For navigation and categorization. See the complete list of index note wikilinks below.
+- Distantly Related Zettel Links: Provide additional context or suggest further research.
+- Hashtags and Metadata: Aid in organizing and retrieving notes.
+
+### References:
+
+Lists external sources or additional reading. This section is optional if Pandoc citations are used, as Pandoc will generate it.
 
 ## SEE ALSO
 
@@ -120,4 +112,5 @@ _The list of title-only WikiLinks in the SEE ALSO section is just a starting poi
 
 ## References
 
-- Ahrens, Sönke. 2017. _How to take smart notes_. North Charleston, SC: CreateSpace.
+- Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
+- Doto, Bob. 2024. _A System for Writing_. 
