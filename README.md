@@ -50,10 +50,6 @@ reference-section-title: References
 The Zettel body begins an H1 header. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
 Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the **SEE ALSO** section below.
 
-## Customization notes
-
-_Adjust the template to fit your note-taking style. For instance, place the immutable ID wherever you prefer._
-
 ## Definitions
 
 ### Reference Element Types
