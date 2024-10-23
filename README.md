@@ -47,8 +47,9 @@ reference-section-title: References
 ```markdown
 # H1 header title - Zettel Template
 ```
-The Zettel body begins an H1 header. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
-Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the **SEE ALSO** section below.
+The Zettel body begins with the H1 header and ends immediately before the **SEE ALSO** section below.
+. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
+Titles aren't immutable, unlike IDs.  Bob Doto writes that a note title "should be a declarative statement rather than a descriptor" (Doto 2024, 56).
 
 ## Definitions
 
@@ -66,15 +67,6 @@ Titles aren't immutable, unlike IDs. The Zettel body ends immediately before the
 - Structure Notes: Outline and connect Single-focus Zettels under broader themes; contain sections with annotated WikiLinks.
 - Index Notes: Navigational tools marked by IDs starting with 0000.0000.0; annotated with their title only.
 
-## Revised Zettel Construction Guidelines
-
-ID and Title: Start with a unique ID and descriptive title for each Zettel.  Bob Doto writes that a note title "should be a declarative statement rather than a descriptor" (Doto 2024, 56).
-
-### Main Body:
-
-1. Single-focus Zettels: Focus on one main idea. Annotate WikiLinks when they add context, except for Index Note references. Links should be directly related to the central theme.
-2. Structure Notes: Organize and link related Single-focus Zettels under thematic sections, starting each with an annotated WikiLink.
-3. Index Notes: Used for navigation with a simple title annotation, listing relevant notes.
 
 ### SEE ALSO Section:
 
