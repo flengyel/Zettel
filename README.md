@@ -26,7 +26,6 @@ id: ZTEMP.1.0.24.1012
 # Immutable, unique IDs may have different formats, according to personal preference. 
 # Timestamps are a popular choice, followed by Folgezettel. 
 
-
 title: "ZTEMP.1.0.24.0228 H1 header title - Zettel Template"
 
 # The value of the `title:` variable is a quoted string, 
@@ -43,6 +42,7 @@ reference-section-title: References
 # end of the exported document. 
 ---
 ```
+# H1 header title - Zettel Template
 
 ```markdown
 # H1 header title - Zettel Template
