@@ -26,12 +26,12 @@ id: ZTEMP.1.0.24.1012
 # Immutable, unique IDs may have different formats, according to personal preference. 
 # Timestamps are a popular choice, followed by Folgezettel. 
 
-title: "ZTEMP.1.0.24.0228 H1 header title - Zettel Template"
+title: "ZTEMP.1.0.24.0228 Zettel Template Version 6"
 
 # The value of the `title:` variable is a quoted string, 
 # consisting of a unique, immutable ID, in this case 
 # `ZTEMP.1.0.24.0228`, followed by the H1 header title, in this case
-# "Zettel Template"
+# "Zettel Template Version 6"
 
 reference-section-title: References
 
@@ -42,10 +42,10 @@ reference-section-title: References
 # end of the exported document. 
 ---
 ```
-# H1 header title - Zettel Template
+# Zettel Template Version 6
 
 ```markdown
-# H1 header title - Zettel Template
+# Zettel Template Version 6
 ```
 The Zettel body begins with the H1 header and ends immediately before the **SEE ALSO** section below.
 . In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
@@ -65,13 +65,12 @@ Titles aren't immutable, unlike IDs.  Bob Doto writes that a note title "should 
 
 - Single-focus Zettels: Focus on one main idea or topic.
 - Structure Notes: Outline and connect Single-focus Zettels under broader themes; contain sections with annotated WikiLinks.
-- Index Notes: Navigational tools marked by IDs starting with 0000.0000.0; annotated with their title only.
-
+- Index Notes: Navigational notes marked by IDs starting with 0000.0000.0; annotated with their title only.
 
 ### SEE ALSO Section:
 
 - Separates additional links from the main content to maintain focus.
-- Contains title-only WikiLinks not directly tied to the Zettel's central theme, including:
+- Contains title-only WikiLinks not directly related to the Zettel's central theme, including:
 - Index Note WikiLinks: For navigation and categorization. See the complete list of index note wikilinks below.
 - Distantly Related Zettel Links: Provide additional context or suggest further research.
 - Hashtags and Metadata: Aid in organizing and retrieving notes.
