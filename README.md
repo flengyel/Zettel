@@ -1,99 +1,124 @@
-This repository contains a self-documenting Zettel template for use with a software implementation of the Zettelkasten Method. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). The Zettelkasten Method is documented online at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) on the [Zettelkasten.de](https://zettelkasten.de) site and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If you find the terminology of literature notes and permanent notes vague or confusing, it's not your fault--see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Recommended: [Tinderbox Meetup April 23, 2023 Video: On ZettelKasten with Sascha Fast from Zettelkasten.de](https://www.youtube.com/watch?v=I4TXkGjKpTo). Also, see [Note Taking Traditions](https://notemaking.substack.com/) by Chris Aldrich.
+# Zettel
 
-NOTE: As of October 2024, I switched to Obsidian version 1.6.7 from Zettlr 3.2.2. Zettlr was too slow to work with on my Windows 11 system. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for updated software configuration notes, which are under construction as I bring them up to date.
+This repository documents the conventions I use for a single digital Zettelkasten. It contains definitions, technical notes, configurations, project-derived notes, and what might be called gists. Notes may also be linked when they form a chain of thought.
 
-NEW: [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten). These are some of the guidelines I follow.
+For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Note Taking Traditions](https://notemaking.substack.com/).
 
-This README.md and the Zettek wiki are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode). CC BY-SA 4.0 2022-2023 F Lengyel. You don't need to credit me if your notes instantiate the template. If you copy and publish this template or derive a template from this one and publish it, then CC BY-SA 4.0 applies.  
+As of October 2024, I use Obsidian rather than Zettlr. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for configuration notes and [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten) for some of the rules I follow.
 
-The code is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3, 29 June 2007
+## Note identity and displayed title
+
+A Zettel is stored in a Markdown file named:
+
+```text
+<ID>.md
+```
+
+Here and below, `<ID>` and `<H1>` are metavariables. The angle brackets do not appear in a filename, property value, or heading.
+
+Each note begins with YAML front matter followed by an H1 heading:
 
 ```yaml
 ---
-# Version: 2024.10.12.1
-# This self-documenting Zettel template specifies the format of 
-# a Zettel suitable for a digital Zettelkasten. The Zettel is
-# organized as a Markdown file, beginning with this YAML 
-# frontmatter followed by self-documenting Markdown sections 
-# in the order of presentation. The YAML frontmatter contains
-# commands to Zettlr, Pandoc, and Obsidian and includes, 
-# at minimum, the following variables: `id:`. `title:` and 
-# `reference-section-title:` 
-
-id: ZTEMP.1.0.24.1012
-
-# The value of the `id:` variable is a the unique, immutable ID of the Zettel.  
-# Immutable, unique IDs may have different formats, according to personal preference. 
-# Timestamps are a popular choice, followed by Folgezettel. 
-
-title: "ZTEMP.1.0.24.0228 Zettel Template Version 6"
-
-# The value of the `title:` variable is a quoted string, 
-# consisting of a unique, immutable ID, in this case 
-# `ZTEMP.1.0.24.0228`, followed by the H1 header title, in this case
-# "Zettel Template Version 6"
-
+id: <ID>
+title: <ID> <H1>
 reference-section-title: References
-
-# The `reference-section-title:` variable is a command to Pandoc.
-# If Zettel is exported through Pandoc and the Zettel body includes 
-# Pandoc-style citations, the `reference-section-title:` variable 
-# will cause Pandoc to add a References section with citations to the
-# end of the exported document. 
 ---
+# <H1>
 ```
-# Zettel Template Version 6
+
+The following invariants define the convention:
+
+1. The filename without the `.md` extension is identical to the value of `id`.
+2. The value of `title` consists of the ID, one space, and the H1 text.
+3. The text following the ID in `title` is identical to the H1 text, apart from trailing spaces.
+4. The ID is unique and immutable. The H1 and displayed title may change together.
+
+The Obsidian **Front Matter Title** plugin displays the value of the `title` property in the File Explorer. The underlying filename remains the usually uninformative ID.
+
+The Zettelkasten contains several generations of IDs. The current Obsidian template normally constructs an ID by concatenating an alphabetic keyword and a timestamp of the form `YYYYMMDDHHmm`. Older dotted IDs and the special index IDs below remain valid. ID validity therefore cannot be inferred from a single regular-expression pattern.
+
+## Note structure
+
+The body begins after the H1 heading and ends immediately before `## SEE ALSO`.
 
 ```markdown
-# Zettel Template Version 6
-```
-The Zettel body begins with the H1 header and ends immediately before the **SEE ALSO** section below.
-. In my system, the H1 header is the value of the `title:` YAML variable minus the unique, immutable ID; however, this choice is optional.
-Titles aren't immutable, unlike IDs.  Bob Doto writes that a note title "should be a declarative statement rather than a descriptor" (Doto 2024, 56).
+# <H1>
 
-## Definitions
-
-### Reference Element Types
-
-- WikiLink: A markdown link within Zettels, enclosed in double brackets (e.g., [[UniqueID]] Zettel Title), used to interlink notes.
-- Title-only WikiLink: A WikiLink followed immediately by the title, without extra annotations.
-- Hashtags: For thematic categorization, typically used in the SEE ALSO section.
-- Pandoc citations: References in the form [@citeKey] are linked to a citation database like Zotero.
-
-
-### Types of Notes in Zettelkasten
-
-- Single-focus Zettels: Focus on one main idea or topic.
-- Structure Notes: Outline and connect Single-focus Zettels under broader themes; contain sections with annotated WikiLinks.
-- Index Notes: Navigational notes marked by IDs starting with 0000.0000.0; annotated with their title only.
-
-### SEE ALSO Section:
-
-- Separates additional links from the main content to maintain focus.
-- Contains title-only WikiLinks not directly related to the Zettel's central theme, including:
-- Index Note WikiLinks: For navigation and categorization. See the complete list of index note wikilinks below.
-- Distantly Related Zettel Links: Provide additional context or suggest further research.
-- Hashtags and Metadata: Aid in organizing and retrieving notes.
-
-### References:
-
-Lists external sources or additional reading. This section is optional if Pandoc citations are used, as Pandoc will generate it.
+<note body>
 
 ## SEE ALSO
 
-[[0000.0000.0000]] INDEX  
-[[0000.0000.0ABC]] A-B-C  
-[[0000.0000.0DEF]] D-E-F  
-[[0000.0000.0GHI]] G-H-I  
-[[0000.0000.0JKL]] J-K-L  
-[[0000.0000.0MNO]] M-N-O  
-[[0000.0000.0PQR]] P-Q-R  
-[[0000.0000.0STU]] S-T-U  
-[[0000.0000.0VWX]] V-W-X  
-[[0000.0000.00YZ]] Y-Z  
-[[0000.0000.0009]] 0-9  
+<links and optional hashtags>
 
- #replace #these #hashtags  
+## References
+```
+
+`SEE ALSO` may contain:
+
+- links to notes that continue or support a chain of thought;
+- links to related notes;
+- links to alphabetic or numeric index notes;
+- optional hashtags or other retrieval metadata.
+
+`References` follows `SEE ALSO`. Pandoc-style citations may be used in the body; `reference-section-title: References` tells Pandoc what to call the generated reference section.
+
+## WikiLinks
+
+The target of an internal WikiLink is normally the note ID, which is also the filename stem. Display text may be supplied as an alias. For example:
+
+```markdown
+[[Tikz202504272354|Tikz202504272354 Tikz in Obsidian examples]]
+```
+
+The target ID is structural; the choice of displayed link text is not.
+
+## Alphabetic and numeric index
+
+The following special notes sort at the beginning of Obsidian's File Explorer:
+
+```text
+0000.0000.0000 INDEX
+0000.0000.0ABC A-B-C
+0000.0000.0DEF D-E-F
+0000.0000.0GHI G-H-I
+0000.0000.0JKL J-K-L
+0000.0000.0MNO M-N-O
+0000.0000.0PQR P-Q-R
+0000.0000.0STU S-T-U
+0000.0000.0VWX V-W-X
+0000.0000.00YZ Y-Z
+0000.0000.0009 0-9
+```
+
+To index an ordinary note, select one or more words from its H1 heading and add a WikiLink in `SEE ALSO` to the corresponding alphabetic index note. Use `0000.0000.0009` for numeric items of interest.
+
+The ordinary note points to the index note. Obsidian's backlinks then make the index self-modifying: notes appear in an index without requiring the index note itself to be edited for every addition.
+
+Example:
+
+```markdown
+## SEE ALSO
+
+[[0000.0000.0STU|0000.0000.0STU S-T-U]]
+```
+
+This link can index a note whose H1 contains a word such as `Tikz`.
+
+## Note types
+
+- **Single-focus Zettels** concentrate on one main idea or topic.
+- **Structure notes** outline and connect Zettels under broader themes.
+- **Index notes** provide navigation through backlinks from ordinary notes.
+- **Technical and reference notes** preserve definitions, configurations, procedures, and facts likely to be forgotten.
+
+These types coexist in one Zettelkasten.
+
+## License
+
+This README and the Zettel Wiki are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode), CC BY-SA 4.0, 2022-2026 F. Lengyel. Notes that merely instantiate the template need not credit me. Published copies or derivatives of the template remain subject to CC BY-SA 4.0.
+
+The code is licensed under the GNU General Public License, version 3, 29 June 2007.
 
 ## References
 
