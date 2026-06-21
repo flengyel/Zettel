@@ -103,15 +103,6 @@ Example:
 
 This link can index a note whose H1 contains a word such as `Tikz`.
 
-## Note types
-
-- **Single-focus Zettels** concentrate on one main idea or topic.
-- **Structure notes** outline and connect Zettels under broader themes.
-- **Index notes** provide navigation through backlinks from ordinary notes.
-- **Technical and reference notes** preserve definitions, configurations, procedures, and facts likely to be forgotten.
-
-These types coexist in one Zettelkasten.
-
 ## License
 
 This README and the Zettel Wiki are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode), CC BY-SA 4.0, 2022-2026 F. Lengyel. Notes that merely instantiate the template need not credit me. Published copies or derivatives of the template remain subject to CC BY-SA 4.0.
