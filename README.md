@@ -4,104 +4,69 @@ This repository documents the conventions I use for a single digital Zettelkaste
 
 As of October 2024, I use Obsidian rather than Zettlr. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for configuration notes and [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten) for some of the rules I follow.
 
-## Note identity and displayed title
+## Self-documenting Zettel template
 
-A Zettel is stored in a Markdown file named:
-
-```text
-<ID>.md
-```
-
-Here and below, `<ID>` and `<H1>` are metavariables. The angle brackets do not appear in a filename, property value, or heading.
-
-Each note begins with YAML front matter followed by an H1 heading:
-
-```yaml
+```markdown
 ---
+# Version: <VERSION>
+# This self-documenting Zettel template specifies the format of a Zettel.
+# Replace the metavariables `<VERSION>`, `<ID>`, and `<H1>`; the angle
+# brackets do not appear in a completed Zettel.
+#
+# `<ID>` is the unique, immutable ID of the Zettel and is identical to
+# the filename without the `.md` extension.
 id: <ID>
+
+# `title` consists of `<ID>`, one space, and the H1 text.
 title: <ID> <H1>
+
+# Pandoc uses `reference-section-title` as the heading for a generated
+# bibliography when the Zettel contains Pandoc-style citations.
 reference-section-title: References
 ---
 # <H1>
-```
 
-The following invariants define the convention:
+The Zettel body begins after the H1 heading and ends immediately before the **SEE ALSO** section. The H1 text is identical to the portion of `title` following `<ID> `, apart from trailing spaces. Titles may change; IDs do not.
 
-1. The filename without the `.md` extension is identical to the value of `id`.
-2. The value of `title` consists of the ID, one space, and the H1 text.
-3. The text following the ID in `title` is identical to the H1 text, apart from trailing spaces.
-4. The ID is unique and immutable. The H1 and displayed title may change together.
+## Definitions
 
-The Obsidian **Front Matter Title** plugin displays the value of the `title` property in the File Explorer. The underlying filename remains the usually uninformative ID.
+### Reference element types
 
-The Zettelkasten contains several generations of IDs. The current Obsidian template normally constructs an ID by concatenating an alphabetic keyword and a timestamp of the form `YYYYMMDDHHmm`. Older dotted IDs and the special index IDs below remain valid. ID validity therefore cannot be inferred from a single regular-expression pattern.
+- **WikiLink:** An internal Markdown link of the form `[[ID]]` or `[[ID|display text]]`.
+- **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
+- **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography such as one exported from Zotero.
 
-## Note structure
+### Alphabetic and numeric index notes
 
-The body begins after the H1 heading and ends immediately before `## SEE ALSO`.
+Index one or more words from the H1 heading by linking from **SEE ALSO** to the corresponding index note:
 
-```markdown
-# <H1>
+- `[[0000.0000.0ABC|0000.0000.0ABC A-B-C]]`
+- `[[0000.0000.0DEF|0000.0000.0DEF D-E-F]]`
+- `[[0000.0000.0GHI|0000.0000.0GHI G-H-I]]`
+- `[[0000.0000.0JKL|0000.0000.0JKL J-K-L]]`
+- `[[0000.0000.0MNO|0000.0000.0MNO M-N-O]]`
+- `[[0000.0000.0PQR|0000.0000.0PQR P-Q-R]]`
+- `[[0000.0000.0STU|0000.0000.0STU S-T-U]]`
+- `[[0000.0000.0VWX|0000.0000.0VWX V-W-X]]`
+- `[[0000.0000.00YZ|0000.0000.00YZ Y-Z]]`
+- `[[0000.0000.0009|0000.0000.0009 0-9]]`
 
-<note body>
+`[[0000.0000.0000|0000.0000.0000 INDEX]]` is the top-level index note.
+
+### SEE ALSO
+
+The **SEE ALSO** section contains links not required in the main body, including index links, related Zettels, continuations of a chain of thought, and optional hashtags.
+
+### References
+
+The **References** section follows **SEE ALSO**. It may be empty. When Pandoc citations are used, Pandoc can generate its contents.
 
 ## SEE ALSO
 
-<links and optional hashtags>
+<!-- Add applicable index links, related Zettels, and optional hashtags here. -->
 
 ## References
 ```
-
-`SEE ALSO` may contain:
-
-- links to notes that continue or support a chain of thought;
-- links to related notes;
-- links to alphabetic or numeric index notes;
-- optional hashtags or other retrieval metadata.
-
-`References` follows `SEE ALSO`. Pandoc-style citations may be used in the body; `reference-section-title: References` tells Pandoc what to call the generated reference section.
-
-## WikiLinks
-
-The target of an internal WikiLink is normally the note ID, which is also the filename stem. Display text may be supplied as an alias. For example:
-
-```markdown
-[[Tikz202504272354|Tikz202504272354 Tikz in Obsidian examples]]
-```
-
-The target ID is structural; the choice of displayed link text is not.
-
-## Alphabetic and numeric index
-
-The following special notes sort at the beginning of Obsidian's File Explorer:
-
-```text
-0000.0000.0000 INDEX
-0000.0000.0ABC A-B-C
-0000.0000.0DEF D-E-F
-0000.0000.0GHI G-H-I
-0000.0000.0JKL J-K-L
-0000.0000.0MNO M-N-O
-0000.0000.0PQR P-Q-R
-0000.0000.0STU S-T-U
-0000.0000.0VWX V-W-X
-0000.0000.00YZ Y-Z
-0000.0000.0009 0-9
-```
-
-To index an ordinary note, select one or more words from its H1 heading and add a WikiLink in `SEE ALSO` to the corresponding alphabetic index note. Use `0000.0000.0009` for numeric items of interest.
-
-The ordinary note points to the index note. Obsidian's backlinks then make the index self-modifying: notes appear in an index without requiring the index note itself to be edited for every addition.
-
-Example:
-
-```markdown
-## SEE ALSO
-
-[[0000.0000.0STU|0000.0000.0STU S-T-U]]
-```
-
-This link can index a note whose H1 contains a word such as `Tikz`.
 
 ## License
 
