@@ -6,27 +6,30 @@ As of October 2024, I use Obsidian rather than Zettlr. See the [Zettel Wiki](htt
 
 ## Self-documenting Zettel template
 
-The following self-documenting Zettel template specifies the format of a Zettel. Replace the metavariables `<ID>`, and `<TITLE>`; the angle
-brackets do not appear in a completed Zettel.  `<ID>` is the unique, immutable ID of the Zettel and is identical to the filename without the `.md` extension.
-Ww leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values that follow. 
+The following self-documenting Zettel template specifies the format of a Zettel. Replace the metavariables `<ID>`, and `<TITLE>`; the angle brackets do not appear in a completed Zettel.  `<ID>` is the unique, immutable ID of the Zettel 
+and is identical to the filename without the `.md` extension. We leave the format of `<ID>` unspecified except 
+for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values below. 
 We use a keyword followed by a timestamp, but our ID formats have changed over time. 
+
+### YAML Header
+
+Each Zettel begins with A YAML header beginning and ending with lines containing three consecutive dashes, 
+as shown immediately below. The value of the `id:` property is `<ID>`. The value of the `title:` variable 
+consists of `<ID>`, one space, and `<TITLE>`.  The `reference-section-title:` property is used by Pandoc 
+to generate bibliography when the Zettel contains Pandoc-style citations. The value of the 
+`reference-section-title:` property is `References`, as shown below.
 
 ```markdown
 ---
-
 id: <ID>
-
-# `title` consists of `<ID>`, one space, and the H1 text, denoted by <TITLE>.
 title: <ID> <TITLE>
-
-# Pandoc uses `reference-section-title` as the heading for a generated
-# bibliography when the Zettel contains Pandoc-style citations.
 reference-section-title: References
 ---
 # <TITLE>
 
-The Zettel body begins after the H1 heading and ends immediately before the **SEE ALSO** section.
-The H1 text is identical to the <TITLE> portion of `title` following `<ID> `, apart from trailing spaces. Titles may change; IDs do not.
+The Zettel body begins after the H1 heading and ends immediately before the **SEE ALSO** section below.
+The H1 text is identical to the <TITLE> portion of `title` following `<ID> `, apart from trailing spaces.
+Titles may change; IDs do not.
 
 ## Definitions
 
@@ -34,42 +37,47 @@ The H1 text is identical to the <TITLE> portion of `title` following `<ID> `, ap
 
 - **WikiLink:** An internal Markdown link of the form `[[ID]]` or `[[ID|display text]]`.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
-- **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography such as one exported from Zotero. 
+- **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography  
+such as one exported from Zotero. 
 
 ### Alphabetic and numeric index notes
 
-The following `<ID>` and `<TITLE>` values are reserved and are used to create an automatic Zettel index through Obsidian's backlink mechanism. The ideas were chosen to appear at
-the begining of the Obsidan File Explorer panel. For each `<ID> <TITLE>` pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
+The following `<ID>` and `<TITLE>` values are reserved and are used to create an
+automatic Zettel index through Obsidian's backlink mechanism. The IDs were chosen to
+appear at the begining of the Obsidan File Explorer panel. For each `<ID> <TITLE>`
+pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
 
 - `0000.0000.0000 INDEX`
 - `0000.0000.0ABC A-B-C`
 - `0000.0000.0DEF D-E-F`
 - `0000.0000.0GHI G-H-I`
 - `0000.0000.0JKL J-K-L`
-- `0000.0000.0MNO M-N-0`
+- `0000.0000.0MNO M-N-O`
 - `0000.0000.0PQR P-Q-R`
 - `0000.0000.0STU S-T-U`
 - `0000.0000.0VWX V-W-X`
-- `0000.0000.00YZ Y-Z'
+- `0000.0000.00YZ Y-Z`
 - `0000.0000.0009 0-9`
 
 No other `<ID> <TITLE>` combination is an index note.
 
-Under the **SEE ALSO** subsection of a note, Index one or more words from the H1 heading by adding the corresponding index Wikilink. For example, this Zettel template has the WikiLink
-`[0000.0000.00YZ]` after the **SEE ALSO** subsection. The **SEE ALSO** subsection below includes WIkiLinks of related notes other than those appearing in the main body, 
-one or more alphanumeric index links, and optional hashtags.
+Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
+the corresponding index Wikilink. For example, this Zettel template has the WikiLink
+`[[0000.0000.00YZ]]` under the `## SEE ALSO` section. The `## SEE ALSO` subsection may include
+WIkiLinks of related notes other than those appearing in the main body, one or more alphanumeric
+index links, and optional hashtags. 
+
+The `## References` section is optional. Here we have included two references on Zettelkasten.
 
 ## SEE ALSO
 
- other than those appearing in the main body, index links, and optional hashtags here, in the specified order. -->
 [[0000.0000.00YZ]]
 
  #optional #hashtag
 
 ## References
-
-<!--The **References** section follows **SEE ALSO**. It may be empty. When Pandoc citations are used, Pandoc can generate its contents. -->
-
+- Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
+- Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
 ```
 
 ## License
@@ -78,7 +86,4 @@ This README and the Zettel Wiki are licensed under the [Creative Commons Attribu
 
 The code is licensed under the GNU General Public License, version 3, 29 June 2007.
 
-## References
 
-- Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
-- Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
