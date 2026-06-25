@@ -6,39 +6,39 @@ As of October 2024, I use Obsidian rather than Zettlr. See the [Zettel Wiki](htt
 
 ## Self-documenting Zettel template
 
+The following self-documenting Zettel template specifies the format of a Zettel. Replace the metavariables `<ID>`, and `<TITLE>`; the angle
+brackets do not appear in a completed Zettel.  `<ID>` is the unique, immutable ID of the Zettel and is identical to the filename without the `.md` extension.
+We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility. We use a keyword followed by a timestamp,
+but our ID formats have changed over time.
+
 ```markdown
 ---
-# Version: <VERSION>
-# This self-documenting Zettel template specifies the format of a Zettel.
-# Replace the metavariables `<VERSION>`, `<ID>`, and `<H1>`; the angle
-# brackets do not appear in a completed Zettel.
-#
-# `<ID>` is the unique, immutable ID of the Zettel and is identical to
-# the filename without the `.md` extension.
+
 id: <ID>
 
-# `title` consists of `<ID>`, one space, and the H1 text.
-title: <ID> <H1>
+# `title` consists of `<ID>`, one space, and the H1 text, denoted by <TITLE>.
+title: <ID> <TITLE>
 
 # Pandoc uses `reference-section-title` as the heading for a generated
 # bibliography when the Zettel contains Pandoc-style citations.
 reference-section-title: References
 ---
-# <H1>
+# <TITLE>
 
-The Zettel body begins after the H1 heading and ends immediately before the **SEE ALSO** section. The H1 text is identical to the portion of `title` following `<ID> `, apart from trailing spaces. Titles may change; IDs do not.
+The Zettel body begins after the H1 heading and ends immediately before the **SEE ALSO** section.
+The H1 text is identical to the <TITLE> portion of `title` following `<ID> `, apart from trailing spaces. Titles may change; IDs do not.
 
 ## Definitions
 
-### Reference element types
+### Element types
 
 - **WikiLink:** An internal Markdown link of the form `[[ID]]` or `[[ID|display text]]`.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
-- **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography such as one exported from Zotero.
+- **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography such as one exported from Zotero. 
 
 ### Alphabetic and numeric index notes
 
-Index one or more words from the H1 heading by linking from **SEE ALSO** to the corresponding index note:
+To create Index one or more words from the H1 heading by linking from **SEE ALSO** to the corresponding index note:
 
 - `[[0000.0000.0ABC|0000.0000.0ABC A-B-C]]`
 - `[[0000.0000.0DEF|0000.0000.0DEF D-E-F]]`
@@ -53,9 +53,7 @@ Index one or more words from the H1 heading by linking from **SEE ALSO** to the 
 
 `[[0000.0000.0000|0000.0000.0000 INDEX]]` is the top-level index note.
 
-### SEE ALSO
-
-The **SEE ALSO** section contains links not required in the main body, including index links, related Zettels, continuations of a chain of thought, and optional hashtags.
+The **SEE ALSO** section contains links other than those in the main body, including index links, related Zettels, continuations of a chain of thought, and optional hashtags.
 
 ### References
 
@@ -63,7 +61,7 @@ The **References** section follows **SEE ALSO**. It may be empty. When Pandoc ci
 
 ## SEE ALSO
 
-<!-- Add applicable index links, related Zettels, and optional hashtags here. -->
+<!-- Add applicable  related Zettels, index links, and optional hashtags here, in the specified order. -->
 
 ## References
 ```
