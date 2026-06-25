@@ -8,8 +8,8 @@ As of October 2024, I use Obsidian rather than Zettlr. See the [Zettel Wiki](htt
 
 The following self-documenting Zettel template specifies the format of a Zettel. Replace the metavariables `<ID>`, and `<TITLE>`; the angle
 brackets do not appear in a completed Zettel.  `<ID>` is the unique, immutable ID of the Zettel and is identical to the filename without the `.md` extension.
-We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility. We use a keyword followed by a timestamp,
-but our ID formats have changed over time.
+Ww leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values that follow. 
+We use a keyword followed by a timestamp, but our ID formats have changed over time. 
 
 ```markdown
 ---
@@ -38,32 +38,38 @@ The H1 text is identical to the <TITLE> portion of `title` following `<ID> `, ap
 
 ### Alphabetic and numeric index notes
 
-To create Index one or more words from the H1 heading by linking from **SEE ALSO** to the corresponding index note:
+The following `<ID>` and `<TITLE>` values are reserved and are used to create an automatic Zettel index through Obsidian's backlink mechanism. The ideas were chosen to appear at
+the begining of the Obsidan File Explorer panel. For each `<ID> <TITLE>` pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
 
-- `[[0000.0000.0ABC|0000.0000.0ABC A-B-C]]`
-- `[[0000.0000.0DEF|0000.0000.0DEF D-E-F]]`
-- `[[0000.0000.0GHI|0000.0000.0GHI G-H-I]]`
-- `[[0000.0000.0JKL|0000.0000.0JKL J-K-L]]`
-- `[[0000.0000.0MNO|0000.0000.0MNO M-N-O]]`
-- `[[0000.0000.0PQR|0000.0000.0PQR P-Q-R]]`
-- `[[0000.0000.0STU|0000.0000.0STU S-T-U]]`
-- `[[0000.0000.0VWX|0000.0000.0VWX V-W-X]]`
-- `[[0000.0000.00YZ|0000.0000.00YZ Y-Z]]`
-- `[[0000.0000.0009|0000.0000.0009 0-9]]`
+- `0000.0000.0000 INDEX`
+- `0000.0000.0ABC A-B-C`
+- `0000.0000.0DEF D-E-F`
+- `0000.0000.0GHI G-H-I`
+- `0000.0000.0JKL J-K-L`
+- `0000.0000.0MNO M-N-0`
+- `0000.0000.0PQR P-Q-R`
+- `0000.0000.0STU S-T-U`
+- `0000.0000.0VWX V-W-X`
+- `0000.0000.00YZ Y-Z'
+- `0000.0000.0009 0-9`
 
-`[[0000.0000.0000|0000.0000.0000 INDEX]]` is the top-level index note.
+No other `<ID> <TITLE>` combination is an index note.
 
-The **SEE ALSO** section contains links other than those in the main body, including index links, related Zettels, continuations of a chain of thought, and optional hashtags.
-
-### References
-
-The **References** section follows **SEE ALSO**. It may be empty. When Pandoc citations are used, Pandoc can generate its contents.
+Under the **SEE ALSO** subsection of a note, Index one or more words from the H1 heading by adding the corresponding index Wikilink. For example, this Zettel template has the WikiLink
+`[0000.0000.00YZ]` after the **SEE ALSO** subsection. The **SEE ALSO** subsection below includes WIkiLinks of related notes other than those appearing in the main body, 
+one or more alphanumeric index links, and optional hashtags.
 
 ## SEE ALSO
 
-<!-- Add applicable  related Zettels, index links, and optional hashtags here, in the specified order. -->
+ other than those appearing in the main body, index links, and optional hashtags here, in the specified order. -->
+[[0000.0000.00YZ]]
+
+ #optional #hashtag
 
 ## References
+
+<!--The **References** section follows **SEE ALSO**. It may be empty. When Pandoc citations are used, Pandoc can generate its contents. -->
+
 ```
 
 ## License
