@@ -9,23 +9,25 @@ As of October 2024, I stopped using Zettlr and began using Obsidian. See the [Ze
 ## Self-documenting Zettel template
 
 The following self-documenting note specification includes explanatory definitions and index documentation. 
-Your notes will use only YAML front matter, the H1 header, the `## SEE ALSO`, and `## References` sections, with your own content. 
+Your notes will use only the YAML front matter, the H1 header, the `## SEE ALSO`, and `## References` sections with your own content. 
 
-Replace the metavariables `<ID>`, and `<TITLE>`; the angle brackets do not appear in a completed Zettel.  
-The metabvariable `<ID>` is the unique, immutable ID of the Zettel and is identical to the filename without 
+Replace the metavariables `<ID>`, and `<TITLE>`; the angle brackets do not appear in a completed note.  
+The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without 
 the `.md` extension. We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system 
 compatibility, with the exception of the reserved `<ID>` values below. 
 
-In our system, we use a keyword followed by a timestamp, but our ID formats have changed over time. 
+In this system, current notes use a keyword followed by a timestamp, but ID formats have changed over time.
 
 ### YAML Front Matter
 
-Each note begins with YAML front matter beginning on the first line of the document and ending with lines 
-containing three consecutive dashes (`---`), as shown immediately below. The value of the `id:` property 
-is `<ID>`. The value of the `title:` variable consists of `<ID>`, one space, and `<TITLE>`.  
-The `reference-section-title:` property is used by Pandoc 
-to generate bibliography when the Zettel contains Pandoc-style citations. The value of the 
-`reference-section-title:` property is `References`, as shown below.
+Each note begins with YAML front matter: a first line containing three consecutive dashes (`---`), followed by YAML properties, 
+and closed by another line containing three consecutive dashes.
+
+The value of the `id:` property is `<ID>`. The value of the `title:` variable consists of `<ID>`, one space, 
+and `<TITLE>`.   
+
+The `reference-section-title:` property is used by Pandoc to generate a bibliography when the note contains 
+Pandoc-style citations. The value of the `reference-section-title:` property is `References`, as shown below.
 
 ```markdown
 ---
@@ -36,7 +38,7 @@ reference-section-title: References
 # <TITLE>
 
 The Zettel body begins after the H1 heading and ends immediately before the **SEE ALSO** section below.
-The H1 text is identical to the <TITLE> portion of `title` following `<ID> `, apart from trailing spaces.
+The H1 text is identical to the `<TITLE>` portion of `title` following `<ID> `, apart from trailing spaces.
 Titles may change; IDs do not.
 
 ## Definitions
@@ -52,7 +54,7 @@ such as one exported from Zotero.
 
 The following `<ID>` and `<TITLE>` values are reserved and are used to create an
 automatic Zettel index through Obsidian's backlink mechanism. The IDs were chosen to
-appear at the begining of the Obsidan File Explorer panel. For each `<ID> <TITLE>`
+appear at the beginning of the Obsidan File Explorer panel. For each `<ID> <TITLE>`
 pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
 
 - `0000.0000.0000 INDEX`
@@ -72,8 +74,8 @@ No other `<ID> <TITLE>` combination is an index note.
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
 the corresponding index Wikilink. For example, this Zettel template has the WikiLink
 `[[0000.0000.00YZ]]` under the `## SEE ALSO` section. The `## SEE ALSO` subsection may include
-WIkiLinks of related notes other than those appearing in the main body, one or more alphanumeric
-index links, and optional hashtags. 
+WikiLinks of related notes other than those appearing in the main body, one or more alphabetic 
+or numeric index links, and optional hashtags. 
 
 The `## References` section is optional. Here we have included two references on Zettelkasten.
 
