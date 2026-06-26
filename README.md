@@ -9,7 +9,8 @@ As of October 2024, I stopped using Zettlr and began using Obsidian. See the [Ze
 ## Self-documenting Zettel template
 
 The following self-documenting note specification includes explanatory definitions and index documentation. 
-Your notes will use only the YAML front matter, the H1 header, the `## SEE ALSO`, and `## References` sections with your own content. 
+Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. 
+They do not include the explanatory definitions and index documentation below.
 
 Replace the metavariables `<ID>`, and `<TITLE>`; the angle brackets do not appear in a completed note.  
 The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without 
@@ -54,7 +55,7 @@ such as one exported from Zotero.
 
 The following `<ID>` and `<TITLE>` values are reserved and are used to create an
 automatic Zettel index through Obsidian's backlink mechanism. The IDs were chosen to
-appear at the beginning of the Obsidan File Explorer panel. For each `<ID> <TITLE>`
+appear at the beginning of the Obsidian File Explorer panel. For each `<ID> <TITLE>`
 pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
 
 - `0000.0000.0000 INDEX`
@@ -72,12 +73,12 @@ pair below, the Zettelkasten should have exactly one note with that `<ID>` and `
 No other `<ID> <TITLE>` combination is an index note.
 
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
-the corresponding index Wikilink. For example, this Zettel template has the WikiLink
+the corresponding index Wikilink. For example, this note specification  has the WikiLink
 `[[0000.0000.00YZ]]` under the `## SEE ALSO` section. The `## SEE ALSO` subsection may include
 WikiLinks of related notes other than those appearing in the main body, one or more alphabetic 
 or numeric index links, and optional hashtags. 
 
-The `## References` section is optional. Here we have included two references on Zettelkasten.
+The `## References` section is present but may be empty. Here we have included two references on Zettelkasten.
 
 ## SEE ALSO
 
