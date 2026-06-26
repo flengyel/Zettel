@@ -1,21 +1,29 @@
 # Zettel
 
-This repository documents the conventions I use for a single digital Zettelkasten. This system here works with [Obsidian](https://obsidian.md) and Zotero, but may be adapted to other systems. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Note Taking Traditions](https://notemaking.substack.com/).
+This repository documents the conventions I use for a single digital Zettelkasten. This system here works with [Obsidian](https://obsidian.md) and Zotero, but 
+may be adapted to other systems. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). 
+The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Note Taking Traditions](https://notemaking.substack.com/).
 
-As of October 2024, I use Obsidian rather than Zettlr. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for configuration notes and [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten) for some of the rules I follow.
+As of October 2024, I stopped using Zettlr and began using Obsidian. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for configuration notes and [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten) for some of the rules I follow.
 
 ## Self-documenting Zettel template
 
-The following self-documenting Zettel template specifies the format of a Zettel. Replace the metavariables `<ID>`, and `<TITLE>`; the angle brackets do not appear in a completed Zettel.  `<ID>` is the unique, immutable ID of the Zettel 
-and is identical to the filename without the `.md` extension. We leave the format of `<ID>` unspecified except 
-for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values below. 
-We use a keyword followed by a timestamp, but our ID formats have changed over time. 
+The following self-documenting note specification includes explanatory definitions and index documentation. 
+Your notes will use only YAML front matter, the H1 header, the `## SEE ALSO`, and `## References` sections, with your own content. 
 
-### YAML Header
+Replace the metavariables `<ID>`, and `<TITLE>`; the angle brackets do not appear in a completed Zettel.  
+The metabvariable `<ID>` is the unique, immutable ID of the Zettel and is identical to the filename without 
+the `.md` extension. We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system 
+compatibility, with the exception of the reserved `<ID>` values below. 
 
-Each Zettel begins with A YAML header beginning and ending with lines containing three consecutive dashes, 
-as shown immediately below. The value of the `id:` property is `<ID>`. The value of the `title:` variable 
-consists of `<ID>`, one space, and `<TITLE>`.  The `reference-section-title:` property is used by Pandoc 
+In our system, we use a keyword followed by a timestamp, but our ID formats have changed over time. 
+
+### YAML Front Matter
+
+Each note begins with YAML front matter beginning on the first line of the document and ending with lines 
+containing three consecutive dashes (`---`), as shown immediately below. The value of the `id:` property 
+is `<ID>`. The value of the `title:` variable consists of `<ID>`, one space, and `<TITLE>`.  
+The `reference-section-title:` property is used by Pandoc 
 to generate bibliography when the Zettel contains Pandoc-style citations. The value of the 
 `reference-section-title:` property is `References`, as shown below.
 
