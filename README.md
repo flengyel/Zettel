@@ -26,8 +26,7 @@ and closed by another line containing three consecutive dashes.
 
 The value of the `id:` property is `<ID>`. The value of the `title:` property consists of `<ID>`, one space, and `<TITLE>`.
 
-The `reference-section-title:` property is used by Pandoc as the heading for a generated bibliography when the note 
-contains Pandoc-style citations. The value of the `reference-section-title:` property is `References`, as shown below.
+The `reference-section-title:` property is used by Pandoc as the heading for a generated bibliography when the note contains Pandoc-style citations. The value of the `reference-section-title:` property is `References`, as shown below.
 
 ```markdown
 ---
@@ -72,7 +71,7 @@ pair below, the Zettelkasten should have exactly one note with that `<ID>` and `
 No other `<ID> <TITLE>` combination is an index note.
 
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
-the corresponding index Wikilink. For example, this note specification has the WikiLink
+the corresponding index WikiLink. For example, this note specification has the WikiLink
 `[[0000.0000.00YZ]]` under the `## SEE ALSO` section. The `## SEE ALSO` section may include
 WikiLinks of related notes other than those appearing in the main body, one or more alphabetic 
 or numeric index links, and optional hashtags. 
