@@ -6,7 +6,7 @@ The Zettelkasten Method is documented at [Introduction to the Zettelkasten Metho
 
 As of October 2024, I stopped using Zettlr and began using Obsidian. See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for configuration notes and [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten) for some of the rules I follow.
 
-## Self-documenting Zettel template
+## Self-documenting note specification
 
 The following self-documenting note specification includes explanatory definitions and index documentation. 
 Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. 
