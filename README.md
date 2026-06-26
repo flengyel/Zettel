@@ -1,6 +1,6 @@
 # Zettel
 
-This repository documents the conventions I use for a single digital Zettelkasten. The system described here works with [Obsidian](https://obsidian.md) and Zotero, but 
+This repository documents the conventions I use for a single digital Zettelkasten. The system described here works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but 
 may be adapted to other systems. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki). 
 The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Note Taking Traditions](https://notemaking.substack.com/).
 
