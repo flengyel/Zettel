@@ -92,5 +92,3 @@ This README and the Zettel Wiki are licensed under the [Creative Commons Attribu
 **Notice of License Termination:** Pursuant to Section 6 of the CC BY-SA 4.0, "Your rights under this Public License terminate automatically for failure to comply with this Public License." Upon such termination, all permissions granted under this license cease, and the work remains subject to standard copyright protection.
 
 The code is licensed under the GNU General Public License, version 3, 29 June 2007.
-
-
