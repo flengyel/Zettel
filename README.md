@@ -9,13 +9,9 @@ As of October 2024, I stopped using [Zettlr](https://www.zettlr.com/) and began 
 ## Self-documenting note specification
 
 The following self-documenting note specification includes explanatory definitions and index documentation. 
-Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. 
-They do not include the explanatory definitions and index documentation below.
+Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. They do not include the explanatory definitions and index documentation below.
 
-Replace the metavariables `<ID>` and `<TITLE>`; the angle brackets do not appear in a completed note.  
-The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without 
-the `.md` extension. We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system 
-compatibility, with the exception of the reserved `<ID>` values below. 
+Replace the metavariables `<ID>` and `<TITLE>`; the angle brackets do not appear in a completed note. The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without the `.md` extension. We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values below.
 
 In this system, current notes use a keyword followed by a timestamp, but ID formats have changed over time.
 
