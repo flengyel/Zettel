@@ -1,10 +1,18 @@
 # Zettel
 
-This repository documents the conventions I follow for a single digital Zettelkasten. The system described here works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems. For software configuration notes, definitions of terms, and more examples, see the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
+This repository documents the conventions I follow for a single digital Zettelkasten. The system described here works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems. 
+
+## Scope
+
+This README is a note-format specification. It documents the conventions used in this repository for one digital Zettelkasten: the self-documenting note template, the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
+
+It does not attempt to define the Zettelkasten method in general, give necessary and sufficient conditions for being a Zettelkasten, or settle methodological questions such as Folgezettel, atomicity, question-notes, normative claims, proposition form, or Luhmann orthodoxy.
+
+Operational matters, definitions of terms, examples, software configuration, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
+
+## Zettelkasten on the Internet
 
 The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Note Taking Traditions](https://notemaking.substack.com/).
-
-As of October 2024, I stopped using [Zettlr](https://www.zettlr.com/) and began using [Obsidian](https://obsidian.md). See the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) for configuration notes and [Guidelines for Maintaining a Digital Zettelkasten](https://github.com/flengyel/Zettel/wiki/Guidelines-for-Maintaining-a-Digital-Zettelkasten) for some of the rules I follow.
 
 ## Self-documenting note specification
 
