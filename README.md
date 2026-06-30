@@ -10,7 +10,7 @@ It does not attempt to define the Zettelkasten method in general, give necessary
 
 Operational matters, definitions of terms, examples, software configuration, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
 
-## Zettelkasten on the Internet
+### Background
 
 The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Note Taking Traditions](https://notemaking.substack.com/).
 
