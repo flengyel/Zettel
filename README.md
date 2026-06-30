@@ -1,14 +1,12 @@
 # Zettel
 
-This repository documents the conventions I follow for a single digital Zettelkasten. The system described here works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems. 
+This repository specifies the Markdown note format used in my digital Zettelkasten. The format works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems.
 
 ## Scope
 
-This README is a note-format specification. It documents the conventions used in this repository for one digital Zettelkasten: the self-documenting note template, the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
+This README specifies the self-documenting note template: the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
 
-It does not attempt to define the Zettelkasten method in general, give necessary and sufficient conditions for being a Zettelkasten, or settle methodological questions such as Folgezettel, atomicity, question-notes, normative claims, proposition form, or Luhmann orthodoxy.
-
-Operational matters, definitions of terms, examples, software configuration, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
+Operational considerations, definitions, examples, software configuration, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
 
 ### Background
 
