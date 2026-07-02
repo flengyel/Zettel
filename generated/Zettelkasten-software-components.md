@@ -30,7 +30,7 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 |---|---|---|
 | Python | repository tooling | Python 3.14.4 |
 | Git | repository and Wiki updates | git version 2.55.0.windows.1 |
-| Visual Studio Code | editing repository scripts, templates, and Markdown files | not detected |
+| Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.126 |
 
 ## Obsidian plugins
 
