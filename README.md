@@ -1,12 +1,21 @@
 # Zettel
 
-This repository contains the Markdown note-format specification used in my digital Zettelkasten, together with supporting templates, scripts, and export files. The note format works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems.
+This repository contains a Markdown note-format specification for my digital Zettelkasten, together with supporting templates, scripts, validators, generated documentation, and export files. The note format works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems.
 
 ## Scope
 
-This README specifies the self-documenting note template: the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
+This README specifies the Markdown note format: the self-documenting note template, the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
 
-Operational considerations, definitions, examples, software configuration, repository tools, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
+## Repository contents
+
+- `README.md` — Markdown note-format specification.
+- `templates/` — Obsidian Templater templates for note creation and WikiLink title annotation.
+- `python/` — validators and documentation generators.
+- `scripts/` — bootstrapping scripts for creating the reserved index pages.
+- `pandoc/` and `LaTeX/` — export and typesetting support files.
+- `generated/` — generated documentation artifacts.
+
+Operational considerations, definitions, examples, software configuration, repository-tool documentation, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
 
 ### Background
 
