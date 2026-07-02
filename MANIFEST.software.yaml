@@ -1,0 +1,97 @@
+title: Zettelkasten software environment and repository tools
+last_checked: 2026-07-02
+
+vault_path: "C:/Users/fleng/Zettelkasten"
+
+external_software:
+  - name: Obsidian
+    role: note editor and slip-box interface
+    probe:
+      type: winget
+      id: Obsidian.Obsidian
+
+  - name: Zotero
+    role: reference manager
+    probe:
+      type: winget
+      id: DigitalScholar.Zotero
+
+  - name: Pandoc
+    role: Markdown export and citation processing
+    probe:
+      type: command
+      command: ["pandoc", "--version"]
+
+  - name: MiKTeX
+    role: LaTeX distribution for PDF export
+    probe:
+      type: command
+      command: ["miktex", "--version"]
+
+  - name: Python
+    role: repository tooling
+    probe:
+      type: command
+      command: ["py", "--version"]
+
+  - name: Git
+    role: repository and Wiki updates
+    probe:
+      type: command
+      command: ["git", "--version"]
+
+  - name: Visual Studio Code
+    role: editing repository scripts, templates, and Markdown files
+    probe:
+      type: command
+      command: ["code", "--version"]
+
+obsidian_plugins:
+  - id: templater-obsidian
+    name: Templater
+    role: note creation and WikiLink-title insertion
+
+  - id: obsidian-front-matter-title-plugin
+    name: Front Matter Title
+    role: display YAML title values in Obsidian views
+
+  - id: obsidian-pandoc-reference-list
+    name: Pandoc Reference List
+    role: display Pandoc-style citations from bibliography data
+
+repository_files:
+  - path: templates/NewFileTemplate.md
+    category: repository_support
+    role: Obsidian Templater template for creating a new Zettel
+
+  - path: templates/WikilinkTitle.md
+    category: repository_support
+    role: Obsidian Templater template for appending note titles to WikiLinks
+
+  - path: python/zettel_validate.py
+    category: repository_support
+    role: validates completed Markdown Zettels
+
+  - path: python/README-validator.md
+    category: repository_support
+    role: validator usage notes
+
+  - path: python/test_zettel_validate.py
+    category: repository_support
+    role: validator unit tests
+
+  - path: python/zk_validation_stats.py
+    category: local_diagnostics
+    role: local validation/statistics script
+
+  - path: python/word_count_histogram.py
+    category: local_diagnostics
+    role: local word-count histogram script
+
+  - path: pandoc/template.tex
+    category: repository_support
+    role: modified Pandoc LaTeX template
+
+  - path: LaTeX/LatexColors.incl.sty
+    category: repository_support
+    role: LaTeX color style file
