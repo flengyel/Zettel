@@ -8,11 +8,11 @@ Last checked: 2026-07-02
 
 | Component | Role | Version probe |
 |---|---|---|
-| Obsidian | note editor and slip-box interface | not detected |
-| Zotero | reference manager | not detected |
-| Pandoc | Markdown export and citation processing | pandoc 3.7.0.1 |
-| MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.2) |
-| Python | repository tooling | Python 3.13.5 |
+| Obsidian | note editor and slip-box interface | 1.12.7 |
+| Zotero | reference manager | 9.0.5 |
+| Pandoc | Markdown export and citation processing | pandoc 3.9.0.2 |
+| MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.5) |
+| Python | repository tooling | Python 3.14.4 |
 | Git | repository and Wiki updates | git version 2.55.0.windows.1 |
 | Visual Studio Code | editing repository scripts, templates, and Markdown files | not detected |
 
@@ -20,6 +20,15 @@ Last checked: 2026-07-02
 
 | Plugin | Role | Version |
 |---|---|---|
+
+## Sync and replication
+
+These components replicate the Zettelkasten vault. They are operational infrastructure, not note-authoring tools.
+
+| Component | Host | Role | Version/status |
+|---|---|---|---|
+| Syncthing | Raspberry Pi | always-on replication endpoint for the Zettelkasten vault; functions like a NAS | manual |
+| SyncTrayzor | Windows workstation | Windows tray interface used to monitor or manage synchronization | manual |
 | Templater | note creation and WikiLink-title insertion | 2.20.5 |
 | Front Matter Title | display YAML title values in Obsidian views | 3.13.1 |
 | Pandoc Reference List | display Pandoc-style citations from bibliography data | 2.0.25 |

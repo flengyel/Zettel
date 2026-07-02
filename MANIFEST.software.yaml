@@ -3,19 +3,34 @@ last_checked: 2026-07-02
 
 vault_path: "C:/Users/fleng/Zettelkasten"
 
+include_h1: false
+
 external_software:
   - name: Obsidian
     role: note editor and slip-box interface
     probe:
-      type: winget
-      id: Obsidian.Obsidian
+      type: file_version
+      paths:
+        - "%LOCALAPPDATA%/Obsidian/Obsidian.exe"
+        - "%LOCALAPPDATA%/Programs/Obsidian/Obsidian.exe"
 
   - name: Zotero
     role: reference manager
     probe:
-      type: winget
-      id: DigitalScholar.Zotero
+      type: file_version
+      paths:
+        - "%PROGRAMFILES%/Zotero/zotero.exe"
+        - "%LOCALAPPDATA%/Programs/Zotero/zotero.exe"
+        - "%LOCALAPPDATA%/Zotero/zotero.exe"
 
+  - name: Visual Studio Code
+    role: editing repository scripts, templates, and Markdown files
+    probe:
+      type: file_version
+      paths:
+        - "%LOCALAPPDATA%/Programs/Microsoft VS Code/Code.exe"
+        - "%PROGRAMFILES%/Microsoft VS Code/Code.exe"
+  
   - name: Pandoc
     role: Markdown export and citation processing
     probe:
@@ -40,12 +55,7 @@ external_software:
       type: command
       command: ["git", "--version"]
 
-  - name: Visual Studio Code
-    role: editing repository scripts, templates, and Markdown files
-    probe:
-      type: command
-      command: ["code", "--version"]
-
+  
 obsidian_plugins:
   - id: templater-obsidian
     name: Templater
@@ -95,3 +105,16 @@ repository_files:
   - path: LaTeX/LatexColors.incl.sty
     category: repository_support
     role: LaTeX color style file
+
+sync_and_replication:
+  - name: Syncthing
+    host: Raspberry Pi
+    role: always-on replication endpoint for the Zettelkasten vault; functions like a NAS
+    probe:
+      type: manual
+
+  - name: SyncTrayzor
+    host: Windows workstation
+    role: Windows tray interface used to monitor or manage synchronization
+    probe:
+      type: manual

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import os
 import argparse
 import json
 import re
@@ -76,6 +77,38 @@ def obsidian_plugin_version(vault_path: Path, plugin_id: str) -> str:
 
     return str(data.get("version", "")).strip()
 
+def file_version(paths: list[str]) -> str:
+    for raw_path in paths:
+        if not raw_path:
+            continue
+
+        expanded = os.path.expandvars(raw_path)
+        path = Path(expanded)
+
+        if not path.is_file():
+            continue
+
+        try:
+            result = subprocess.run(
+                [
+                    "powershell",
+                    "-NoProfile",
+                    "-Command",
+                    "(Get-Item -LiteralPath $args[0]).VersionInfo.ProductVersion",
+                    str(path),
+                ],
+                text=True,
+                capture_output=True,
+                check=False,
+                timeout=8,
+            )
+        except (OSError, subprocess.TimeoutExpired):
+            return str(path)
+
+        version = result.stdout.strip()
+        return version or str(path)
+
+    return ""
 
 def probe_version(item: dict[str, Any]) -> str:
     probe = item.get("probe") or {}
@@ -89,6 +122,12 @@ def probe_version(item: dict[str, Any]) -> str:
 
     if probe_type == "manual":
         return str(item.get("version") or "")
+    
+    if probe_type == "file_version":
+        paths = probe.get("paths")
+        if paths is None:
+            paths = [probe.get("path", "")]
+        return file_version([str(path) for path in paths])
 
     return str(item.get("version") or "")
 
@@ -117,8 +156,10 @@ def render_markdown(data: dict[str, Any], repo_root: Path) -> str:
 
     lines: list[str] = []
 
-    lines.append(f"# {data.get('title', 'Zettelkasten software environment')}")
-    lines.append("")
+    if data.get("include_h1", True):
+        lines.append(f"# {data.get('title', 'Zettelkasten software environment')}")
+        lines.append("")
+
     lines.append("This page records the software environment and repository tools used with my digital Zettelkasten.")
     lines.append("")
     lines.append(f"Last checked: {data.get('last_checked', '')}")
@@ -138,6 +179,25 @@ def render_markdown(data: dict[str, Any], repo_root: Path) -> str:
     lines.append("")
     lines.append("| Plugin | Role | Version |")
     lines.append("|---|---|---|")
+
+    sync_items = data.get("sync_and_replication", [])
+    if sync_items:
+        lines.append("")
+        lines.append("## Sync and replication")
+        lines.append("")
+        lines.append("These components replicate the Zettelkasten vault. They are operational infrastructure, not note-authoring tools.")
+        lines.append("")
+        lines.append("| Component | Host | Role | Version/status |")
+        lines.append("|---|---|---|---|")
+
+        for item in sync_items:
+            version = probe_version(item) or "manual"
+            lines.append(
+                f"| {item.get('name', '')} | "
+                f"{item.get('host', '')} | "
+                f"{item.get('role', '')} | "
+                f"{version} |"
+            )
 
     for item in data.get("obsidian_plugins", []):
         plugin_id = str(item.get("id", ""))
