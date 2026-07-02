@@ -1,5 +1,3 @@
-# Zettelkasten software environment and repository tools
-
 This page records the software environment and repository tools used with my digital Zettelkasten.
 
 Last checked: 2026-07-02
@@ -8,13 +6,13 @@ Last checked: 2026-07-02
 
 | Component | Role | Version probe |
 |---|---|---|
-| Obsidian | note editor and slip-box interface | 1.12.7 |
-| Zotero | reference manager | 9.0.5 |
+| Obsidian | note editor and slip-box interface | C:\Users\fleng\AppData\Local\Programs\Obsidian\Obsidian.exe |
+| Zotero | reference manager | C:\Program Files\Zotero\zotero.exe |
+| Visual Studio Code | editing repository scripts, templates, and Markdown files | C:\Users\fleng\AppData\Local\Programs\Microsoft VS Code\Code.exe |
 | Pandoc | Markdown export and citation processing | pandoc 3.9.0.2 |
 | MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.5) |
 | Python | repository tooling | Python 3.14.4 |
 | Git | repository and Wiki updates | git version 2.55.0.windows.1 |
-| Visual Studio Code | editing repository scripts, templates, and Markdown files | not detected |
 
 ## Obsidian plugins
 
