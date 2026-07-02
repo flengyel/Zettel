@@ -1,20 +1,34 @@
-title: Zettelkasten software environment and repository tools
+title: Zettelkasten software and repository tools
 last_checked: 2026-07-02
+include_h1: false
 
 vault_path: "C:/Users/fleng/Zettelkasten"
 
-include_h1: false
+component_sections:
+  - key: zettelkasten_software
+    heading: Zettelkasten software
+    description: Software used directly with the Zettelkasten.
 
-external_software:
+  - key: export_software
+    heading: Export software
+    description: Software used to export notes and work with LaTeX or PDF output.
+
+  - key: repository_tools
+    heading: Repository tools
+    description: Software used to maintain this repository and generated Wiki documentation. These tools are not required merely to use the Zettelkasten.
+
+components:
   - name: Obsidian
+    section: zettelkasten_software
     role: note editor and slip-box interface
     probe:
       type: file_version
       paths:
-        - "%LOCALAPPDATA%/Obsidian/Obsidian.exe"
         - "%LOCALAPPDATA%/Programs/Obsidian/Obsidian.exe"
+        - "%LOCALAPPDATA%/Obsidian/Obsidian.exe"
 
   - name: Zotero
+    section: zettelkasten_software
     role: reference manager
     probe:
       type: file_version
@@ -23,39 +37,67 @@ external_software:
         - "%LOCALAPPDATA%/Programs/Zotero/zotero.exe"
         - "%LOCALAPPDATA%/Zotero/zotero.exe"
 
-  - name: Visual Studio Code
-    role: editing repository scripts, templates, and Markdown files
+  - name: Better BibTeX
+    section: zettelkasten_software
+    role: Zotero add-on for stable citation keys and bibliography export
+    version: manual
     probe:
-      type: file_version
-      paths:
-        - "%LOCALAPPDATA%/Programs/Microsoft VS Code/Code.exe"
-        - "%PROGRAMFILES%/Microsoft VS Code/Code.exe"
-  
+      type: manual
+
   - name: Pandoc
+    section: export_software
     role: Markdown export and citation processing
     probe:
       type: command
       command: ["pandoc", "--version"]
 
   - name: MiKTeX
+    section: export_software
     role: LaTeX distribution for PDF export
     probe:
       type: command
       command: ["miktex", "--version"]
 
+  - name: WinEdt 11
+    section: export_software
+    role: LaTeX editor used with exported LaTeX or PDF output
+    probe:
+      type: file_version
+      paths:
+        - "%USERPROFILE%/WinEdt Team/WinEdt 11/WinEdt.exe"
+        - "%USERPROFILE%/WinEdt Team/WinEdt 11/winedt.exe"
+        - "C:/Users/fleng/WinEdt Team/WinEdt 11/WinEdt.exe"
+        - "C:/Users/fleng/WinEdt Team/WinEdt 11/winedt.exe"
+        - "%PROGRAMFILES%/WinEdt Team/WinEdt 11/WinEdt.exe"
+        - "%PROGRAMFILES%/WinEdt Team/WinEdt 11/winedt.exe"
+        - "%PROGRAMFILES(X86)%/WinEdt Team/WinEdt 11/WinEdt.exe"
+        - "%PROGRAMFILES(X86)%/WinEdt Team/WinEdt 11/winedt.exe"
+
   - name: Python
+    section: repository_tools
     role: repository tooling
     probe:
       type: command
       command: ["py", "--version"]
 
   - name: Git
+    section: repository_tools
     role: repository and Wiki updates
     probe:
       type: command
       command: ["git", "--version"]
 
-  
+  - name: Visual Studio Code
+    section: repository_tools
+    role: editing repository scripts, templates, and Markdown files
+    probe:
+      type: file_version
+      paths:
+        - "%LOCALAPPDATA%/Programs/Microsoft VS Code/Code.exe"
+        - "%USERPROFILE%/AppData/Local/Programs/Microsoft VS Code/Code.exe"
+        - "%PROGRAMFILES%/Microsoft VS Code/Code.exe"
+        - "%PROGRAMFILES(X86)%/Microsoft VS Code/Code.exe"
+
 obsidian_plugins:
   - id: templater-obsidian
     name: Templater
@@ -68,6 +110,34 @@ obsidian_plugins:
   - id: obsidian-pandoc-reference-list
     name: Pandoc Reference List
     role: display Pandoc-style citations from bibliography data
+
+sync_and_replication:
+  - name: Syncthing
+    host: Raspberry Pi
+    role: always-on replication endpoint for the Zettelkasten vault; functions like a NAS
+    version: manual
+    probe:
+      type: manual
+
+  - name: SyncTrayzor
+    host: Windows workstation
+    role: Windows tray interface used to monitor or manage synchronization
+    version: manual
+    probe:
+      type: manual
+
+repository_file_sections:
+  - key: repository_support
+    heading: Repository support files
+    description: Files that support note creation, validation, export, or repository documentation.
+
+  - key: local_diagnostics
+    heading: Local diagnostics
+    description: Local scripts for inspecting the vault. These may contain local paths and are not portable tools.
+
+  - key: historical
+    heading: Historical notes
+    description: Historical files retained for provenance.
 
 repository_files:
   - path: templates/NewFileTemplate.md
@@ -90,14 +160,6 @@ repository_files:
     category: repository_support
     role: validator unit tests
 
-  - path: python/zk_validation_stats.py
-    category: local_diagnostics
-    role: local validation/statistics script
-
-  - path: python/word_count_histogram.py
-    category: local_diagnostics
-    role: local word-count histogram script
-
   - path: pandoc/template.tex
     category: repository_support
     role: modified Pandoc LaTeX template
@@ -106,15 +168,10 @@ repository_files:
     category: repository_support
     role: LaTeX color style file
 
-sync_and_replication:
-  - name: Syncthing
-    host: Raspberry Pi
-    role: always-on replication endpoint for the Zettelkasten vault; functions like a NAS
-    probe:
-      type: manual
+  - path: python/zk_validation_stats.py
+    category: local_diagnostics
+    role: local validation/statistics script
 
-  - name: SyncTrayzor
-    host: Windows workstation
-    role: Windows tray interface used to monitor or manage synchronization
-    probe:
-      type: manual
+  - path: python/word_count_histogram.py
+    category: local_diagnostics
+    role: local word-count histogram script
