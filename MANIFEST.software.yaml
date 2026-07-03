@@ -1,18 +1,15 @@
 title: Zettelkasten software and repository tools
 last_checked: 2026-07-02
 include_h1: false
-
 vault_path: "C:/Users/fleng/Zettelkasten"
 
 component_sections:
   - key: zettelkasten_software
     heading: Zettelkasten software
     description: Software used directly with the Zettelkasten.
-
   - key: export_software
     heading: Export software
     description: Software used to export notes and work with LaTeX or PDF output.
-
   - key: repository_tools
     heading: Repository tools
     description: Software used to maintain this repository and generated Wiki documentation. These tools are not required merely to use the Zettelkasten.
@@ -98,84 +95,7 @@ components:
         - "%PROGRAMFILES%/Microsoft VS Code/Code.exe"
         - "%PROGRAMFILES(X86)%/Microsoft VS Code/Code.exe"
 
-obsidian_plugins:
-  - id:   obsidian-advanced-tables
-    name: Advanced Tables
-    role: improved table navigation, formatting, and editing
-
-  - id:   obsidian-argdown-plugin
-    name: Argument Map with Argdown
-    role: create argument maps from notes using argdown syntax
-
-  - id:   better-word-count
-    name: Better Word Count
-    role: display word counts of selected text 
- 
-  - id:   book-search-plugin
-    name: Book Search
-    role: search for books in Google Books, Open Library, etc
-
-  - id:   calendar
-    name: Calendar
-    role: calendar view for daily notes
-
-  - id:   obsidian-enhancing-export
-    name: Enhancing Export
-    role: export LaTeX, PDF, Markdown, ePub, etc
-
-  - id:   obsidian-file-explorer-note-count
-    name: File Explorer Note Count
-    role: display note counts in the file explorer
-
-  - id:   obsidian-find-orphaned-files-and-broken-links
-    name: Find Orphaned Files and Broken Links
-    role: find orphaned files and broken links in the vault
-
-  - id:   obsidian-folder-links
-    name: Folder Links
-    role: click links to open folders in navagation
-
-  - id:   obsidian-front-matter-title-plugin
-    name: Front Matter Title
-    role: display YAML title value as note filename in explorer, graph, search
-
-  - id:  lazy-plugins
-    name: Lazy Loader
-    role: improve Obsidian performance by loading plugins with a delay
-
-  - id: obsidian-math-indicator-changer
-    name: Math Indicator Changer
-    role: change the math indicator from LaTeX-style parentheses to dollar signs for Obsidian's MathJax rendering
-
-  - id: obsidian-pandoc-reference-list
-    name: Pandoc Reference List
-    role: display Pandoc-style citations from bibliography data
-
-  - id: obsidian-periodic-notes
-    name: Periodic Notes
-    role: manage daily, weekly, monthly, and yearly notes
-
-  - id: obsidian-quckiadd
-    name: Quick Add
-    role: quickly add new pages 
-
-  - id: obsidian-readability-score
-    name: Readability Score
-    role: display Flesch Reading Ease scores for notes 
-    
-    id: obsidian-style-settings
-    name: Style Settings
-    role: manage CSS snippets and themes
-
-  - id: templater-obsidian
-    name: Templater
-    role: note creation and WikiLink-title insertion
-
-  - id: obsidian-tikz-jax
-    name: TikZ Jax
-    role: display TikZ LaTeX diagrams in Obsidian
-
-
+obsidian_plugins: true
 
 sync_and_replication:
   - name: Syncthing
@@ -196,14 +116,9 @@ repository_file_sections:
   - key: repository_support
     heading: Repository support files
     description: Files that support note creation, validation, export, or repository documentation.
-
   - key: local_diagnostics
     heading: Local diagnostics
     description: Local scripts for inspecting the vault. These may contain local paths and are not portable tools.
-
-  - key: historical
-    heading: Historical notes
-    description: Historical files retained for provenance.
 
 repository_files:
   - path: templates/NewFileTemplate.md
@@ -226,6 +141,10 @@ repository_files:
     category: repository_support
     role: validator unit tests
 
+  - path: python/gen_software_components.py
+    category: repository_support
+    role: generates the software environment Wiki page from MANIFEST.software.yaml
+
   - path: pandoc/template.tex
     category: repository_support
     role: modified Pandoc LaTeX template
@@ -233,6 +152,10 @@ repository_files:
   - path: LaTeX/LatexColors.incl.sty
     category: repository_support
     role: LaTeX color style file
+
+  - path: scripts/create-index-notes.bat
+    category: repository_support
+    role: creates missing reserved alphanumeric index notes for a new Zettelkasten
 
   - path: python/zk_validation_stats.py
     category: local_diagnostics

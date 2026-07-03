@@ -182,8 +182,10 @@ def windows_exe_version(path: Path) -> str:
         build = info.dwProductVersionLS >> 16
         patch = info.dwProductVersionLS & 0xFFFF
         parts = [major, minor, build, patch]
+
         while len(parts) > 2 and parts[-1] == 0:
             parts.pop()
+
         return ".".join(str(part) for part in parts)
     except Exception:
         return ""
@@ -196,12 +198,12 @@ def nearby_metadata_version(exe_path: Path) -> str:
     application.ini-based applications, but may legitimately fail.
     """
     app_dir = exe_path.parent
-
     json_candidates = [
         app_dir / "resources" / "app" / "package.json",
         app_dir / "resources" / "app.asar.unpacked" / "package.json",
         app_dir / "package.json",
     ]
+
     version = read_json_version([str(path) for path in json_candidates])
     if version:
         return version
@@ -265,17 +267,37 @@ def probe_version(item: dict[str, Any]) -> str:
     return fallback
 
 
-def obsidian_plugin_version(vault_path: Path, plugin_id: str) -> str:
-    manifest = vault_path / ".obsidian" / "plugins" / plugin_id / "manifest.json"
-    if not manifest.is_file():
-        return ""
+def read_obsidian_plugin_manifests(vault_path: Path) -> list[dict[str, str]]:
+    plugins_dir = vault_path / ".obsidian" / "plugins"
+    if not plugins_dir.is_dir():
+        return []
 
-    try:
-        data = json.loads(manifest.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return ""
+    plugins: list[dict[str, str]] = []
 
-    return str(data.get("version", "")).strip()
+    for manifest in sorted(plugins_dir.glob("*/manifest.json")):
+        try:
+            data = json.loads(manifest.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+
+        if not isinstance(data, dict):
+            continue
+
+        plugin_id = str(data.get("id") or manifest.parent.name).strip()
+        name = str(data.get("name") or plugin_id).strip()
+        description = str(data.get("description") or "").strip()
+        version = str(data.get("version") or "").strip()
+
+        plugins.append(
+            {
+                "id": plugin_id,
+                "name": name,
+                "description": description,
+                "version": version,
+            }
+        )
+
+    return sorted(plugins, key=lambda item: item["name"].casefold())
 
 
 def repository_status(repo_root: Path, path_text: str) -> str:
@@ -283,7 +305,7 @@ def repository_status(repo_root: Path, path_text: str) -> str:
 
 
 def table_cell(value: Any) -> str:
-    text = str(value or "").replace("\r\n", " ").replace("\n", " ").strip()
+    text = str(value or "").replace("\r\n", " ").replace("\r", " ").replace("\n", " ").strip()
     return text.replace("|", r"\|")
 
 
@@ -303,10 +325,13 @@ def section_list(raw_sections: list[dict[str, Any]], fallback: list[Section]) ->
                 description=str(item.get("description") or "").strip(),
             )
         )
+
     return result or fallback
 
 
-def grouped_by_key(items: list[dict[str, Any]], key_name: str, default: str) -> dict[str, list[dict[str, Any]]]:
+def grouped_by_key(
+    items: list[dict[str, Any]], key_name: str, default: str
+) -> dict[str, list[dict[str, Any]]]:
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for item in items:
         grouped[str(item.get(key_name) or default)].append(item)
@@ -325,6 +350,7 @@ def render_component_section(lines: list[str], section: Section, items: list[dic
 
     lines.append("| Component | Role | Version/status |")
     lines.append("|---|---|---|")
+
     for item in items:
         version = probe_version(item) or "not detected"
         lines.append(
@@ -333,30 +359,37 @@ def render_component_section(lines: list[str], section: Section, items: list[dic
             f"{table_cell(item.get('role', ''))} | "
             f"{table_cell(version)} |"
         )
+
     lines.append("")
 
 
 def render_obsidian_plugins(lines: list[str], data: dict[str, Any], vault_path: Path) -> None:
-    plugins = list(data.get("obsidian_plugins", []))
-    if not plugins:
+    if data.get("obsidian_plugins") is not True:
         return
+
+    plugins = read_obsidian_plugin_manifests(vault_path)
 
     lines.append("## Obsidian plugins")
     lines.append("")
-    lines.append("Plugins used inside the Obsidian vault.")
+    lines.append("Plugins installed inside the Obsidian vault.")
     lines.append("")
-    lines.append("| Plugin | Role | Version |")
+
+    if not plugins:
+        lines.append("No Obsidian plugin manifests were found.")
+        lines.append("")
+        return
+
+    lines.append("| Plugin | Description | Version |")
     lines.append("|---|---|---|")
 
     for item in plugins:
-        plugin_id = str(item.get("id", ""))
-        version = obsidian_plugin_version(vault_path, plugin_id) or "not detected"
         lines.append(
             "| "
-            f"{table_cell(item.get('name', plugin_id))} | "
-            f"{table_cell(item.get('role', ''))} | "
-            f"{table_cell(version)} |"
+            f"{table_cell(item.get('name', ''))} | "
+            f"{table_cell(item.get('description', ''))} | "
+            f"{table_cell(item.get('version', 'not detected') or 'not detected')} |"
         )
+
     lines.append("")
 
 
@@ -367,7 +400,9 @@ def render_sync(lines: list[str], data: dict[str, Any]) -> None:
 
     lines.append("## Sync and replication")
     lines.append("")
-    lines.append("These components replicate the Zettelkasten vault. They are operational infrastructure, not note-authoring tools.")
+    lines.append(
+        "These components replicate the Zettelkasten vault and belong to operational infrastructure."
+    )
     lines.append("")
     lines.append("| Component | Host | Role | Version/status |")
     lines.append("|---|---|---|---|")
@@ -381,14 +416,27 @@ def render_sync(lines: list[str], data: dict[str, Any]) -> None:
             f"{table_cell(item.get('role', ''))} | "
             f"{table_cell(version)} |"
         )
+
     lines.append("")
 
 
 def render_repository_files(lines: list[str], data: dict[str, Any], repo_root: Path) -> None:
     fallback_sections = [
-        Section("repository_support", "Repository support files", "Files that support note creation, validation, export, or repository documentation."),
-        Section("local_diagnostics", "Local diagnostics", "Local scripts for inspecting the vault. These may contain local paths and are not portable tools."),
-        Section("historical", "Historical notes", "Historical files retained for provenance."),
+        Section(
+            "repository_support",
+            "Repository support files",
+            "Files that support note creation, validation, export, or repository documentation.",
+        ),
+        Section(
+            "local_diagnostics",
+            "Local diagnostics",
+            "Local scripts for inspecting the vault. These may contain local paths and are not portable tools.",
+        ),
+        Section(
+            "historical",
+            "Historical notes",
+            "Historical files retained for provenance.",
+        ),
     ]
     sections = section_list(list(data.get("repository_file_sections", [])), fallback_sections)
     grouped = grouped_by_key(list(data.get("repository_files", [])), "category", "repository_support")
@@ -406,6 +454,7 @@ def render_repository_files(lines: list[str], data: dict[str, Any], repo_root: P
 
         lines.append("| Path | Role | Status |")
         lines.append("|---|---|---|")
+
         for item in items:
             path = str(item.get("path", ""))
             status = repository_status(repo_root, path)
@@ -415,47 +464,122 @@ def render_repository_files(lines: list[str], data: dict[str, Any], repo_root: P
                 f"{table_cell(item.get('role', ''))} | "
                 f"{table_cell(status)} |"
             )
+
         lines.append("")
+
+
+
+def render_component_key(
+    lines: list[str],
+    sections_by_key: dict[str, Section],
+    components_by_section: dict[str, list[dict[str, Any]]],
+    rendered_component_sections: set[str],
+    key: str,
+) -> None:
+    section = sections_by_key.get(key)
+    if section is None:
+        return
+
+    render_component_section(lines, section, components_by_section.get(key, []))
+    rendered_component_sections.add(key)
+
+
+def render_remaining_component_sections(
+    lines: list[str],
+    component_sections: list[Section],
+    components_by_section: dict[str, list[dict[str, Any]]],
+    rendered_component_sections: set[str],
+) -> None:
+    for section in component_sections:
+        if section.key in rendered_component_sections:
+            continue
+        render_component_section(lines, section, components_by_section.get(section.key, []))
+        rendered_component_sections.add(section.key)
 
 
 def render_markdown(data: dict[str, Any], repo_root: Path) -> str:
     vault_path = expand_path(str(data.get("vault_path", "")))
-
     lines: list[str] = []
 
     if data.get("include_h1", True):
         lines.append(f"# {data.get('title', 'Zettelkasten software environment')}")
         lines.append("")
 
-    lines.append("This page records the software environment, synchronization infrastructure, and repository tools used with my digital Zettelkasten.")
+    lines.append(
+        "This page records the software environment, synchronization components, "
+        "and repository tools used with my digital Zettelkasten."
+    )
     lines.append("")
     lines.append(f"Last checked: {data.get('last_checked', '')}")
     lines.append("")
 
     default_component_sections = [
-        Section("zettelkasten_software", "Zettelkasten software", "Software used directly with the Zettelkasten."),
-        Section("export_software", "Export software", "Software used to export notes and work with LaTeX or PDF output."),
-        Section("repository_tools", "Repository tools", "Software used to maintain this repository and generated Wiki documentation. These tools are not required merely to use the Zettelkasten."),
+        Section(
+            "zettelkasten_software",
+            "Zettelkasten software",
+            "Software used directly with the Zettelkasten.",
+        ),
+        Section(
+            "export_software",
+            "Export software",
+            "Software used to export notes and work with LaTeX or PDF output.",
+        ),
+        Section(
+            "repository_tools",
+            "Repository tools",
+            "Software used to maintain this repository and generated Wiki documentation. These tools are not required merely to use the Zettelkasten.",
+        ),
     ]
-    component_sections = section_list(list(data.get("component_sections", [])), default_component_sections)
-    components_by_section = grouped_by_key(list(data.get("components", [])), "section", "zettelkasten_software")
+    component_sections = section_list(
+        list(data.get("component_sections", [])), default_component_sections
+    )
+    sections_by_key = {section.key: section for section in component_sections}
+    components_by_section = grouped_by_key(
+        list(data.get("components", [])), "section", "zettelkasten_software"
+    )
+    rendered_component_sections: set[str] = set()
 
-    for section in component_sections:
-        render_component_section(lines, section, components_by_section.get(section.key, []))
-
+    render_component_key(
+        lines,
+        sections_by_key,
+        components_by_section,
+        rendered_component_sections,
+        "zettelkasten_software",
+    )
     render_obsidian_plugins(lines, data, vault_path)
+    render_component_key(
+        lines,
+        sections_by_key,
+        components_by_section,
+        rendered_component_sections,
+        "export_software",
+    )
     render_sync(lines, data)
+    render_component_key(
+        lines,
+        sections_by_key,
+        components_by_section,
+        rendered_component_sections,
+        "repository_tools",
+    )
+    render_remaining_component_sections(
+        lines, component_sections, components_by_section, rendered_component_sections
+    )
     render_repository_files(lines, data, repo_root)
 
     lines.append("## Notes")
     lines.append("")
-    lines.append("Version probes are best-effort. GUI application versions and add-on versions may require manual entry.")
-    lines.append("Obsidian plugin versions are read from the vault's `.obsidian/plugins/*/manifest.json` files when available.")
+    lines.append(
+        "Version probes are best-effort. GUI application versions and add-on versions may require manual entry."
+    )
+    lines.append(
+        "Obsidian plugin names, descriptions, and versions are read from the vault's "
+        "`.obsidian/plugins/*/manifest.json` files when available."
+    )
     lines.append("Repository-file status is generated by checking whether the listed file exists.")
     lines.append("")
 
     return "\n".join(lines)
-
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
@@ -478,7 +602,6 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     args = parser.parse_args(argv)
-
     repo_root = Path(args.repo).resolve()
     manifest_path = (repo_root / args.manifest).resolve()
     output_path = (repo_root / args.out).resolve()
@@ -498,7 +621,6 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     markdown = render_markdown(data, repo_root)
-
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(markdown, encoding="utf-8")
     print(f"Wrote {output_path}")
