@@ -30,7 +30,7 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 |---|---|---|
 | Python | repository tooling | Python 3.14.4 |
 | Git | repository and Wiki updates | git version 2.55.0.windows.1 |
-| Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.126 |
+| Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.127 |
 
 ## Obsidian plugins
 
@@ -38,9 +38,24 @@ Plugins used inside the Obsidian vault.
 
 | Plugin | Role | Version |
 |---|---|---|
-| Templater | note creation and WikiLink-title insertion | 2.20.5 |
-| Front Matter Title | display YAML title values in Obsidian views | 3.13.1 |
+| Advanced Tables | improved table navigation, formatting, and editing | not detected |
+| Argument Map with Argdown | create argument maps from notes using argdown syntax | not detected |
+| Better Word Count | display word counts of selected text | not detected |
+| Book Search | search for books in Google Books, Open Library, etc | not detected |
+| Calendar | calendar view for daily notes | not detected |
+| Enhancing Export | export LaTeX, PDF, Markdown, ePub, etc | 1.11.1 |
+| File Explorer Note Count | display note counts in the file explorer | not detected |
+| Find Orphaned Files and Broken Links | find orphaned files and broken links in the vault | not detected |
+| Folder Links | click links to open folders in navagation | not detected |
+| Front Matter Title | display YAML title value as note filename in explorer, graph, search | 3.13.1 |
+| Lazy Loader | improve Obsidian performance by loading plugins with a delay | not detected |
+| Math Indicator Changer | change the math indicator from LaTeX-style parentheses to dollar signs for Obsidian's MathJax rendering | not detected |
 | Pandoc Reference List | display Pandoc-style citations from bibliography data | 2.0.25 |
+| Periodic Notes | manage daily, weekly, monthly, and yearly notes | not detected |
+| Quick Add | quickly add new pages | not detected |
+| Style Settings | manage CSS snippets and themes | 1.0.9 |
+| Templater | note creation and WikiLink-title insertion | 2.20.5 |
+| TikZ Jax | display TikZ LaTeX diagrams in Obsidian | not detected |
 
 ## Sync and replication
 

@@ -99,17 +99,83 @@ components:
         - "%PROGRAMFILES(X86)%/Microsoft VS Code/Code.exe"
 
 obsidian_plugins:
-  - id: templater-obsidian
-    name: Templater
-    role: note creation and WikiLink-title insertion
+  - id: obsidian-advanced-tables
+    name: Advanced Tables
+    role: improved table navigation, formatting, and editing
+
+  - id: obsidian-argument-map-with-argdown
+    name: Argument Map with Argdown
+    role: create argument maps from notes using argdown syntax
+
+  - id: obsidian-better-word-count
+    name: Better Word Count
+    role: display word counts of selected text 
+ 
+  - id: obsidian-book-search
+    name: Book Search
+    role: search for books in Google Books, Open Library, etc
+
+  - id: obsidian-calendar
+    name: Calendar
+    role: calendar view for daily notes
+
+  - id: obsidian-enhancing-export
+    name: Enhancing Export
+    role: export LaTeX, PDF, Markdown, ePub, etc
+
+  - id: obsidian-file-explorer-note-count
+    name: File Explorer Note Count
+    role: display note counts in the file explorer
+
+  - id: obsidian-find-orphaned-files-and-broken-links
+    name: Find Orphaned Files and Broken Links
+    role: find orphaned files and broken links in the vault
+
+  - id: obsidian-folder-links
+    name: Folder Links
+    role: click links to open folders in navagation
 
   - id: obsidian-front-matter-title-plugin
     name: Front Matter Title
-    role: display YAML title values in Obsidian views
+    role: display YAML title value as note filename in explorer, graph, search
+
+  - id: obsidian-lazy-loader
+    name: Lazy Loader
+    role: improve Obsidian performance by loading plugins with a delay
+
+  - id: obsidian-math-indicator-changer
+    name: Math Indicator Changer
+    role: change the math indicator from LaTeX-style parentheses to dollar signs for Obsidian's MathJax rendering
 
   - id: obsidian-pandoc-reference-list
     name: Pandoc Reference List
     role: display Pandoc-style citations from bibliography data
+
+  - id: obsidian-periodic-notes
+    name: Periodic Notes
+    role: manage daily, weekly, monthly, and yearly notes
+
+  - id: obsidian-quckiadd
+    name: Quick Add
+    role: quickly add new pages 
+
+  - id: obsidian-readability-score
+    name: Readability Score
+    role: display Flesch Reading Ease scores for notes 
+    
+    id: obsidian-style-settings
+    name: Style Settings
+    role: manage CSS snippets and themes
+
+  - id: templater-obsidian
+    name: Templater
+    role: note creation and WikiLink-title insertion
+
+  - id: obsidian-tikz-jax
+    name: TikZ Jax
+    role: display TikZ LaTeX diagrams in Obsidian
+
+
 
 sync_and_replication:
   - name: Syncthing
