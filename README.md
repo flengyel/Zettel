@@ -4,11 +4,11 @@ This repository contains a Markdown note-format specification for my digital Zet
 
 ## Purpose
 
-This repository documents the software, configuration files, scripts, templates, and documentation used with a private digital Zettelkasten vault, using inspectable artifacts rather than testimonial description alone.
+This repository documents the software, configuration files, scripts, templates, and documentation used with a private digital Zettelkasten vault, using inspectable artifacts.
 
 The repository contains source-controlled artifacts: the Markdown note format, reserved index-note scheme, Obsidian Templater templates, validation scripts, export support files, generated software inventory, and script documentation.
 
-The Wiki explains how those artifacts are used: software configuration, indexing conventions, examples, workflow notes, and methodological distinctions.
+The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) explains how those artifacts are used: software configuration, indexing conventions, examples, workflow notes, and methodological distinctions.
 
 ## Scope
 
