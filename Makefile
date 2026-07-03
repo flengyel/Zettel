@@ -6,12 +6,14 @@ WIKI_DIR ?= ../Zettel.wiki
 
 MANIFEST := MANIFEST.software.yaml
 GENERATOR := python/gen_software_components.py
+PUBLISH_SCRIPT := scripts/publish-software-environment.ps1
+PUBLISH_CMD := scripts/publish-software-environment.cmd
 GENERATED_DIR := generated
 PAGE_FILE := Zettelkasten-software-environment-and-repository-tools.md
 GENERATED_PAGE := $(GENERATED_DIR)/$(PAGE_FILE)
 WIKI_PAGE := $(WIKI_DIR)/$(PAGE_FILE)
 
-MAIN_FILES := Makefile $(MANIFEST) $(GENERATOR) $(GENERATED_PAGE)
+MAIN_FILES := Makefile $(MANIFEST) $(GENERATOR) $(PUBLISH_SCRIPT) $(PUBLISH_CMD) $(GENERATED_PAGE)
 MAIN_COMMIT_MSG ?= Generate software environment page
 WIKI_COMMIT_MSG ?= Update software environment page
 
@@ -26,6 +28,7 @@ help:
 	@echo "  make commit-main    Commit Makefile and generated source/output files in main repo"
 	@echo "  make push-main      Commit and push main repo changes"
 	@echo "  make publish-all    Push main repo changes and Wiki page update"
+	@echo "  Windows: .\scripts\publish-software-environment.cmd"
 	@echo "Variables:"
 	@echo "  WIKI_DIR=$(WIKI_DIR)"
 	@echo "  PYTHON=$(PYTHON)"

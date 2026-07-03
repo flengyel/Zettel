@@ -1,5 +1,4 @@
-title: Zettelkasten software and repository tools
-last_checked: 2026-07-02
+title: Zettelkasten software environment and repository tools
 include_h1: false
 vault_path: "C:/Users/fleng/Zettelkasten"
 
@@ -144,6 +143,18 @@ repository_files:
   - path: python/gen_software_components.py
     category: repository_support
     role: generates the software environment Wiki page from MANIFEST.software.yaml
+
+  - path: Makefile
+    category: repository_support
+    role: optional GNU Make automation for generating and publishing the software environment Wiki page
+
+  - path: scripts/publish-software-environment.ps1
+    category: repository_support
+    role: PowerShell automation for generating, copying, committing, and pushing the generated software environment Wiki page
+
+  - path: scripts/publish-software-environment.cmd
+    category: repository_support
+    role: Windows command wrapper for the software environment Wiki publishing script
 
   - path: pandoc/template.tex
     category: repository_support

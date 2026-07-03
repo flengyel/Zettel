@@ -11,6 +11,7 @@ import subprocess
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -22,6 +23,11 @@ class Section:
     key: str
     heading: str
     description: str = ""
+
+
+def generated_timestamp() -> str:
+    """Return the local timestamp for this generator run."""
+    return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
 def expand_path(raw_path: str) -> Path:
@@ -510,7 +516,7 @@ def render_markdown(data: dict[str, Any], repo_root: Path) -> str:
         "and repository tools used with my digital Zettelkasten."
     )
     lines.append("")
-    lines.append(f"Last checked: {data.get('last_checked', '')}")
+    lines.append(f"Last checked: {generated_timestamp()}")
     lines.append("")
 
     default_component_sections = [
@@ -597,7 +603,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--out",
-        default="generated/Zettelkasten-software-components.md",
+        default="generated/Zettelkasten-software-environment-and-repository-tools.md",
         help="output Markdown path",
     )
 
