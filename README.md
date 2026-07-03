@@ -2,6 +2,14 @@
 
 This repository contains a Markdown note-format specification for my digital Zettelkasten, together with supporting templates, scripts, validators, script documentation, generated documentation, and export files. The note format works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems.
 
+## Purpose
+
+This repository documents the software, configuration files, scripts, templates, and documentation used with a private digital Zettelkasten vault, using inspectable artifacts rather than testimonial description alone.
+
+The repository contains source-controlled artifacts: the Markdown note format, reserved index-note scheme, Obsidian Templater templates, validation scripts, export support files, generated software inventory, and script documentation.
+
+The Wiki explains how those artifacts are used: software configuration, indexing conventions, examples, workflow notes, and methodological distinctions.
+
 ## Scope
 
 This README specifies the Markdown note format: the self-documenting note template, the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
@@ -16,7 +24,7 @@ This README specifies the Markdown note format: the self-documenting note templa
 - `pandoc/` and `LaTeX/` — export and typesetting support files.
 - `generated/` — generated documentation artifacts.
 
-Operational considerations, definitions, examples, software configuration, generated metadata pages, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
+The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) contains operational conventions, definitions, examples, software configuration, generated inventory pages, and methodological notes.
 
 ### Background
 
@@ -54,7 +62,7 @@ Titles may change; IDs do not.
 
 ### Element types
 
-- **WikiLink:** An internal Markdown link of the form `[[ID]]` or `[[ID|display text]]`.
+- **WikiLink:** An internal Markdown link of the form `[[ID]]`; title text may be placed after the closing brackets, for example `[[0000.0000.0ABC]]  A-B-C`.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
 - **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography  
 such as one exported from Zotero.
@@ -81,18 +89,18 @@ pair below, the Zettelkasten should have exactly one note with that `<ID>` and `
 No other `<ID> <TITLE>` combination is an index note.
 
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
-the corresponding index WikiLink. For example, this note specification has the WikiLink
-`[[0000.0000.00YZ]]` under the `## SEE ALSO` section. The `## SEE ALSO` section may include
-WikiLinks of related notes other than those appearing in the main body, one or more alphabetic
-or numeric index links, and optional hashtags.
+the corresponding index WikiLink. Use one line per index link. When title text is shown after
+the WikiLink, place two spaces after the closing brackets, as in `[[0000.0000.00YZ]]  Y-Z`.
+The `## SEE ALSO` section may include WikiLinks of related notes other than those appearing in
+the main body, one or more alphabetic or numeric index links, and optional hashtags.
 
 The `## References` section is present but may be empty. Here we have included two references on Zettelkasten.
 
 ## SEE ALSO
 
-[[0000.0000.00YZ]]
+[[0000.0000.00YZ]]  Y-Z  
 
- #optional #hashtag
+#optional #hashtag
 
 ## References
 - Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
