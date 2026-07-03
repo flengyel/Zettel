@@ -1,28 +1,29 @@
 <#
-Generate the Zettelkasten software-environment page, copy it into the Wiki
+Generate the Zettelkasten software-inventory page, copy it into the Wiki
 repository, commit the Wiki change when needed, and push the Wiki repository.
 
 Run from the main repository root:
 
-  .\scripts\publish-software-environment.cmd
+  .\scripts\publish-software-inventory.cmd
 
 Preview the Wiki diff without committing or pushing:
 
-  .\scripts\publish-software-environment.cmd -DiffOnly
+  .\scripts\publish-software-inventory.cmd -DiffOnly
 #>
 
 [CmdletBinding()]
 param(
     [string]$Python = "python",
     [string]$WikiDir = "..\Zettel.wiki",
-    [string]$PageFile = "Zettelkasten-software-environment-and-repository-tools.md",
-    [string]$WikiCommitMessage = "Update software environment page",
+    [string]$WikiCommitMessage = "Update software inventory page",
     [switch]$DiffOnly,
     [switch]$NoPush
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+
+$PageFile = "Zettelkasten-software-inventory.md"
 
 function Invoke-External {
     param(

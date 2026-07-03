@@ -1,6 +1,6 @@
-This page records the software environment, synchronization components, and repository tools used with my digital Zettelkasten.
+This page records the software inventory, synchronization components, repository tools, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-02
+Last checked: 2026-07-02T23:32:34-04:00
 
 ## Zettelkasten software
 
@@ -76,19 +76,23 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 
 ## Repository support files
 
-Files that support note creation, validation, export, or repository documentation.
+Files that support note creation, validation, export, repository documentation, or Wiki publishing.
 
 | Path | Role | Status |
 |---|---|---|
+| `MANIFEST.software.yaml` | software inventory manifest | present |
+| `Makefile` | optional GNU Make automation for generating and publishing the software inventory Wiki page | present |
 | `templates/NewFileTemplate.md` | Obsidian Templater template for creating a new Zettel | present |
 | `templates/WikilinkTitle.md` | Obsidian Templater template for appending note titles to WikiLinks | present |
 | `python/zettel_validate.py` | validates completed Markdown Zettels | present |
 | `python/README-validator.md` | validator usage notes | present |
 | `python/test_zettel_validate.py` | validator unit tests | present |
-| `python/gen_software_components.py` | generates the software environment Wiki page from MANIFEST.software.yaml | present |
+| `python/gen_software_components.py` | generates the software inventory Wiki page from MANIFEST.software.yaml | present |
 | `pandoc/template.tex` | modified Pandoc LaTeX template | present |
 | `LaTeX/LatexColors.incl.sty` | LaTeX color style file | present |
 | `scripts/create-index-notes.bat` | creates missing reserved alphanumeric index notes for a new Zettelkasten | present |
+| `scripts/publish-software-inventory.ps1` | PowerShell automation for generating, copying, committing, and pushing the generated software inventory Wiki page | present |
+| `scripts/publish-software-inventory.cmd` | Windows command wrapper for the generated software inventory publishing script | present |
 
 ## Local diagnostics
 

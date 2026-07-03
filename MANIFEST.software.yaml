@@ -1,4 +1,4 @@
-title: Zettelkasten software environment and repository tools
+title: Zettelkasten software inventory
 include_h1: false
 vault_path: "C:/Users/fleng/Zettelkasten"
 
@@ -112,61 +112,77 @@ sync_and_replication:
       type: manual
 
 repository_file_sections:
-  - key: repository_support
+  - key: repository_support_files
     heading: Repository support files
-    description: Files that support note creation, validation, export, or repository documentation.
+    description: Files that support note creation, validation, export, repository documentation, or Wiki publishing.
   - key: local_diagnostics
     heading: Local diagnostics
     description: Local scripts for inspecting the vault. These may contain local paths and are not portable tools.
 
 repository_files:
+  - path: MANIFEST.software.yaml
+    category: repository_support_files
+    role: software inventory manifest
+
+  - path: Makefile
+    category: repository_support_files
+    role: optional GNU Make automation for generating and publishing the software inventory Wiki page
+
   - path: templates/NewFileTemplate.md
-    category: repository_support
+    category: repository_support_files
     role: Obsidian Templater template for creating a new Zettel
 
   - path: templates/WikilinkTitle.md
-    category: repository_support
+    category: repository_support_files
     role: Obsidian Templater template for appending note titles to WikiLinks
 
   - path: python/zettel_validate.py
-    category: repository_support
+    category: repository_support_files
     role: validates completed Markdown Zettels
 
   - path: python/README-validator.md
-    category: repository_support
+    category: repository_support_files
     role: validator usage notes
 
   - path: python/test_zettel_validate.py
-    category: repository_support
+    category: repository_support_files
     role: validator unit tests
 
   - path: python/gen_software_components.py
-    category: repository_support
-    role: generates the software environment Wiki page from MANIFEST.software.yaml
-
-  - path: Makefile
-    category: repository_support
-    role: optional GNU Make automation for generating and publishing the software environment Wiki page
-
-  - path: scripts/publish-software-environment.ps1
-    category: repository_support
-    role: PowerShell automation for generating, copying, committing, and pushing the generated software environment Wiki page
-
-  - path: scripts/publish-software-environment.cmd
-    category: repository_support
-    role: Windows command wrapper for the software environment Wiki publishing script
+    category: repository_support_files
+    role: generates the software inventory Wiki page from MANIFEST.software.yaml
 
   - path: pandoc/template.tex
-    category: repository_support
+    category: repository_support_files
     role: modified Pandoc LaTeX template
 
   - path: LaTeX/LatexColors.incl.sty
-    category: repository_support
+    category: repository_support_files
     role: LaTeX color style file
 
   - path: scripts/create-index-notes.bat
-    category: repository_support
+    category: repository_support_files
     role: creates missing reserved alphanumeric index notes for a new Zettelkasten
+
+  - path: scripts/publish-software-inventory.ps1
+    category: repository_support_files
+    role: PowerShell automation for generating, copying, committing, and pushing the generated software inventory Wiki page
+
+  - path: scripts/publish-software-inventory.cmd
+    category: repository_support_files
+    role: Windows command wrapper for the generated software inventory publishing script
+
+  - path: doc/create-index-notes.bat.md
+    category: repository_support_files
+    role: documentation for scripts/create-index-notes.bat
+
+  - path: doc/publish-software-inventory.ps1.md
+    category: repository_support_files
+    role: documentation for scripts/publish-software-inventory.ps1
+
+  - path: doc/publish-software-inventory.cmd.md
+    category: repository_support_files
+    role: documentation for scripts/publish-software-inventory.cmd
 
   - path: python/zk_validation_stats.py
     category: local_diagnostics
