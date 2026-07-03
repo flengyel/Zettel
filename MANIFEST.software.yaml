@@ -114,7 +114,10 @@ sync_and_replication:
 repository_file_sections:
   - key: repository_support_files
     heading: Repository support files
-    description: Files that support note creation, validation, export, repository documentation, or Wiki publishing.
+    description: Files that support note creation, validation, export, Wiki publishing, or bootstrapping.
+  - key: repository_documentation
+    heading: Repository documentation
+    description: Markdown documentation for the note format, repository scripts, and generated repository tooling.
   - key: local_diagnostics
     heading: Local diagnostics
     description: Local scripts for inspecting the vault. These may contain local paths and are not portable tools.
@@ -139,10 +142,6 @@ repository_files:
   - path: python/zettel_validate.py
     category: repository_support_files
     role: validates completed Markdown Zettels
-
-  - path: python/README-validator.md
-    category: repository_support_files
-    role: validator usage notes
 
   - path: python/test_zettel_validate.py
     category: repository_support_files
@@ -172,16 +171,24 @@ repository_files:
     category: repository_support_files
     role: Windows command wrapper for the generated software inventory publishing script
 
+  - path: README.md
+    category: repository_documentation
+    role: Markdown note-format specification and repository overview
+
+  - path: python/README-validator.md
+    category: repository_documentation
+    role: validator usage notes
+
   - path: doc/create-index-notes.bat.md
-    category: repository_support_files
+    category: repository_documentation
     role: documentation for scripts/create-index-notes.bat
 
   - path: doc/publish-software-inventory.ps1.md
-    category: repository_support_files
+    category: repository_documentation
     role: documentation for scripts/publish-software-inventory.ps1
 
   - path: doc/publish-software-inventory.cmd.md
-    category: repository_support_files
+    category: repository_documentation
     role: documentation for scripts/publish-software-inventory.cmd
 
   - path: python/zk_validation_stats.py

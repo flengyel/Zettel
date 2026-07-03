@@ -1,6 +1,6 @@
 # Zettel
 
-This repository contains a Markdown note-format specification for my digital Zettelkasten, together with supporting templates, scripts, validators, generated documentation, and export files. The note format works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems.
+This repository contains a Markdown note-format specification for my digital Zettelkasten, together with supporting templates, scripts, validators, script documentation, generated documentation, and export files. The note format works with [Obsidian](https://obsidian.md) and [Zotero](https://www.zotero.org/), but may be adapted to other systems.
 
 ## Scope
 
@@ -11,11 +11,12 @@ This README specifies the Markdown note format: the self-documenting note templa
 - `README.md` — Markdown note-format specification.
 - `templates/` — Obsidian Templater templates for note creation and WikiLink title annotation.
 - `python/` — validators and documentation generators.
-- `scripts/` — bootstrapping scripts for creating the reserved index pages.
+- `scripts/` — bootstrapping and publishing scripts.
+- `doc/` — Markdown documentation for repository scripts.
 - `pandoc/` and `LaTeX/` — export and typesetting support files.
 - `generated/` — generated documentation artifacts.
 
-Operational considerations, definitions, examples, software configuration, repository-tool documentation, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
+Operational considerations, definitions, examples, software configuration, generated metadata pages, and open methodological questions belong in the [Zettel Wiki](https://github.com/flengyel/Zettel/wiki), currently under construction.
 
 ### Background
 
@@ -23,8 +24,7 @@ The Zettelkasten Method is documented at [Introduction to the Zettelkasten Metho
 
 ## Self-documenting note specification
 
-The following self-documenting note specification includes explanatory definitions and index documentation. 
-Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. They do not include the explanatory definitions and index documentation below.
+The following self-documenting note specification includes explanatory definitions and index documentation. Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. They do not include the explanatory definitions and index documentation below.
 
 Replace the metavariables `<ID>` and `<TITLE>`; the angle brackets do not appear in a completed note. The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without the `.md` extension. We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values below.
 
@@ -32,8 +32,7 @@ In this system, current notes use a keyword followed by a timestamp, but ID form
 
 ### YAML Front Matter
 
-Each note begins with YAML front matter: a first line containing three consecutive dashes (`---`), followed by YAML properties, 
-and closed by another line containing three consecutive dashes.
+Each note begins with YAML front matter: a first line containing three consecutive dashes (`---`), followed by YAML properties, and closed by another line containing three consecutive dashes.
 
 The value of the `id:` property is `<ID>`. The value of the `title:` property consists of `<ID>`, one space, and `<TITLE>`.
 
@@ -58,7 +57,7 @@ Titles may change; IDs do not.
 - **WikiLink:** An internal Markdown link of the form `[[ID]]` or `[[ID|display text]]`.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
 - **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography  
-such as one exported from Zotero. 
+such as one exported from Zotero.
 
 ### Alphabetic and numeric index notes
 
@@ -84,8 +83,8 @@ No other `<ID> <TITLE>` combination is an index note.
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
 the corresponding index WikiLink. For example, this note specification has the WikiLink
 `[[0000.0000.00YZ]]` under the `## SEE ALSO` section. The `## SEE ALSO` section may include
-WikiLinks of related notes other than those appearing in the main body, one or more alphabetic 
-or numeric index links, and optional hashtags. 
+WikiLinks of related notes other than those appearing in the main body, one or more alphabetic
+or numeric index links, and optional hashtags.
 
 The `## References` section is present but may be empty. Here we have included two references on Zettelkasten.
 

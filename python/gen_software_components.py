@@ -437,7 +437,12 @@ def render_repository_files(lines: list[str], data: dict[str, Any], repo_root: P
         Section(
             "repository_support_files",
             "Repository support files",
-            "Files that support note creation, validation, export, repository documentation, Wiki publishing, or bootstrapping.",
+            "Files that support note creation, validation, export, Wiki publishing, or bootstrapping.",
+        ),
+        Section(
+            "repository_documentation",
+            "Repository documentation",
+            "Markdown documentation for the note format, repository scripts, and generated repository tooling.",
         ),
         Section(
             "local_diagnostics",
@@ -561,7 +566,7 @@ def render_markdown(data: dict[str, Any], repo_root: Path, timestamp: str | None
 
     lines.append(
         "This page records the software inventory, synchronization components, "
-        "repository tools, and support files used with my digital Zettelkasten."
+        "repository tools, documentation, and support files used with my digital Zettelkasten."
     )
     lines.append("")
     lines.append(f"Last checked: {timestamp or generated_timestamp()}")

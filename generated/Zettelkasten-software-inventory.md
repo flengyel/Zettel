@@ -1,6 +1,6 @@
-This page records the software inventory, synchronization components, repository tools, and support files used with my digital Zettelkasten.
+This page records the software inventory, synchronization components, repository tools, documentation, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-02T23:32:34-04:00
+Last checked: 2026-07-03T11:06:40-04:00
 
 ## Zettelkasten software
 
@@ -76,7 +76,7 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 
 ## Repository support files
 
-Files that support note creation, validation, export, repository documentation, or Wiki publishing.
+Files that support note creation, validation, export, Wiki publishing, or bootstrapping.
 
 | Path | Role | Status |
 |---|---|---|
@@ -85,7 +85,6 @@ Files that support note creation, validation, export, repository documentation, 
 | `templates/NewFileTemplate.md` | Obsidian Templater template for creating a new Zettel | present |
 | `templates/WikilinkTitle.md` | Obsidian Templater template for appending note titles to WikiLinks | present |
 | `python/zettel_validate.py` | validates completed Markdown Zettels | present |
-| `python/README-validator.md` | validator usage notes | present |
 | `python/test_zettel_validate.py` | validator unit tests | present |
 | `python/gen_software_components.py` | generates the software inventory Wiki page from MANIFEST.software.yaml | present |
 | `pandoc/template.tex` | modified Pandoc LaTeX template | present |
@@ -93,6 +92,18 @@ Files that support note creation, validation, export, repository documentation, 
 | `scripts/create-index-notes.bat` | creates missing reserved alphanumeric index notes for a new Zettelkasten | present |
 | `scripts/publish-software-inventory.ps1` | PowerShell automation for generating, copying, committing, and pushing the generated software inventory Wiki page | present |
 | `scripts/publish-software-inventory.cmd` | Windows command wrapper for the generated software inventory publishing script | present |
+
+## Repository documentation
+
+Markdown documentation for the note format, repository scripts, and generated repository tooling.
+
+| Path | Role | Status |
+|---|---|---|
+| `README.md` | Markdown note-format specification and repository overview | present |
+| `python/README-validator.md` | validator usage notes | present |
+| `doc/create-index-notes.bat.md` | documentation for scripts/create-index-notes.bat | present |
+| `doc/publish-software-inventory.ps1.md` | documentation for scripts/publish-software-inventory.ps1 | present |
+| `doc/publish-software-inventory.cmd.md` | documentation for scripts/publish-software-inventory.cmd | present |
 
 ## Local diagnostics
 
