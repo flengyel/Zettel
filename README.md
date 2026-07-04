@@ -107,6 +107,10 @@ The `## References` section is present but may be empty. Here we have included t
 - Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
 ```
 
+## Security
+
+This repository contains executable code, including Obsidian Templater JavaScript, Python, and shell scripts. Standard security precautions apply.
+
 ## License
 
 This README and the Zettel Wiki are licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/legalcode), CC BY-SA 4.0, 2022-2026 F. Lengyel. Notes that merely instantiate the template need not credit me. Published copies or derivatives of the template remain subject to CC BY-SA 4.0.

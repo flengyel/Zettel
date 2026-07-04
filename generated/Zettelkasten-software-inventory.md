@@ -1,6 +1,6 @@
 This page records the software inventory, synchronization components, repository tools, documentation, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-03T11:06:40-04:00
+Last checked: 2026-07-03T20:23:00-04:00
 
 ## Zettelkasten software
 
@@ -43,7 +43,6 @@ Plugins installed inside the Obsidian vault.
 | Templater | Advanced templating and automation using handlebars-like syntax. | 2.20.6 |
 | TikZJax | Render LaTeX and TikZ diagrams in your notes | 0.5.2 |
 | Zotero Integration | Insert and import citations, bibliographies, notes, and PDF annotations from Zotero. | 3.2.1 |
-| ZotLit | Plugin to integrate with Zotero, create literature notes and insert citations from a Zotero library. | 1.1.12 |
 
 ## Export software
 
