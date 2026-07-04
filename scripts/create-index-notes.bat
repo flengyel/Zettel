@@ -6,11 +6,9 @@ rem Creates missing reserved alphanumeric index notes for a Zettelkasten vault.
 rem Existing files are skipped; this script never overwrites notes.
 rem This script creates only the reserved index files; it does not constrain ordinary note IDs.
 rem
-rem SEE ALSO links use this portable form:
-rem   [[ID]]  TITLE
-rem with two spaces after the closing double brackets. The emitted line also
-rem ends with two spaces so Markdown previewers that follow CommonMark render
-rem each SEE ALSO entry on its own line.
+rem SEE ALSO links keep the target as an ID-only WikiLink and place the
+rem title after it as plain text:
+rem   [[ID]] TITLE
 rem
 rem The master INDEX note links to the subordinate alphanumeric index notes
 rem under SEE ALSO. Each subordinate index note links back to INDEX under
@@ -20,7 +18,7 @@ rem Usage:
 rem   create-index-notes.bat
 rem   create-index-notes.bat path\to\zettelkasten
 
-set "SP=  "
+set "SEP= "
 set "OUTDIR=%~1"
 if "%OUTDIR%"=="" set "OUTDIR=."
 
@@ -84,16 +82,16 @@ if exist "%FILE%" (
     echo(
     echo ## SEE ALSO
     echo(
-    echo [[0000.0000.0ABC]]%SP%A-B-C%SP%
-    echo [[0000.0000.0DEF]]%SP%D-E-F%SP%
-    echo [[0000.0000.0GHI]]%SP%G-H-I%SP%
-    echo [[0000.0000.0JKL]]%SP%J-K-L%SP%
-    echo [[0000.0000.0MNO]]%SP%M-N-O%SP%
-    echo [[0000.0000.0PQR]]%SP%P-Q-R%SP%
-    echo [[0000.0000.0STU]]%SP%S-T-U%SP%
-    echo [[0000.0000.0VWX]]%SP%V-W-X%SP%
-    echo [[0000.0000.00YZ]]%SP%Y-Z%SP%
-    echo [[0000.0000.0009]]%SP%0-9%SP%
+    echo [[0000.0000.0ABC]]%SEP%A-B-C
+    echo [[0000.0000.0DEF]]%SEP%D-E-F
+    echo [[0000.0000.0GHI]]%SEP%G-H-I
+    echo [[0000.0000.0JKL]]%SEP%J-K-L
+    echo [[0000.0000.0MNO]]%SEP%M-N-O
+    echo [[0000.0000.0PQR]]%SEP%P-Q-R
+    echo [[0000.0000.0STU]]%SEP%S-T-U
+    echo [[0000.0000.0VWX]]%SEP%V-W-X
+    echo [[0000.0000.00YZ]]%SEP%Y-Z
+    echo [[0000.0000.0009]]%SEP%0-9
     echo(
     echo ## References
 )
@@ -125,7 +123,7 @@ if exist "%FILE%" (
     echo(
     echo ## SEE ALSO
     echo(
-    echo [[0000.0000.0000]]%SP%INDEX%SP%
+    echo [[0000.0000.0000]]%SEP%INDEX
     echo(
     echo ## References
 )

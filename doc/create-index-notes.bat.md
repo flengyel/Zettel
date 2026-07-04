@@ -17,7 +17,7 @@ scripts\create-index-notes.bat
 or with an explicit target directory:
 
 ```cmd
-scripts\create-index-notes.bat C:\Users\fleng\Zettelkasten
+scripts\create-index-notes.bat "%USERPROFILE%\Zettelkasten"
 ```
 
 If no target directory is supplied, the script writes to the current directory.
@@ -88,15 +88,15 @@ Each subordinate index note links back to the master `INDEX` note under `SEE ALS
 The script writes index links in this form:
 
 ```text
-[[<ID>]]  <TITLE>  
+[[<ID>]] <TITLE>
 ```
 
-The title is outside the WikiLink. The two spaces after the closing double brackets separate the WikiLink from the plain-text title. The two trailing spaces request a hard line break in Markdown previewers that use the two-space line-break convention.
+The title is plain text outside the WikiLink. The generated link target is the reserved index ID.
 
 Example:
 
 ```text
-[[0000.0000.0ABC]]  A-B-C  
+[[0000.0000.0ABC]] A-B-C
 ```
 
 ## Non-overwrite rule
