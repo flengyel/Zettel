@@ -89,18 +89,14 @@ pair below, the Zettelkasten should have exactly one note with that `<ID>` and `
 No other `<ID> <TITLE>` combination is an index note.
 
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
-the corresponding index WikiLink. Use one line per index link. For an index-entry line with title text, write the title as ordinary text outside the WikiLink:
-
-```markdown
-[[<ID>]] <TITLE>  
-```
-
-That form uses one ordinary separator space between the WikiLink and the title. The two trailing spaces are Markdown hard-break spaces at the end of the index-entry line.
+the corresponding index WikiLink. Use one line per index link with two trailing spaces at the end
+of the line. The two trailing spaces are Markdown hard-break spaces, which render the WikiLinks
+and annotations on individual lines.
 
 The `## SEE ALSO` section may include WikiLinks of related notes other than those appearing in
 the main body, one or more alphabetic or numeric index links, and optional hashtags.
 
-The `## References` section is present but may be empty. Here we have included two references on Zettelkasten.
+The `## References` section is present but may be empty. Here we have included three references on Zettelkasten.
 
 ## SEE ALSO
 
@@ -111,11 +107,13 @@ The `## References` section is present but may be empty. Here we have included t
 ## References
 - Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
 - Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
+- Aldrich, Chris. [Zettelkasten one-pagers](https://hypothes.is/users/chrisaldrich?q=tag%3A%22zettelkasten+method+one+pager%22)
 ```
 
 ## Security
 
-This repository contains executable code, including Obsidian Templater JavaScript, Python, and shell scripts. Standard security precautions apply.
+This repository contains executable code, including Obsidian Templater JavaScript, Python, and shell scripts. 
+Standard security precautions apply.
 
 ## License
 
