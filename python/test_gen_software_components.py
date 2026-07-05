@@ -176,6 +176,43 @@ class SoftwareInventoryGeneratorTests(unittest.TestCase):
                 result.stderr,
             )
 
+    def test_noncanonical_inventory_output_path_is_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            case_root = Path(directory)
+            vault_path = case_root / "fake_vault"
+            manifest_path = case_root / "MANIFEST.software.yaml"
+
+            self.write_manifest(manifest_path, vault_path, obsidian_plugins=False)
+
+            result = self.run_generator(
+                case_root,
+                manifest_path.name,
+                "--out",
+                "generated/not-the-inventory.md",
+            )
+
+            self.assertEqual(result.returncode, 2)
+            self.assertFalse(
+                (case_root / "generated" / "not-the-inventory.md").exists()
+            )
+            self.assertFalse(
+                (case_root / "generated" / "Zettelkasten-software-inventory.md").exists()
+            )
+            self.assertFalse((case_root / "Zettelkasten-software-configuration.md").exists())
+            self.assertIn(
+                "Refusing to write non-canonical software inventory path:",
+                result.stderr,
+            )
+            self.assertIn(
+                "generated/not-the-inventory.md",
+                result.stderr.replace("\\", "/"),
+            )
+            self.assertIn(
+                "The software generator writes only generated/Zettelkasten-software-inventory.md.",
+                result.stderr,
+            )
+
+
 
 if __name__ == "__main__":
     unittest.main()

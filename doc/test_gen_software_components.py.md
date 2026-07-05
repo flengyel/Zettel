@@ -8,7 +8,8 @@ The tests verify the generator contract for Obsidian plugin inventory and protec
 
 - when `obsidian_plugins: true` is set in `MANIFEST.software.yaml`, plugin metadata is read from `.obsidian/plugins/*/manifest.json` and written to the generated software inventory page;
 - when `obsidian_plugins: false` is set, the generated page omits the Obsidian plugin section even if plugin manifests exist;
-- attempts to write the manually authored Wiki configuration page are refused.
+- attempts to write the manually authored Wiki configuration page are refused;
+- attempts to write any non-canonical inventory output path are refused.
 
 ## Usage
 
@@ -55,6 +56,12 @@ The protected manual Wiki page path is also tested inside the temporary case roo
 
 ```text
 Zettelkasten-software-configuration.md
+```
+
+The non-canonical inventory output path is tested inside the temporary generated directory:
+
+```text
+generated/not-the-inventory.md
 ```
 
 ## Current tests
@@ -158,6 +165,33 @@ The test asserts that:
 - `generated/Zettelkasten-software-inventory.md` is not created as a side effect;
 - standard error contains `Refusing to write manual Wiki page name: Zettelkasten-software-configuration.md`;
 - standard error contains `The software generator writes only generated/Zettelkasten-software-inventory.md.`.
+
+### `test_noncanonical_inventory_output_path_is_refused`
+
+This test writes a minimal `MANIFEST.software.yaml` and then asks the generator to write a generated Markdown file whose path is not the canonical inventory path:
+
+```text
+generated/not-the-inventory.md
+```
+
+It runs:
+
+```text
+python/gen_software_components.py --out generated/not-the-inventory.md
+```
+
+against the temporary case root.
+
+The test asserts that:
+
+- the generator exits with status `2`;
+- `generated/not-the-inventory.md` is not created;
+- `generated/Zettelkasten-software-inventory.md` is not created as a side effect;
+- `Zettelkasten-software-configuration.md` is not created;
+- standard error contains `Refusing to write non-canonical software inventory path:`;
+- standard error contains `generated/not-the-inventory.md`;
+- standard error contains `The software generator writes only generated/Zettelkasten-software-inventory.md.`.
+
 
 ## Repository boundary
 
