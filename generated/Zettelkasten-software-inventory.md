@@ -1,6 +1,6 @@
 This page records the software inventory, synchronization components, repository tools, documentation, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-04T22:54:18-04:00
+Last checked: 2026-07-05T15:29:37-04:00
 
 ## Zettelkasten software
 
@@ -8,8 +8,8 @@ Software used directly with the Zettelkasten.
 
 | Component | Role | Version/status |
 |---|---|---|
-| Obsidian | note editor and slip-box interface | 1.12.4 |
-| Zotero | reference manager | 8.0 |
+| Obsidian | note editor and slip-box interface | 1.12.7 |
+| Zotero | reference manager | 9.0.5 |
 | Better BibTeX | Zotero add-on for stable citation keys and bibliography export | manual |
 
 ## Obsidian plugins
@@ -50,9 +50,9 @@ Software used to export notes and work with LaTeX or PDF output.
 
 | Component | Role | Version/status |
 |---|---|---|
-| Pandoc | Markdown export and citation processing | pandoc 3.7.0.1 |
-| MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.2) |
-| WinEdt 11 | LaTeX editor used with exported LaTeX or PDF output | 11.0 |
+| Pandoc | Markdown export and citation processing | pandoc 3.9.0.2 |
+| MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.5) |
+| WinEdt 11 | LaTeX editor used with exported LaTeX or PDF output | 11.2 |
 
 ## Sync and replication
 
@@ -69,8 +69,8 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 
 | Component | Role | Version/status |
 |---|---|---|
-| Python | repository tooling | Python 3.13.5 |
-| Git | repository and Wiki updates | git version 2.55.0.windows.2 |
+| Python | repository tooling | Python 3.14.4 |
+| Git | repository and Wiki updates | git version 2.55.0.windows.1 |
 | Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.127 |
 
 ## Repository support files
@@ -86,6 +86,8 @@ Files that support note creation, validation, export, Wiki publishing, or bootst
 | `python/zettel_validate.py` | validates completed Markdown Zettels | present |
 | `python/test_zettel_validate.py` | validator unit tests | present |
 | `python/gen_software_components.py` | generates the software inventory Wiki page from MANIFEST.software.yaml | present |
+| `python/test_gen_software_components.py` | software inventory generator unit tests | present |
+| `python/test_manifest_repository_files.py` | manifest repository-file coverage tests | present |
 | `pandoc/template.tex` | modified Pandoc LaTeX template | present |
 | `LaTeX/LatexColors.incl.sty` | LaTeX color style file | present |
 | `scripts/create-index-notes.bat` | creates missing reserved alphanumeric index notes for a new Zettelkasten | present |
@@ -103,6 +105,8 @@ Markdown documentation for the note format, repository scripts, and generated re
 | `doc/create-index-notes.bat.md` | documentation for scripts/create-index-notes.bat | present |
 | `doc/publish-software-inventory.ps1.md` | documentation for scripts/publish-software-inventory.ps1 | present |
 | `doc/publish-software-inventory.cmd.md` | documentation for scripts/publish-software-inventory.cmd | present |
+| `doc/test_gen_software_components.py.md` | documentation for python/test_gen_software_components.py | present |
+| `doc/test_manifest_repository_files.py.md` | documentation for python/test_manifest_repository_files.py | present |
 
 ## Local diagnostics
 
@@ -112,6 +116,7 @@ Local scripts for inspecting the vault. These may contain local paths and are no
 |---|---|---|
 | `python/zk_validation_stats.py` | local validation/statistics script | present |
 | `python/word_count_histogram.py` | local word-count histogram script | present |
+| `python/output.png` | local word-count histogram output image | present |
 
 ## Notes
 

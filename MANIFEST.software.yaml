@@ -151,6 +151,14 @@ repository_files:
     category: repository_support_files
     role: generates the software inventory Wiki page from MANIFEST.software.yaml
 
+  - path: python/test_gen_software_components.py
+    category: repository_support_files
+    role: software inventory generator unit tests
+
+  - path: python/test_manifest_repository_files.py
+    category: repository_support_files
+    role: manifest repository-file coverage tests
+
   - path: pandoc/template.tex
     category: repository_support_files
     role: modified Pandoc LaTeX template
@@ -191,6 +199,14 @@ repository_files:
     category: repository_documentation
     role: documentation for scripts/publish-software-inventory.cmd
 
+  - path: doc/test_gen_software_components.py.md
+    category: repository_documentation
+    role: documentation for python/test_gen_software_components.py
+
+  - path: doc/test_manifest_repository_files.py.md
+    category: repository_documentation
+    role: documentation for python/test_manifest_repository_files.py
+
   - path: python/zk_validation_stats.py
     category: local_diagnostics
     role: local validation/statistics script
@@ -198,3 +214,7 @@ repository_files:
   - path: python/word_count_histogram.py
     category: local_diagnostics
     role: local word-count histogram script
+
+  - path: python/output.png
+    category: local_diagnostics
+    role: local word-count histogram output image
