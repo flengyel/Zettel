@@ -4,7 +4,10 @@
 
 `test_gen_software_components.py` tests the software-inventory generator with a temporary repository case and a temporary fake Obsidian vault.
 
-The test verifies the generator contract for Obsidian plugin inventory: when `obsidian_plugins: true` is set in `MANIFEST.software.yaml`, plugin metadata is read from `.obsidian/plugins/*/manifest.json` and written to the generated software inventory page.
+The tests verify the generator contract for Obsidian plugin inventory:
+
+- when `obsidian_plugins: true` is set in `MANIFEST.software.yaml`, plugin metadata is read from `.obsidian/plugins/*/manifest.json` and written to the generated software inventory page;
+- when `obsidian_plugins: false` is set, the generated page omits the Obsidian plugin section even if plugin manifests exist.
 
 ## Usage
 
@@ -33,7 +36,7 @@ if __name__ == "__main__":
 
 ## Temporary test case
 
-The test creates a temporary case root with:
+Each test creates a temporary case root with:
 
 ```text
 MANIFEST.software.yaml
@@ -47,7 +50,7 @@ The generated output is written inside the temporary case root:
 generated/Zettelkasten-software-inventory.md
 ```
 
-## Current test
+## Current tests
 
 ### `test_obsidian_plugins_true_reads_manifest_files`
 
@@ -75,8 +78,6 @@ python/gen_software_components.py
 
 against the temporary case root.
 
-## Assertions
-
 The test asserts that:
 
 - the generator exits with status `0`;
@@ -88,7 +89,7 @@ The test asserts that:
 - the generated page contains `| Beta Plugin | Beta description | 0.4.5 |`;
 - `Alpha Plugin` appears before `Beta Plugin`.
 
-## Expected plugin table fragment
+Expected plugin table fragment:
 
 ```markdown
 ## Obsidian plugins
@@ -101,10 +102,36 @@ Plugins installed inside the Obsidian vault.
 | Beta Plugin | Beta description | 0.4.5 |
 ```
 
+### `test_obsidian_plugins_false_omits_plugin_section`
+
+This test writes the same fake plugin manifests, but writes a minimal `MANIFEST.software.yaml` with:
+
+```yaml
+obsidian_plugins: false
+```
+
+Then it runs:
+
+```text
+python/gen_software_components.py
+```
+
+against the temporary case root.
+
+The test asserts that:
+
+- the generator exits with status `0`;
+- `generated/Zettelkasten-software-inventory.md` is created;
+- `Zettelkasten-software-configuration.md` is not created;
+- the generated page does not contain `## Obsidian plugins`;
+- the generated page does not contain `| Plugin | Description | Version |`;
+- the generated page does not contain `Alpha Plugin`;
+- the generated page does not contain `Beta Plugin`.
+
 ## Repository boundary
 
 The test reads `python/gen_software_components.py` from the repository under test.
 
-All generated files, fake plugin manifests, and the temporary manifest are written under a temporary directory created by `tempfile.TemporaryDirectory()`.
+All generated files, fake plugin manifests, and temporary manifests are written under temporary directories created by `tempfile.TemporaryDirectory()`.
 
 The test does not use the private Zettelkasten vault.
