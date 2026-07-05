@@ -62,17 +62,15 @@ Titles may change; IDs do not.
 
 ### Element types
 
-- **WikiLink:** An internal Markdown link of the form `[[ID]]`.
+- **WikiLink:** An internal Markdown link of the form `[[ID]]`; title text may be placed after the closing brackets, separated by one space, for example `[[0000.0000.0ABC]] A-B-C`.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
 - **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography  
 such as one exported from Zotero.
 
 ### Alphabetic and numeric index notes
 
-The following `<ID>` and `<TITLE>` values are reserved and are used to create an
-automatic note index through Obsidian's backlink mechanism. The IDs were chosen to
-appear at the beginning of the Obsidian File Explorer panel. For each `<ID> <TITLE>`
-pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
+The following `<ID>` and `<TITLE>` values are reserved and are used to create an automatic note index through Obsidian's backlink mechanism. The IDs were chosen to
+appear at the beginning of the Obsidian File Explorer panel. For each `<ID> <TITLE>`pair below, the Zettelkasten should have exactly one note with that `<ID>` and `<TITLE>`:
 
 - `0000.0000.0000 INDEX`
 - `0000.0000.0ABC A-B-C`
@@ -88,15 +86,9 @@ pair below, the Zettelkasten should have exactly one note with that `<ID>` and `
 
 No other `<ID> <TITLE>` combination is an index note.
 
-Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
-the corresponding index WikiLink. Use one line per index link with two trailing spaces at the end
-of the line. The two trailing spaces are Markdown hard-break spaces, which render the WikiLinks
-and annotations on individual lines.
+Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding the corresponding index WikiLink, one index link per line. The index-entry line form is documented in the Alphanumeric Index page of the Zettel Wiki. The `## SEE ALSO` section may include WikiLinks of related notes other than those appearing in the main body, one or more alphabetic or numeric index links, and optional hashtags.
 
-The `## SEE ALSO` section may include WikiLinks of related notes other than those appearing in
-the main body, one or more alphabetic or numeric index links, and optional hashtags.
-
-The `## References` section is present but may be empty. Here we have included three references on Zettelkasten.
+The `## References` section is present but may be empty. Here we have included two references on Zettelkasten.
 
 ## SEE ALSO
 
@@ -107,13 +99,11 @@ The `## References` section is present but may be empty. Here we have included t
 ## References
 - Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
 - Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
-- Aldrich, Chris. [Zettelkasten one-pagers](https://hypothes.is/users/chrisaldrich?q=tag%3A%22zettelkasten+method+one+pager%22)
 ```
 
 ## Security
 
-This repository contains executable code, including Obsidian Templater JavaScript, Python, and shell scripts. 
-Standard security precautions apply.
+This repository contains executable code, including Obsidian Templater JavaScript, Python, and shell scripts. Standard security precautions apply.
 
 ## License
 

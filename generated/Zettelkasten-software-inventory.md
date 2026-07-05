@@ -1,6 +1,6 @@
 This page records the software inventory, synchronization components, repository tools, documentation, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-03T20:23:00-04:00
+Last checked: 2026-07-04T22:54:18-04:00
 
 ## Zettelkasten software
 
@@ -8,8 +8,8 @@ Software used directly with the Zettelkasten.
 
 | Component | Role | Version/status |
 |---|---|---|
-| Obsidian | note editor and slip-box interface | 1.12.7 |
-| Zotero | reference manager | 9.0.5 |
+| Obsidian | note editor and slip-box interface | 1.12.4 |
+| Zotero | reference manager | 8.0 |
 | Better BibTeX | Zotero add-on for stable citation keys and bibliography export | manual |
 
 ## Obsidian plugins
@@ -50,9 +50,9 @@ Software used to export notes and work with LaTeX or PDF output.
 
 | Component | Role | Version/status |
 |---|---|---|
-| Pandoc | Markdown export and citation processing | pandoc 3.9.0.2 |
-| MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.5) |
-| WinEdt 11 | LaTeX editor used with exported LaTeX or PDF output | 11.2 |
+| Pandoc | Markdown export and citation processing | pandoc 3.7.0.1 |
+| MiKTeX | LaTeX distribution for PDF export | One MiKTeX Utility 1.12 (MiKTeX 26.2) |
+| WinEdt 11 | LaTeX editor used with exported LaTeX or PDF output | 11.0 |
 
 ## Sync and replication
 
@@ -69,8 +69,8 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 
 | Component | Role | Version/status |
 |---|---|---|
-| Python | repository tooling | Python 3.14.4 |
-| Git | repository and Wiki updates | git version 2.55.0.windows.1 |
+| Python | repository tooling | Python 3.13.5 |
+| Git | repository and Wiki updates | git version 2.55.0.windows.2 |
 | Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.127 |
 
 ## Repository support files
