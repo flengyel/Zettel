@@ -4,10 +4,11 @@
 
 `test_gen_software_components.py` tests the software-inventory generator with a temporary repository case and a temporary fake Obsidian vault.
 
-The tests verify the generator contract for Obsidian plugin inventory:
+The tests verify the generator contract for Obsidian plugin inventory and protected output paths:
 
 - when `obsidian_plugins: true` is set in `MANIFEST.software.yaml`, plugin metadata is read from `.obsidian/plugins/*/manifest.json` and written to the generated software inventory page;
-- when `obsidian_plugins: false` is set, the generated page omits the Obsidian plugin section even if plugin manifests exist.
+- when `obsidian_plugins: false` is set, the generated page omits the Obsidian plugin section even if plugin manifests exist;
+- attempts to write the manually authored Wiki configuration page are refused.
 
 ## Usage
 
@@ -48,6 +49,12 @@ The generated output is written inside the temporary case root:
 
 ```text
 generated/Zettelkasten-software-inventory.md
+```
+
+The protected manual Wiki page path is also tested inside the temporary case root:
+
+```text
+Zettelkasten-software-configuration.md
 ```
 
 ## Current tests
@@ -127,6 +134,30 @@ The test asserts that:
 - the generated page does not contain `| Plugin | Description | Version |`;
 - the generated page does not contain `Alpha Plugin`;
 - the generated page does not contain `Beta Plugin`.
+
+### `test_manual_wiki_configuration_page_output_is_refused`
+
+This test writes a minimal `MANIFEST.software.yaml` and then asks the generator to write the manually authored Wiki configuration page name:
+
+```text
+Zettelkasten-software-configuration.md
+```
+
+It runs:
+
+```text
+python/gen_software_components.py --out Zettelkasten-software-configuration.md
+```
+
+against the temporary case root.
+
+The test asserts that:
+
+- the generator exits with status `2`;
+- `Zettelkasten-software-configuration.md` is not created;
+- `generated/Zettelkasten-software-inventory.md` is not created as a side effect;
+- standard error contains `Refusing to write manual Wiki page name: Zettelkasten-software-configuration.md`;
+- standard error contains `The software generator writes only generated/Zettelkasten-software-inventory.md.`.
 
 ## Repository boundary
 

@@ -50,16 +50,24 @@ class SoftwareInventoryGeneratorTests(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def run_generator(self, case_root: Path, manifest_name: str) -> subprocess.CompletedProcess[str]:
+    def run_generator(
+        self,
+        case_root: Path,
+        manifest_name: str,
+        *extra_args: str,
+    ) -> subprocess.CompletedProcess[str]:
+        command = [
+            sys.executable,
+            str(self.generator),
+            "--manifest",
+            manifest_name,
+            "--repo",
+            str(case_root),
+        ]
+        command.extend(extra_args)
+
         return subprocess.run(
-            [
-                sys.executable,
-                str(self.generator),
-                "--manifest",
-                manifest_name,
-                "--repo",
-                str(case_root),
-            ],
+            command,
             text=True,
             capture_output=True,
             check=False,
@@ -138,6 +146,35 @@ class SoftwareInventoryGeneratorTests(unittest.TestCase):
             self.assertNotIn("| Plugin | Description | Version |", markdown)
             self.assertNotIn("Alpha Plugin", markdown)
             self.assertNotIn("Beta Plugin", markdown)
+
+    def test_manual_wiki_configuration_page_output_is_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            case_root = Path(directory)
+            vault_path = case_root / "fake_vault"
+            manifest_path = case_root / "MANIFEST.software.yaml"
+
+            self.write_manifest(manifest_path, vault_path, obsidian_plugins=False)
+
+            result = self.run_generator(
+                case_root,
+                manifest_path.name,
+                "--out",
+                "Zettelkasten-software-configuration.md",
+            )
+
+            self.assertEqual(result.returncode, 2)
+            self.assertFalse((case_root / "Zettelkasten-software-configuration.md").exists())
+            self.assertFalse(
+                (case_root / "generated" / "Zettelkasten-software-inventory.md").exists()
+            )
+            self.assertIn(
+                "Refusing to write manual Wiki page name: Zettelkasten-software-configuration.md",
+                result.stderr,
+            )
+            self.assertIn(
+                "The software generator writes only generated/Zettelkasten-software-inventory.md.",
+                result.stderr,
+            )
 
 
 if __name__ == "__main__":
