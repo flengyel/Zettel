@@ -104,6 +104,41 @@ class SoftwareInventoryGeneratorTests(unittest.TestCase):
                 markdown.index("| Beta Plugin | Beta description | 0.4.5 |"),
             )
 
+    def test_obsidian_plugins_false_omits_plugin_section(self):
+        with tempfile.TemporaryDirectory() as directory:
+            case_root = Path(directory)
+            vault_path = case_root / "fake_vault"
+            manifest_path = case_root / "MANIFEST.software.yaml"
+
+            self.write_plugin_manifest(
+                vault_path,
+                "alpha-plugin",
+                "Alpha Plugin",
+                "Alpha description",
+                "1.2.3",
+            )
+            self.write_plugin_manifest(
+                vault_path,
+                "beta-plugin",
+                "Beta Plugin",
+                "Beta description",
+                "0.4.5",
+            )
+            self.write_manifest(manifest_path, vault_path, obsidian_plugins=False)
+
+            result = self.run_generator(case_root, manifest_path.name)
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            output_path = case_root / "generated" / "Zettelkasten-software-inventory.md"
+            self.assertTrue(output_path.is_file())
+            self.assertFalse((case_root / "Zettelkasten-software-configuration.md").exists())
+
+            markdown = output_path.read_text(encoding="utf-8")
+            self.assertNotIn("## Obsidian plugins", markdown)
+            self.assertNotIn("| Plugin | Description | Version |", markdown)
+            self.assertNotIn("Alpha Plugin", markdown)
+            self.assertNotIn("Beta Plugin", markdown)
+
 
 if __name__ == "__main__":
     unittest.main()
