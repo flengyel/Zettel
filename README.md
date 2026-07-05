@@ -62,7 +62,7 @@ Titles may change; IDs do not.
 
 ### Element types
 
-- **WikiLink:** An internal Markdown link of the form `[[ID]]`; title text may be placed after the closing brackets, separated by one space, for example `[[0000.0000.0ABC]] A-B-C`.
+- **WikiLink:** An internal Markdown link of the form `[[ID]]`. Title text or other annotation may appear before or after a WikiLink as ordinary text.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
 - **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography  
 such as one exported from Zotero.
