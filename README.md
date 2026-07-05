@@ -88,7 +88,7 @@ No other `<ID> <TITLE>` combination is an index note.
 
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding the corresponding index WikiLink, one index link per line. The index-entry line form is documented in the Alphanumeric Index page of the Zettel Wiki. The `## SEE ALSO` section may include WikiLinks of related notes other than those appearing in the main body, one or more alphabetic or numeric index links, and optional hashtags.
 
-The `## References` section is present but may be empty. Here we have included two references on Zettelkasten.
+The `## References` section is present but may be empty. Here we have included a reference on Zettelkasten.
 
 ## SEE ALSO
 
@@ -97,8 +97,8 @@ The `## References` section is present but may be empty. Here we have included t
 #optional #hashtag
 
 ## References
-- Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
-- Doto, Bob. 2024. _A System for Writing_. Old New Traditions.
+
+Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
 ```
 
 ## Security
