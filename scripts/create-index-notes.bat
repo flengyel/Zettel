@@ -7,8 +7,10 @@ rem Existing files are skipped; this script never overwrites notes.
 rem This script creates only the reserved index files; it does not constrain ordinary note IDs.
 rem
 rem SEE ALSO links keep the target as an ID-only WikiLink and place the
-rem title after it as plain text:
-rem   [[ID]] TITLE
+rem title after it as plain text. Generated index-entry lines use one
+rem separator space before the title and two trailing Markdown hard-break
+rem spaces at the end of the line:
+rem   [[ID]] TITLE  
 rem
 rem The master INDEX note links to the subordinate alphanumeric index notes
 rem under SEE ALSO. Each subordinate index note links back to INDEX under
@@ -19,6 +21,7 @@ rem   create-index-notes.bat
 rem   create-index-notes.bat path\to\zettelkasten
 
 set "SEP= "
+set "HARD_BREAK=  "
 set "OUTDIR=%~1"
 if "%OUTDIR%"=="" set "OUTDIR=."
 
@@ -82,16 +85,16 @@ if exist "%FILE%" (
     echo(
     echo ## SEE ALSO
     echo(
-    echo [[0000.0000.0ABC]]%SEP%A-B-C
-    echo [[0000.0000.0DEF]]%SEP%D-E-F
-    echo [[0000.0000.0GHI]]%SEP%G-H-I
-    echo [[0000.0000.0JKL]]%SEP%J-K-L
-    echo [[0000.0000.0MNO]]%SEP%M-N-O
-    echo [[0000.0000.0PQR]]%SEP%P-Q-R
-    echo [[0000.0000.0STU]]%SEP%S-T-U
-    echo [[0000.0000.0VWX]]%SEP%V-W-X
-    echo [[0000.0000.00YZ]]%SEP%Y-Z
-    echo [[0000.0000.0009]]%SEP%0-9
+    echo [[0000.0000.0ABC]]%SEP%A-B-C%HARD_BREAK%
+    echo [[0000.0000.0DEF]]%SEP%D-E-F%HARD_BREAK%
+    echo [[0000.0000.0GHI]]%SEP%G-H-I%HARD_BREAK%
+    echo [[0000.0000.0JKL]]%SEP%J-K-L%HARD_BREAK%
+    echo [[0000.0000.0MNO]]%SEP%M-N-O%HARD_BREAK%
+    echo [[0000.0000.0PQR]]%SEP%P-Q-R%HARD_BREAK%
+    echo [[0000.0000.0STU]]%SEP%S-T-U%HARD_BREAK%
+    echo [[0000.0000.0VWX]]%SEP%V-W-X%HARD_BREAK%
+    echo [[0000.0000.00YZ]]%SEP%Y-Z%HARD_BREAK%
+    echo [[0000.0000.0009]]%SEP%0-9%HARD_BREAK%
     echo(
     echo ## References
 )
@@ -123,7 +126,7 @@ if exist "%FILE%" (
     echo(
     echo ## SEE ALSO
     echo(
-    echo [[0000.0000.0000]]%SEP%INDEX
+    echo [[0000.0000.0000]]%SEP%INDEX%HARD_BREAK%
     echo(
     echo ## References
 )

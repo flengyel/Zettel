@@ -87,16 +87,16 @@ Each subordinate index note links back to the master `INDEX` note under `SEE ALS
 
 The script writes index links in this form:
 
-```text
-[[<ID>]] <TITLE>
+```markdown
+[[<ID>]] <TITLE>  
 ```
 
-The title is plain text outside the WikiLink. The generated link target is the reserved index ID.
+The title is plain text outside the WikiLink. The generated link target is the reserved index ID. Each generated index-entry line has one ordinary separator space before `<TITLE>` and two trailing Markdown hard-break spaces at the end of the line.
 
 Example:
 
-```text
-[[0000.0000.0ABC]] A-B-C
+```markdown
+[[0000.0000.0ABC]] A-B-C  
 ```
 
 ## Non-overwrite rule

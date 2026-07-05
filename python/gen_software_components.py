@@ -611,6 +611,15 @@ def is_manual_wiki_page_output(path: Path) -> bool:
     return path.name in MANUAL_WIKI_PAGE_NAMES
 
 
+def is_canonical_inventory_output(repo_root: Path, output_path: Path) -> bool:
+    try:
+        relative = output_path.resolve().relative_to(repo_root.resolve())
+    except ValueError:
+        return False
+
+    return relative.as_posix() == DEFAULT_OUTPUT
+
+
 def write_page(data: dict[str, Any], repo_root: Path, output_path: Path, timestamp: str | None = None) -> int:
     if is_manual_wiki_page_output(output_path):
         print(
@@ -618,7 +627,18 @@ def write_page(data: dict[str, Any], repo_root: Path, output_path: Path, timesta
             file=sys.stderr,
         )
         print(
-            "The software generator writes only Zettelkasten-software-inventory.md.",
+            f"The software generator writes only {DEFAULT_OUTPUT}.",
+            file=sys.stderr,
+        )
+        return 2
+
+    if not is_canonical_inventory_output(repo_root, output_path):
+        print(
+            f"Refusing to write non-canonical software inventory path: {output_path}",
+            file=sys.stderr,
+        )
+        print(
+            f"The software generator writes only {DEFAULT_OUTPUT}.",
             file=sys.stderr,
         )
         return 2
@@ -647,7 +667,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--out",
         default=DEFAULT_OUTPUT,
-        help="output Markdown path",
+        help=f"output Markdown path; only {DEFAULT_OUTPUT} is accepted",
     )
 
     args = parser.parse_args(argv)

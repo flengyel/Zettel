@@ -62,7 +62,7 @@ Titles may change; IDs do not.
 
 ### Element types
 
-- **WikiLink:** An internal Markdown link of the form `[[ID]]`; title text may be placed after the closing brackets, separated by one space, for example `[[0000.0000.0ABC]] A-B-C`.
+- **WikiLink:** An internal Markdown link of the form `[[ID]]`.
 - **Hashtag:** Optional retrieval metadata, normally placed in **SEE ALSO**.
 - **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography  
 such as one exported from Zotero.
@@ -89,8 +89,14 @@ pair below, the Zettelkasten should have exactly one note with that `<ID>` and `
 No other `<ID> <TITLE>` combination is an index note.
 
 Under the `## SEE ALSO` section of a note, index one or more words from the H1 heading by adding
-the corresponding index WikiLink. Use one line per index link. When title text is shown after
-the WikiLink, write it as ordinary text, separated from the WikiLink by one space, as in `[[0000.0000.00YZ]] Y-Z`. In source Markdown, put two trailing spaces at the end of each index-link line when a hard line break is wanted.
+the corresponding index WikiLink. Use one line per index link. For an index-entry line with title text, write the title as ordinary text outside the WikiLink:
+
+```markdown
+[[<ID>]] <TITLE>  
+```
+
+That form uses one ordinary separator space between the WikiLink and the title. The two trailing spaces are Markdown hard-break spaces at the end of the index-entry line.
+
 The `## SEE ALSO` section may include WikiLinks of related notes other than those appearing in
 the main body, one or more alphabetic or numeric index links, and optional hashtags.
 
