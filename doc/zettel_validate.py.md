@@ -1,7 +1,5 @@
 # Zettel validator
 
-# Zettel validator
-
 This validator checks completed Zettels against the note-format conventions used by this repository.
 
 ## What it checks
