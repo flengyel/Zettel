@@ -183,9 +183,9 @@ repository_files:
     category: repository_documentation
     role: Markdown note-format specification and repository overview
 
-  - path: python/README-validator.md
+  - path: doc/zettel_validate.py.md
     category: repository_documentation
-    role: validator usage notes
+    role: documentation for python/zettel_validate.py
 
   - path: doc/create-index-notes.bat.md
     category: repository_documentation

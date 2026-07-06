@@ -27,13 +27,14 @@ py -m pip install pyyaml
 ## Check one note
 
 ```powershell
-py .\zettel_validate.py "C:\Users\fleng\OneDrive\Documents\Zettelkasten\Tikz202504272354.md"
+py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten\Tikz202504272354.md"
 ```
 
 ## Check the Zettelkasten root
 
 ```powershell
-py .\zettel_validate.py "C:\Users\fleng\OneDrive\Documents\Zettelkasten"
+py .\zettel_validate.py 
+"env:%USERPROFILE%\Zettelkasten\Tikz202504272354.md"
 ```
 
 A directory is **not searched recursively by default**. This checks the root Zettels without treating `Periodic-Notes`, `Projects`, or `Templates` as Zettels.
@@ -41,7 +42,7 @@ A directory is **not searched recursively by default**. This checks the root Zet
 ## Check recursively
 
 ```powershell
-py .\zettel_validate.py "C:\Users\fleng\OneDrive\Documents\Zettelkasten" --recursive `
+py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten" --recursive `
   --exclude "Templates/**" `
   --exclude "Periodic-Notes/**" `
   --exclude "Projects/**"
@@ -50,7 +51,7 @@ py .\zettel_validate.py "C:\Users\fleng\OneDrive\Documents\Zettelkasten" --recur
 ## Temporarily omit index checks
 
 ```powershell
-py .\zettel_validate.py "C:\Users\fleng\OneDrive\Documents\Zettelkasten" --no-index-links --no-index-inventory
+py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten" --no-index-links --no-index-inventory
 ```
 
 This is useful for first checking only the filename/front-matter/H1 redundancy.

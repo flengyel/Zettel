@@ -17,12 +17,12 @@ This README specifies the Markdown note format: the self-documenting note templa
 ## Repository contents
 
 - `README.md` — Markdown note-format specification.
-- `templates/` — Obsidian Templater templates for note creation and WikiLink title annotation.
-- `python/` — validators and documentation generators.
-- `scripts/` — bootstrapping and publishing scripts.
-- `doc/` — Markdown documentation for repository scripts.
-- `pandoc/` and `LaTeX/` — export and typesetting support files.
+- `doc/` — Markdown documentation for repository scripts and Python tools.
 - `generated/` — generated documentation artifacts.
+- `pandoc/` and `LaTeX/` — export and typesetting support files.
+- `python/` — Python validators, tests, generators, and local diagnostics.
+- `scripts/` — bootstrapping and publishing scripts.
+- `templates/` — Obsidian Templater templates for note creation and WikiLink title annotation.
 
 The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) contains operational conventions, definitions, examples, software configuration, generated inventory pages, and methodological notes.
 
