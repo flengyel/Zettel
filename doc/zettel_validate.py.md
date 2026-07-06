@@ -1,6 +1,8 @@
 # Zettel validator
 
-This version validates the current Obsidian conventions rather than the old ID format documented in the repository README.
+# Zettel validator
+
+This validator checks completed Zettels against the note-format conventions used by this repository.
 
 ## What it checks
 
@@ -24,17 +26,18 @@ In PowerShell:
 py -m pip install pyyaml
 ```
 
+The examples below assume that the current directory is the repository root.
+
 ## Check one note
 
 ```powershell
-py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten\Tikz202504272354.md"
+py .\python\zettel_validate.py "$env:USERPROFILE\Zettelkasten\Tikz202504272354.md"
 ```
 
 ## Check the Zettelkasten root
 
 ```powershell
-py .\zettel_validate.py 
-"env:%USERPROFILE%\Zettelkasten\Tikz202504272354.md"
+py .\python\zettel_validate.py "$env:USERPROFILE\Zettelkasten"
 ```
 
 A directory is **not searched recursively by default**. This checks the root Zettels without treating `Periodic-Notes`, `Projects`, or `Templates` as Zettels.
@@ -42,7 +45,7 @@ A directory is **not searched recursively by default**. This checks the root Zet
 ## Check recursively
 
 ```powershell
-py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten" --recursive `
+py .\python\zettel_validate.py "$env:USERPROFILE\Zettelkasten" --recursive `
   --exclude "Templates/**" `
   --exclude "Periodic-Notes/**" `
   --exclude "Projects/**"
@@ -51,7 +54,7 @@ py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten" --recursive `
 ## Temporarily omit index checks
 
 ```powershell
-py .\zettel_validate.py "env:%USERPROFILE%\Zettelkasten" --no-index-links --no-index-inventory
+py .\python\zettel_validate.py "$env:USERPROFILE\Zettelkasten" --no-index-links --no-index-inventory
 ```
 
 This is useful for first checking only the filename/front-matter/H1 redundancy.

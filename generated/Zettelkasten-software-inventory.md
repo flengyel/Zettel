@@ -1,6 +1,6 @@
 This page records the software inventory, synchronization components, repository tools, documentation, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-05T15:29:37-04:00
+Last checked: 2026-07-05T21:15:18-04:00
 
 ## Zettelkasten software
 
@@ -101,7 +101,7 @@ Markdown documentation for the note format, repository scripts, and generated re
 | Path | Role | Status |
 |---|---|---|
 | `README.md` | Markdown note-format specification and repository overview | present |
-| `python/README-validator.md` | validator usage notes | present |
+| `doc/zettel_validate.py.md` | documentation for python/zettel_validate.py | present |
 | `doc/create-index-notes.bat.md` | documentation for scripts/create-index-notes.bat | present |
 | `doc/publish-software-inventory.ps1.md` | documentation for scripts/publish-software-inventory.ps1 | present |
 | `doc/publish-software-inventory.cmd.md` | documentation for scripts/publish-software-inventory.cmd | present |
