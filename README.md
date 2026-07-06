@@ -66,10 +66,8 @@ from trailing spaces. Titles may change; IDs do not.
 ### Element types
 
 - **WikiLink:** An internal Markdown link of the form `[[ID]]`.
-  Title text or other annotation may appear before or after a WikiLink as ordinary text.
 - **Hashtag:** Optional retrieval metadata, normally placed in `## SEE ALSO`.
-- **Pandoc citation:** A citation of the form `[@citeKey]`, resolved through a bibliography
-  such as one exported from Zotero.
+- **Pandoc citation:** A citation of the form `[@citeKey]`. 
 
 ### Alphabetic and numeric index notes
 
