@@ -28,7 +28,7 @@ The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) contains operational 
 
 ### Background
 
-The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Annotated list of Zettelkasten "one-pagers"](https://hypothes.is/users/chrisaldrich?q=tag%3A%22zettelkasten+method+one+pager%22)
+The Zettelkasten Method is documented at [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and in the [Zettelkasten.de forum](https://forum.zettelkasten.de). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). Also see Chris Aldrich's [Annotated list of Zettelkasten "one-pagers"](https://hypothes.is/users/chrisaldrich?q=tag%3A%22zettelkasten+method+one+pager%22). Niklas Luhmann's "[Technique of the Card Index (1968)](https://niklas-luhmann-archiv.de/bestand/manuskripte/manuskript/MS_2906_0001)."
 
 ## Self-documenting note specification
 
