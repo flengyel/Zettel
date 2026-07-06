@@ -12,9 +12,10 @@ The validator implements the conventions described by the vault owner:
   index note appropriate to at least one word in its H1;
 * the special index notes are exempt from that last rule.
 
-ID syntax is deliberately opaque.  Current timestamp IDs, legacy dotted IDs,
-and the special index IDs can coexist.  Equality among filename, YAML ``id``,
-and the prefix of YAML ``title`` is what is enforced.
+ID syntax is deliberately minimal.  An ID must be a nonempty contiguous
+string with no whitespace.  Current timestamp IDs, legacy dotted IDs, and the
+special index IDs can coexist.  Equality among filename, YAML ``id``, and the
+prefix of YAML ``title`` is also enforced.
 
 PyYAML is required::
 
@@ -23,13 +24,13 @@ PyYAML is required::
 Examples (PowerShell)::
 
     # Check one note
-    py .\zettel_validate.py 'C:\path\to\vault\Tikz202504272354.md'
+    py .\python\zettel_validate.py 'C:\path\to\vault\Tikz202504272354.md'
 
     # Check only Markdown files in the vault root (the default for a directory)
-    py .\zettel_validate.py 'C:\path\to\vault'
+    py .\python\zettel_validate.py 'C:\path\to\vault'
 
     # Include subdirectories as well
-    py .\zettel_validate.py 'C:\path\to\vault' --recursive \
+    py .\python\zettel_validate.py 'C:\path\to\vault' --recursive \
         --exclude 'Templates/**' --exclude 'Periodic-Notes/**' \
         --exclude 'Projects/**'
 
@@ -338,6 +339,8 @@ class ZettelValidator:
         front_matter: Mapping[str, Any],
         key: str,
         invalid_code: str,
+        *,
+        trim_trailing: bool = True,
     ) -> str | None:
         if key not in front_matter:
             self.append_issue(
@@ -355,8 +358,9 @@ class ZettelValidator:
             return None
 
         # Leading whitespace is meaningful in the title text; trailing
-        # whitespace is not, according to the stated convention.
-        return value.rstrip()
+        # whitespace is not, according to the stated convention.  IDs are
+        # handled with trim_trailing=False so whitespace can be rejected.
+        return value.rstrip() if trim_trailing else value
 
     @staticmethod
     def _visible_body_lines(
@@ -602,7 +606,12 @@ class ZettelValidator:
         if front_matter is None:
             return self._finish(report=report)
 
-        note_id = self._front_matter_string(front_matter, "id", "invalid_id")
+        note_id = self._front_matter_string(
+            front_matter,
+            "id",
+            "invalid_id",
+            trim_trailing=False,
+        )
         full_title = self._front_matter_string(front_matter, "title", "invalid_title")
         reference_title = self._front_matter_string(
             front_matter,
@@ -611,6 +620,12 @@ class ZettelValidator:
         )
 
         if note_id is not None:
+            if any(character.isspace() for character in note_id):
+                self.append_issue(
+                    "invalid_id",
+                    "The ID must be a nonempty contiguous string with no whitespace.",
+                )
+
             if any(character in note_id for character in ("/", "\\", "\0")):
                 self.append_issue(
                     "invalid_id",

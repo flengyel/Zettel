@@ -44,6 +44,30 @@ class ZettelValidatorTests(unittest.TestCase):
         _, result = self.validate(text, f"{old_id}.md")
         self.assertTrue(result)
 
+    def test_id_must_not_contain_space(self):
+        bad_id = "Bad ID"
+        text = VALID_NOTE.replace("Tikz202504272354", bad_id)
+        validator, result = self.validate(text, f"{bad_id}.md")
+        self.assertFalse(result)
+        codes = {issue.code for issue in validator.issues}
+        self.assertIn("invalid_id", codes)
+        self.assertNotIn("filename_id_mismatch", codes)
+
+    def test_id_must_not_contain_tab(self):
+        bad_id = "Bad\tID"
+        text = VALID_NOTE.replace(
+            "id: Tikz202504272354",
+            'id: "Bad\\tID"',
+        ).replace(
+            "title: Tikz202504272354 Tikz in Obsidian examples",
+            'title: "Bad\\tID Tikz in Obsidian examples"',
+        )
+        validator, result = self.validate(text, f"{bad_id}.md")
+        self.assertFalse(result)
+        codes = {issue.code for issue in validator.issues}
+        self.assertIn("invalid_id", codes)
+        self.assertNotIn("filename_id_mismatch", codes)
+
     def test_filename_must_equal_yaml_id(self):
         validator, result = self.validate(fn="wrong.md")
         self.assertFalse(result)
