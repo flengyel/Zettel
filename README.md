@@ -58,8 +58,8 @@ reference-section-title: References
 # <TITLE>
 
 The note body begins with the line after the H1 heading and ends with the line before
-the `## SEE ALSO` section below. The H1 text `<TITLE>` text is identical to the `<TITLE>`
-following `<ID> `, apart from trailing spaces. Titles may change; IDs do not.
+the `## SEE ALSO` section below. The H1 heading text is the value of `<TITLE>`, apart
+from trailing spaces. Titles may change; IDs do not.
 
 ## Definitions
 
