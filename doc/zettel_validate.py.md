@@ -14,7 +14,7 @@ For each completed Zettel:
 6. An ordinary note has, in `SEE ALSO`, at least one link to an alphabetic index note corresponding to the initial letter or digit of at least one H1 word.
 7. Special index notes have their fixed IDs and titles and are exempt from rule 6.
 
-ID syntax itself is not restricted. Timestamp IDs, dotted legacy IDs, and special index IDs may coexist.
+ID syntax is restricted only enough to make the note structure unambiguous. An ID is a nonempty contiguous string with no whitespace. Timestamp IDs, dotted legacy IDs, and special index IDs may coexist.
 
 ## Install
 
