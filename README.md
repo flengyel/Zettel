@@ -35,7 +35,7 @@ The Zettelkasten Method is documented at [Introduction to the Zettelkasten Metho
 The following self-documenting note specification includes explanatory
 definitions and index documentation. Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. They do not include the explanatory definitions and index documentation below.
 
-Replace the metavariables `<ID>` and `<TITLE>`; the angle brackets do not appear in a completed note. The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without the `.md` extension. We leave the format of `<ID>` unspecified except for uniqueness, immutability, and operating system compatibility, with the exception of the reserved `<ID>` values below.
+Replace the metavariables `<ID>` and `<TITLE>`; the angle brackets do not appear in a completed note. The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without the `.md` extension. An `<ID>` is a nonempty contiguous string with no whitespace and must be compatible with the target operating system's filename rules. Except for the reserved `<ID>` values below, this document does not prescribe further ID structure.
 
 In this system, current notes use a keyword followed by a timestamp, but ID formats have changed over time.
 
