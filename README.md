@@ -65,9 +65,9 @@ from trailing spaces. Titles may change; IDs do not.
 
 ### Element types
 
-- **WikiLink:** An internal Markdown link of the form `[[ID]]`.
-- **Hashtag:** * A tag of the form `#tag`.
-- **Pandoc citation:** A citation of the form `[@citeKey]`. 
+- **WikiLink:** A note link of the form `[[ID]]`.
+- **Hashtag:** A tag of the form `#tag`.
+- **Pandoc citation:** A citation of the form `[@citeKey]`.
 
 ### Alphabetic and numeric index notes
 
