@@ -97,6 +97,29 @@ _CHAR_TO_INDEX_ID: dict[str, str] = {
 }
 
 
+def _safe_for_stream(value: object, stream: TextIO) -> str:
+    """Return a display string that can be encoded by stream."""
+
+    text = str(value)
+    encoding = getattr(stream, "encoding", None)
+    if not encoding:
+        return text
+
+    try:
+        text.encode(encoding)
+    except UnicodeEncodeError:
+        return text.encode(encoding, errors="backslashreplace").decode(encoding)
+    except LookupError:
+        return text.encode("ascii", errors="backslashreplace").decode("ascii")
+    return text
+
+
+def _safe_print(value: object = "", *, stream: TextIO) -> None:
+    """Print one line without failing on narrow Windows code pages."""
+
+    print(_safe_for_stream(value, stream), file=stream)
+
+
 class _UniqueKeyLoader(yaml.SafeLoader):
     """Safe YAML loader that rejects duplicate mapping keys."""
 
@@ -252,7 +275,7 @@ class ZettelValidator:
 
     def show_issues(self, stream: TextIO = sys.stdout) -> None:
         for issue in self._issues:
-            print(issue, file=stream)
+            _safe_print(issue, stream=stream)
 
     @staticmethod
     def _filename_stem(filename: str) -> str:
@@ -820,7 +843,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     ]
     if nonexistent:
         for path in nonexistent:
-            print(f"zettel_validate.py: path not found: {path}", file=sys.stderr)
+            _safe_print(f"zettel_validate.py: path not found: {path}", stream=sys.stderr)
         return 2
 
     files = list(
@@ -831,7 +854,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         )
     )
     if not files:
-        print("zettel_validate.py: no Markdown files found", file=sys.stderr)
+        _safe_print("zettel_validate.py: no Markdown files found", stream=sys.stderr)
         return 2
 
     validator = ZettelValidator(check_index_links=not args.no_index_links)
@@ -848,7 +871,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     if inventory_issues and not args.quiet:
         for issue in inventory_issues:
-            print(issue)
+            _safe_print(issue, stream=sys.stdout)
 
     if not args.no_summary:
         valid_count = len(files) - invalid_count
@@ -857,9 +880,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             if inventory_issues
             else ""
         )
-        print(
+        _safe_print(
             f"Checked {len(files)} file(s): "
-            f"{valid_count} valid, {invalid_count} invalid{inventory_suffix}."
+            f"{valid_count} valid, {invalid_count} invalid{inventory_suffix}.",
+            stream=sys.stdout,
         )
 
     return 1 if invalid_count or inventory_issues else 0

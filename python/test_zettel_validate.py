@@ -28,6 +28,25 @@ Body text.
 """
 
 
+class StrictEncodingStream:
+    """Minimal text stream that rejects writes outside its encoding."""
+
+    def __init__(self, encoding="cp1252"):
+        self.encoding = encoding
+        self._parts = []
+
+    def write(self, text):
+        text.encode(self.encoding)
+        self._parts.append(text)
+        return len(text)
+
+    def flush(self):
+        pass
+
+    def getvalue(self):
+        return "".join(self._parts)
+
+
 class ZettelValidatorTests(unittest.TestCase):
     def validate(self, text=VALID_NOTE, fn="Tikz202504272354.md", **kwargs):
         validator = ZettelValidator(**kwargs)
@@ -98,6 +117,18 @@ class ZettelValidatorTests(unittest.TestCase):
         )
         _, result = self.validate(text)
         self.assertTrue(result)
+
+    def test_show_issues_escapes_unencodable_characters(self):
+        text = VALID_NOTE.replace(
+            "# Tikz in Obsidian examples", "# Δ in Obsidian examples", 1
+        )
+        validator, result = self.validate(text)
+        self.assertFalse(result)
+
+        stream = StrictEncodingStream("cp1252")
+        validator.show_issues(stream=stream)
+
+        self.assertIn("\\u0394", stream.getvalue())
 
     def test_missing_index_link_fails(self):
         text = VALID_NOTE.replace(
