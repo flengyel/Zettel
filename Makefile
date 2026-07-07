@@ -3,6 +3,7 @@
 
 PYTHON ?= python
 WIKI_DIR ?= ../Zettel.wiki
+POWERSHELL ?= powershell
 
 MANIFEST := MANIFEST.software.yaml
 GENERATOR := python/gen_software_components.py
@@ -12,54 +13,69 @@ GENERATED_DIR := generated
 PAGE_FILE := Zettelkasten-software-inventory.md
 GENERATED_PAGE := $(GENERATED_DIR)/$(PAGE_FILE)
 
-MAIN_FILES := Makefile $(MANIFEST) $(GENERATOR) $(PUBLISH_SCRIPT) $(PUBLISH_CMD) $(GENERATED_PAGE)
+MAIN_FILES := Makefile \
+	$(MANIFEST) \
+	$(GENERATOR) \
+	python/test_gen_software_components.py \
+	python/test_manifest_repository_files.py \
+	$(PUBLISH_SCRIPT) \
+	$(PUBLISH_CMD) \
+	doc/publish-software-inventory.ps1.md \
+	doc/publish-software-inventory.cmd.md \
+	doc/test_gen_software_components.py.md \
+	doc/test_manifest_repository_files.py.md \
+	$(GENERATED_PAGE)
 MAIN_COMMIT_MSG ?= Generate software inventory page
 WIKI_COMMIT_MSG ?= Update software inventory page
+PUBLISH_ARGS := -NoProfile -ExecutionPolicy Bypass -File "$(PUBLISH_SCRIPT)" -Python "$(PYTHON)" -WikiDir "$(WIKI_DIR)" -WikiCommitMessage "$(WIKI_COMMIT_MSG)"
 
 .PHONY: help generate copy-wiki diff-wiki commit-wiki push-wiki publish-wiki commit-main push-main publish-all status clean-generated clean-obsolete-generated
 
 help:
 	@echo "Targets:"
 	@echo "  make generate                Generate $(GENERATED_PAGE)"
-	@echo "  make copy-wiki               Generate and copy the inventory page into $(WIKI_DIR)"
+	@echo "  make copy-wiki               Generate and copy through $(PUBLISH_SCRIPT) -DiffOnly"
 	@echo "  make diff-wiki               Show Wiki diff after copying"
 	@echo "  make publish-wiki            Generate, copy, commit Wiki page, and push Wiki repo"
-	@echo "  make commit-main             Commit generated source/output files in main repo"
-	@echo "  make push-main               Commit and push main repo changes"
-	@echo "  make publish-all             Push main repo changes and Wiki page update"
+	@echo "  make commit-main             Commit current generated source/output files in main repo"
+	@echo "  make push-main               Commit and push current main repo changes"
+	@echo "  make publish-all             Commit Wiki page, push main repo changes, then push Wiki repo"
 	@echo "  make clean-obsolete-generated Remove obsolete generated software page names"
 	@echo "  Windows: .\\scripts\\publish-software-inventory.cmd"
 	@echo "Variables:"
 	@echo "  WIKI_DIR=$(WIKI_DIR)"
 	@echo "  PYTHON=$(PYTHON)"
+	@echo "  POWERSHELL=$(POWERSHELL)"
 
 generate:
 	$(PYTHON) "$(GENERATOR)" --manifest "$(MANIFEST)" --repo . --out "$(GENERATED_PAGE)"
 
-copy-wiki: generate
-	git -C "$(WIKI_DIR)" rev-parse --is-inside-work-tree
-	$(PYTHON) -c "from pathlib import Path; import shutil, sys; root=Path(sys.argv[1]); wiki=Path(sys.argv[2]); page=sys.argv[3]; shutil.copy2(root / 'generated' / page, wiki / page); print('Copied {} -> {}'.format(root / 'generated' / page, wiki / page))" "." "$(WIKI_DIR)" "$(PAGE_FILE)"
+copy-wiki:
+	$(POWERSHELL) $(PUBLISH_ARGS) -DiffOnly
 
 diff-wiki: copy-wiki
-	git -C "$(WIKI_DIR)" diff -- "$(PAGE_FILE)"
 
-commit-wiki: copy-wiki
-	git -C "$(WIKI_DIR)" add "$(PAGE_FILE)"
-	git -C "$(WIKI_DIR)" diff --cached --quiet -- "$(PAGE_FILE)" || git -C "$(WIKI_DIR)" commit -m "$(WIKI_COMMIT_MSG)" -- "$(PAGE_FILE)"
+commit-wiki:
+	$(POWERSHELL) $(PUBLISH_ARGS) -NoPush
 
-push-wiki: commit-wiki
-	git -C "$(WIKI_DIR)" push
+push-wiki:
+	$(POWERSHELL) $(PUBLISH_ARGS)
 
 publish-wiki: push-wiki
 
-commit-main: generate
+commit-main:
 	git add $(MAIN_FILES)
 	git diff --cached --quiet -- $(MAIN_FILES) || git commit -m "$(MAIN_COMMIT_MSG)" -- $(MAIN_FILES)
 
 push-main: commit-main
 	git push
 
-publish-all: push-main push-wiki
+publish-all:
+	$(POWERSHELL) $(PUBLISH_ARGS) -NoPush
+	git add $(MAIN_FILES)
+	git diff --cached --quiet -- $(MAIN_FILES) || git commit -m "$(MAIN_COMMIT_MSG)" -- $(MAIN_FILES)
+	git push
+	git -C "$(WIKI_DIR)" push
 
 status:
 	git status --short

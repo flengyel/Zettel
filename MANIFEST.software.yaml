@@ -129,11 +129,15 @@ repository_files:
 
   - path: Makefile
     category: repository_support_files
-    role: optional GNU Make automation for generating and publishing the software inventory Wiki page
+    role: optional GNU Make automation for generation and for publishing through scripts/publish-software-inventory.ps1
 
   - path: templates/NewFileTemplate.md
     category: repository_support_files
     role: Obsidian Templater template for creating a new Zettel
+
+  - path: templates/Timestamp.md
+    category: repository_support_files
+    role: Obsidian Templater template for inserting timestamp text
 
   - path: templates/WikilinkTitle.md
     category: repository_support_files

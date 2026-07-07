@@ -81,8 +81,9 @@ Files that support note creation, validation, export, Wiki publishing, or bootst
 | Path | Role | Status |
 |---|---|---|
 | `MANIFEST.software.yaml` | software inventory manifest | present |
-| `Makefile` | optional GNU Make automation for generating and publishing the software inventory Wiki page | present |
+| `Makefile` | optional GNU Make automation for generation and for publishing through scripts/publish-software-inventory.ps1 | present |
 | `templates/NewFileTemplate.md` | Obsidian Templater template for creating a new Zettel | present |
+| `templates/Timestamp.md` | Obsidian Templater template for inserting timestamp text | present |
 | `templates/WikilinkTitle.md` | Obsidian Templater template for appending note titles to WikiLinks | present |
 | `python/zettel_validate.py` | validates completed Markdown Zettels | present |
 | `python/test_zettel_validate.py` | validator unit tests | present |

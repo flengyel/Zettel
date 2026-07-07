@@ -8,7 +8,7 @@ import unittest
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = REPOSITORY_ROOT / "MANIFEST.software.yaml"
-CHECKED_PREFIXES = ("python/", "scripts/", "doc/")
+CHECKED_PREFIXES = ("python/", "scripts/", "doc/", "templates/", "pandoc/", "LaTeX/")
 IGNORED_DIRECTORY_NAMES = {
     "__pycache__",
     ".mypy_cache",
@@ -87,7 +87,7 @@ def only_checked_prefixes(paths: set[str]) -> set[str]:
 
 def format_mismatch(missing_from_manifest: list[str], missing_from_repository: list[str]) -> str:
     lines = [
-        "MANIFEST.software.yaml repository_files does not match files under python/, scripts/, and doc/.",
+        "MANIFEST.software.yaml repository_files does not match files under checked repository directories.",
     ]
 
     if missing_from_manifest:
@@ -104,7 +104,7 @@ def format_mismatch(missing_from_manifest: list[str], missing_from_repository: l
 
 
 class ManifestRepositoryFileCoverageTests(unittest.TestCase):
-    def test_manifest_matches_python_scripts_and_doc_files(self) -> None:
+    def test_manifest_matches_checked_repository_files(self) -> None:
         manifest_paths = only_checked_prefixes(manifest_repository_paths())
         actual_paths = actual_repository_paths_under_checked_prefixes()
 
