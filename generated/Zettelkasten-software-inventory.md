@@ -81,13 +81,16 @@ Files that support note creation, validation, export, Wiki publishing, or bootst
 | Path | Role | Status |
 |---|---|---|
 | `MANIFEST.software.yaml` | software inventory manifest | present |
-| `Makefile` | optional GNU Make automation for generating and publishing the software inventory Wiki page | present |
+| `Makefile` | optional GNU Make automation for generation and for publishing through scripts/publish-software-inventory.ps1 | present |
 | `templates/NewFileTemplate.md` | Obsidian Templater template for creating a new Zettel | present |
+| `templates/Timestamp.md` | Obsidian Templater template for inserting timestamp text | present |
 | `templates/WikilinkTitle.md` | Obsidian Templater template for appending note titles to WikiLinks | present |
 | `python/zettel_validate.py` | validates completed Markdown Zettels | present |
 | `python/test_zettel_validate.py` | validator unit tests | present |
 | `python/zettel_repair.py` | repairs selected structural issues in Markdown Zettels | present |
 | `python/test_zettel_repair.py` | repair tool unit tests | present |
+| `python/zettel_diagnostics.py` | read-only validation, word-count, CSV, Markdown, and optional plot diagnostics for Markdown Zettels | present |
+| `python/test_zettel_diagnostics.py` | diagnostic script unit tests | present |
 | `python/gen_software_components.py` | generates the software inventory Wiki page from MANIFEST.software.yaml | present |
 | `python/test_gen_software_components.py` | software inventory generator unit tests | present |
 | `python/test_manifest_repository_files.py` | manifest repository-file coverage tests | present |
@@ -106,21 +109,12 @@ Markdown documentation for the note format, repository scripts, and generated re
 | `README.md` | Markdown note-format specification and repository overview | present |
 | `doc/zettel_validate.py.md` | documentation for python/zettel_validate.py | present |
 | `doc/zettel_repair.py.md` | documentation for python/zettel_repair.py | present |
+| `doc/zettel_diagnostics.py.md` | documentation for python/zettel_diagnostics.py | present |
 | `doc/create-index-notes.bat.md` | documentation for scripts/create-index-notes.bat | present |
 | `doc/publish-software-inventory.ps1.md` | documentation for scripts/publish-software-inventory.ps1 | present |
 | `doc/publish-software-inventory.cmd.md` | documentation for scripts/publish-software-inventory.cmd | present |
 | `doc/test_gen_software_components.py.md` | documentation for python/test_gen_software_components.py | present |
 | `doc/test_manifest_repository_files.py.md` | documentation for python/test_manifest_repository_files.py | present |
-
-## Local diagnostics
-
-Local scripts for inspecting the vault. These may contain local paths and are not portable tools.
-
-| Path | Role | Status |
-|---|---|---|
-| `python/zk_validation_stats.py` | local validation/statistics script | present |
-| `python/word_count_histogram.py` | local word-count histogram script | present |
-| `python/output.png` | local word-count histogram output image | present |
 
 ## Notes
 

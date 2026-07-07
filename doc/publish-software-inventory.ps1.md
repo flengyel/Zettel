@@ -28,7 +28,7 @@ The publishing command assumes a Windows 11 workstation with these command-line 
 
 Pandoc, MiKTeX, and WinEdt are export-workflow tools. They are listed in the generated inventory under `Export software` with version probes; they are not publisher prerequisites.
 
-Matplotlib and Seaborn are needed only for local diagnostic plotting scripts such as `python/zk_validation_stats.py` and `python/word_count_histogram.py`.
+Matplotlib is needed only when `python/zettel_diagnostics.py` is run with `--plots`. Seaborn is no longer required for repository diagnostic scripts.
 
 ## Usage
 

@@ -118,10 +118,6 @@ repository_file_sections:
   - key: repository_documentation
     heading: Repository documentation
     description: Markdown documentation for the note format, repository scripts, and generated repository tooling.
-  - key: local_diagnostics
-    heading: Local diagnostics
-    description: Local scripts for inspecting the vault. These may contain local paths and are not portable tools.
-
 repository_files:
   - path: MANIFEST.software.yaml
     category: repository_support_files
@@ -129,11 +125,15 @@ repository_files:
 
   - path: Makefile
     category: repository_support_files
-    role: optional GNU Make automation for generating and publishing the software inventory Wiki page
+    role: optional GNU Make automation for generation and for publishing through scripts/publish-software-inventory.ps1
 
   - path: templates/NewFileTemplate.md
     category: repository_support_files
     role: Obsidian Templater template for creating a new Zettel
+
+  - path: templates/Timestamp.md
+    category: repository_support_files
+    role: Obsidian Templater template for inserting timestamp text
 
   - path: templates/WikilinkTitle.md
     category: repository_support_files
@@ -154,6 +154,14 @@ repository_files:
   - path: python/test_zettel_repair.py
     category: repository_support_files
     role: repair tool unit tests
+
+  - path: python/zettel_diagnostics.py
+    category: repository_support_files
+    role: read-only validation, word-count, CSV, Markdown, and optional plot diagnostics for Markdown Zettels
+
+  - path: python/test_zettel_diagnostics.py
+    category: repository_support_files
+    role: diagnostic script unit tests
 
   - path: python/gen_software_components.py
     category: repository_support_files
@@ -199,6 +207,10 @@ repository_files:
     category: repository_documentation
     role: documentation for python/zettel_repair.py
 
+  - path: doc/zettel_diagnostics.py.md
+    category: repository_documentation
+    role: documentation for python/zettel_diagnostics.py
+
   - path: doc/create-index-notes.bat.md
     category: repository_documentation
     role: documentation for scripts/create-index-notes.bat
@@ -219,14 +231,3 @@ repository_files:
     category: repository_documentation
     role: documentation for python/test_manifest_repository_files.py
 
-  - path: python/zk_validation_stats.py
-    category: local_diagnostics
-    role: local validation/statistics script
-
-  - path: python/word_count_histogram.py
-    category: local_diagnostics
-    role: local word-count histogram script
-
-  - path: python/output.png
-    category: local_diagnostics
-    role: local word-count histogram output image
