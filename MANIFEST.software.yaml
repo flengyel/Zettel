@@ -147,6 +147,14 @@ repository_files:
     category: repository_support_files
     role: validator unit tests
 
+  - path: python/zettel_repair.py
+    category: repository_support_files
+    role: repairs selected structural issues in Markdown Zettels
+
+  - path: python/test_zettel_repair.py
+    category: repository_support_files
+    role: repair tool unit tests
+
   - path: python/gen_software_components.py
     category: repository_support_files
     role: generates the software inventory Wiki page from MANIFEST.software.yaml
@@ -186,6 +194,10 @@ repository_files:
   - path: doc/zettel_validate.py.md
     category: repository_documentation
     role: documentation for python/zettel_validate.py
+
+  - path: doc/zettel_repair.py.md
+    category: repository_documentation
+    role: documentation for python/zettel_repair.py
 
   - path: doc/create-index-notes.bat.md
     category: repository_documentation
