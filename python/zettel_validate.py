@@ -201,7 +201,8 @@ class ZettelValidator:
     """Validate one Zettel at a time and accumulate statistics.
 
     ``validate(text, fn=...)`` retains the public interface used by the old
-    scripts.  ID format is not classified or restricted.
+    scripts. ID syntax is deliberately minimal: a valid ID is nonempty,
+    contiguous, and contains no whitespace.
     """
 
     _STATISTIC_KEYS = (

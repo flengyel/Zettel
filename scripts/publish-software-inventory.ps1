@@ -53,6 +53,104 @@ function Resolve-PathFromRoot {
     return (Resolve-Path -LiteralPath (Join-Path $RepoRoot $PathText)).Path
 }
 
+
+function Get-InventorySnapshot {
+    param(
+        [Parameter(Mandatory = $true)][string]$Path
+    )
+
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
+        return $null
+    }
+
+    $bytes = [System.IO.File]::ReadAllBytes($Path)
+    $utf8 = [System.Text.UTF8Encoding]::new($false, $false)
+    $text = $utf8.GetString($bytes)
+
+    return [PSCustomObject]@{
+        Bytes = $bytes
+        Text = $text
+    }
+}
+
+function ConvertTo-ComparableInventoryText {
+    param(
+        [AllowNull()][string]$Text
+    )
+
+    if ($null -eq $Text) {
+        return $null
+    }
+
+    return ($Text -replace "`r`n", "`n") -replace "`r", "`n"
+}
+
+function Test-OnlyInventoryTimestampChanged {
+    param(
+        [AllowNull()][string]$BeforeText,
+        [AllowNull()][string]$AfterText
+    )
+
+    if ($null -eq $BeforeText -or $null -eq $AfterText) {
+        return $false
+    }
+
+    if ($BeforeText -eq $AfterText) {
+        return $false
+    }
+
+    $beforeComparable = ConvertTo-ComparableInventoryText -Text $BeforeText
+    $afterComparable = ConvertTo-ComparableInventoryText -Text $AfterText
+    $beforeLines = $beforeComparable.Split([string[]]@("`n"), [System.StringSplitOptions]::None)
+    $afterLines = $afterComparable.Split([string[]]@("`n"), [System.StringSplitOptions]::None)
+
+    if ($beforeLines.Count -ne $afterLines.Count) {
+        return $false
+    }
+
+    $differenceCount = 0
+
+    for ($index = 0; $index -lt $beforeLines.Count; $index++) {
+        if ($beforeLines[$index] -eq $afterLines[$index]) {
+            continue
+        }
+
+        if (($beforeLines[$index] -match "^Last checked: .+$") -and ($afterLines[$index] -match "^Last checked: .+$")) {
+            $differenceCount++
+            continue
+        }
+
+        return $false
+    }
+
+    return $differenceCount -eq 1
+}
+
+function Restore-InventoryFromSnapshotIfOnlyTimestampChanged {
+    param(
+        [Parameter(Mandatory = $true)][string]$Path,
+        [AllowNull()]$BeforeSnapshot,
+        [Parameter(Mandatory = $true)][string]$Label
+    )
+
+    if ($null -eq $BeforeSnapshot) {
+        return $false
+    }
+
+    $afterSnapshot = Get-InventorySnapshot -Path $Path
+    if ($null -eq $afterSnapshot) {
+        return $false
+    }
+
+    if (Test-OnlyInventoryTimestampChanged -BeforeText $BeforeSnapshot.Text -AfterText $afterSnapshot.Text) {
+        [System.IO.File]::WriteAllBytes($Path, [byte[]]$BeforeSnapshot.Bytes)
+        Write-Host "Retained existing $Label because generation changed only the Last checked timestamp."
+        return $true
+    }
+
+    return $false
+}
+
 $RepoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $WikiPath = Resolve-PathFromRoot -RepoRoot $RepoRoot -PathText $WikiDir
 
@@ -73,6 +171,9 @@ if (-not (Test-Path -LiteralPath $Generator -PathType Leaf)) {
 Invoke-External -FilePath "git" -Arguments @("-C", $RepoRoot, "rev-parse", "--is-inside-work-tree") | Out-Null
 Invoke-External -FilePath "git" -Arguments @("-C", $WikiPath, "rev-parse", "--is-inside-work-tree") | Out-Null
 
+$GeneratedBefore = Get-InventorySnapshot -Path $GeneratedPage
+$WikiBefore = Get-InventorySnapshot -Path $WikiPage
+
 Push-Location $RepoRoot
 try {
     Invoke-External -FilePath $Python -Arguments @($Generator, "--manifest", "MANIFEST.software.yaml", "--repo", $RepoRoot, "--out", $GeneratedRelative) | Out-Null
@@ -81,8 +182,12 @@ finally {
     Pop-Location
 }
 
+Restore-InventoryFromSnapshotIfOnlyTimestampChanged -Path $GeneratedPage -BeforeSnapshot $GeneratedBefore -Label "generated software inventory" | Out-Null
+
 Copy-Item -LiteralPath $GeneratedPage -Destination $WikiPage -Force
 Write-Host "Copied $GeneratedPage -> $WikiPage"
+
+Restore-InventoryFromSnapshotIfOnlyTimestampChanged -Path $WikiPage -BeforeSnapshot $WikiBefore -Label "Wiki software inventory" | Out-Null
 
 & git -C $WikiPath diff -- $PageFile
 if ($LASTEXITCODE -ne 0) {
