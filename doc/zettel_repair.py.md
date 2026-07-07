@@ -10,10 +10,11 @@ The current repair set is deliberately narrow:
 
 1. Add a missing `id:` property from the filename stem when the filename stem is a valid ID with no whitespace.
 2. Add a missing `reference-section-title: References` property.
-3. Repair an H1 that copied the complete front-matter `title:` value, but only when the filename stem and YAML `id:` already agree.
-4. Append an empty `## References` section when that section is missing.
+3. Normalize multiple spaces after the ID in the front-matter `title:` value to one separator space, but only when the filename stem and YAML `id:` already agree.
+4. Repair an H1 that copied the complete front-matter `title:` value, but only when the filename stem and YAML `id:` already agree.
+5. Append an empty `## References` section when that section is missing and the file does not end inside an open fenced code block.
 
-The repair tool does not infer note content, move sections, rewrite duplicate headings, guess missing index links, repair mismatched filename/front-matter IDs, or resolve malformed YAML.
+The repair tool does not infer note content, move sections, rewrite duplicate headings, guess missing index links, repair mismatched filename/front-matter IDs, close unclosed fenced code blocks, or resolve malformed YAML.
 
 ## Exit status
 

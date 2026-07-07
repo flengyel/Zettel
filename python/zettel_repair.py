@@ -10,9 +10,12 @@ The initial repair set is deliberately conservative:
   valid no-whitespace ID;
 * add ``reference-section-title: References`` when that front-matter property
   is missing;
+* normalize multiple spaces after the ID in the YAML ``title`` value to one
+  separator space, but only when the filename stem and YAML ``id`` agree;
 * repair an H1 that copied the complete YAML ``title`` value, but only when
   the filename stem and YAML ``id`` agree;
-* append an empty ``## References`` section when the note lacks one.
+* append an empty ``## References`` section when the note lacks one and the
+  document does not end inside an open fenced code block.
 
 Exit status is 0 when every checked file is valid and no dry-run repairs are
 pending, 1 when repairs are available or validation failures remain, and 2 for
@@ -235,6 +238,27 @@ def _has_references_heading(normalized_text: str) -> bool:
 
 
 
+def _has_unclosed_fenced_code_block(normalized_text: str) -> bool:
+    fence_character: str | None = None
+    fence_length = 0
+
+    for line in normalized_text.split("\n"):
+        fence_match = _FENCE_RE.match(line)
+        if not fence_match:
+            continue
+
+        marker = fence_match.group(1)
+        if fence_character is None:
+            fence_character = marker[0]
+            fence_length = len(marker)
+        elif marker[0] == fence_character and len(marker) >= fence_length:
+            fence_character = None
+            fence_length = 0
+
+    return fence_character is not None
+
+
+
 def _front_matter_mapping(lines: Sequence[str]) -> dict[str, Any] | None:
     """Return parsed top-level YAML mapping for repair guards."""
 
@@ -277,13 +301,10 @@ def _h1_headings(body_lines: Sequence[str]) -> list[tuple[int, str, str]]:
     return h1_headings
 
 
-def _repair_h1_copied_from_frontmatter_title(
+def _id_and_title(
     note_path: Path,
     front_matter_lines: Sequence[str],
-    body_lines: list[str],
-) -> RepairAction | None:
-    """Repair ``# <ID> <TITLE>`` to ``# <TITLE>`` when unambiguous."""
-
+) -> tuple[str, str] | None:
     front_matter = _front_matter_mapping(front_matter_lines)
     if front_matter is None:
         return None
@@ -298,6 +319,72 @@ def _repair_h1_copied_from_frontmatter_title(
     if _filename_id(note_path) != note_id:
         return None
 
+    return note_id, full_title
+
+
+def _replace_front_matter_line_value(
+    front_matter_lines: list[str],
+    key: str,
+    value: str,
+) -> bool:
+    index = _first_key_index(front_matter_lines, key)
+    if index is None:
+        return False
+
+    line = front_matter_lines[index]
+    match = re.match(rf"^({re.escape(key)}\s*:\s*).*$", line)
+    if match is None:
+        return False
+
+    front_matter_lines[index] = f"{match.group(1)}{value}"
+    return True
+
+
+def _normalize_title_separator_after_id(
+    note_path: Path,
+    front_matter_lines: list[str],
+) -> RepairAction | None:
+    """Normalize ``title: <ID>  <TITLE>`` to one separator space."""
+
+    id_and_title = _id_and_title(note_path, front_matter_lines)
+    if id_and_title is None:
+        return None
+
+    note_id, full_title = id_and_title
+    match = re.fullmatch(rf"{re.escape(note_id)}[ \t]{{2,}}(.+?)\s*", full_title)
+    if match is None:
+        return None
+
+    human_title = match.group(1).rstrip()
+    if not human_title:
+        return None
+
+    normalized_title = f"{note_id} {human_title}"
+    if not _replace_front_matter_line_value(
+        front_matter_lines,
+        "title",
+        normalized_title,
+    ):
+        return None
+
+    return RepairAction(
+        "normalize_title_separator",
+        "normalize front-matter title to one separator space after ID",
+    )
+
+
+def _repair_h1_copied_from_frontmatter_title(
+    note_path: Path,
+    front_matter_lines: Sequence[str],
+    body_lines: list[str],
+) -> RepairAction | None:
+    """Repair ``# <ID> <TITLE>`` to ``# <TITLE>`` when unambiguous."""
+
+    id_and_title = _id_and_title(note_path, front_matter_lines)
+    if id_and_title is None:
+        return None
+
+    note_id, full_title = id_and_title
     clean_full_title = full_title.rstrip()
     title_prefix = f"{note_id} "
     if not clean_full_title.startswith(title_prefix):
@@ -312,7 +399,16 @@ def _repair_h1_copied_from_frontmatter_title(
         return None
 
     h1_index, indentation, h1_text = h1_headings[0]
-    if h1_text.rstrip() != clean_full_title:
+    h1_text = h1_text.rstrip()
+    h1_copied_title = h1_text == clean_full_title
+    h1_copied_title_with_noncanonical_separator = False
+    h1_match = re.fullmatch(rf"{re.escape(note_id)}[ \t]+(.+?)", h1_text)
+    if h1_match is not None:
+        h1_copied_title_with_noncanonical_separator = (
+            h1_match.group(1).rstrip() == human_title
+        )
+
+    if not h1_copied_title and not h1_copied_title_with_noncanonical_separator:
         return None
 
     body_lines[h1_index] = f"{indentation}# {human_title}"
@@ -378,6 +474,7 @@ def plan_repairs(
     body_lines = list(split.lines[split.closing_index + 1 :])
     keys = _front_matter_keys(front_matter_lines)
     actions: list[RepairAction] = []
+    skip_reason = ""
 
     if "id" not in keys:
         note_id = _filename_id(note_path)
@@ -421,6 +518,13 @@ def plan_repairs(
             )
         )
 
+    title_separator_repair = _normalize_title_separator_after_id(
+        note_path,
+        front_matter_lines,
+    )
+    if title_separator_repair is not None:
+        actions.append(title_separator_repair)
+
     h1_repair = _repair_h1_copied_from_frontmatter_title(
         note_path,
         front_matter_lines,
@@ -436,13 +540,19 @@ def plan_repairs(
         + body_lines
     )
     if not _has_references_heading(normalized):
-        normalized = _append_references_section(normalized)
-        actions.append(
-            RepairAction(
-                "add_references_section",
-                "append empty ## References section",
+        if _has_unclosed_fenced_code_block(normalized):
+            skip_reason = (
+                "unclosed fenced code block prevents appending a visible "
+                "## References section"
             )
-        )
+        else:
+            normalized = _append_references_section(normalized)
+            actions.append(
+                RepairAction(
+                    "add_references_section",
+                    "append empty ## References section",
+                )
+            )
 
     repaired_text = _restore_text(
         had_bom=split.had_bom,
@@ -461,6 +571,7 @@ def plan_repairs(
         actions=tuple(actions),
         before=before,
         after=after,
+        skip_reason=skip_reason,
     )
 
 
