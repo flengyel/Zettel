@@ -28,7 +28,7 @@ The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) contains operational 
 
 ### Background
 
-For background on Zettelkasten practices, see [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and the [Zettelkasten.de forum](https://forum.zettelkasten.de). Also see Chris Aldrich’s [annotated list of one-pagers on the Zettelkasten method](https://hypothes.is/users/chrisaldrich?q=tag%3A%22zettelkasten+method+one+pager%22), which includes Niklas Luhmann’s “[Technique of the Card Index](https://niklas-luhmann-archiv.de/bestand/manuskripte/manuskript/MS_2906_0001)” (1968). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes).
+For background on Zettelkasten practices, see [Introduction to the Zettelkasten Method](https://zettelkasten.de/posts/overview/) and the [Zettelkasten.de forum](https://forum.zettelkasten.de). Also see Chris Aldrich’s [annotated list of one-pagers on the Zettelkasten method](https://hypothes.is/users/chrisaldrich?q=tag%3A%22zettelkasten+method+one+pager%22), which includes Niklas Luhmann’s “[Technique of the Card Index](https://niklas-luhmann-archiv.de/bestand/manuskripte/manuskript/MS_2906_0001)” (1968). If the terminology of literature notes and permanent notes seems vague or confusing, see [From Fleeting Notes to Project Notes](https://github.com/flengyel/Zettel/wiki/From-Fleeting-Notes-to-Project-Notes). For another source of Zettel templates, see [Obsidian-Templates for Zettelkasten](https://github.com/groepl/Obsidian-Templates).
 
 ## Self-documenting note specification
 
