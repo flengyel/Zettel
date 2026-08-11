@@ -1,0 +1,15 @@
+title: Zettel
+chapters:
+  - title: Why Create a Zettelkasten?
+    file: Why-create-a-Zettelkasten.md
+  - title: Zettelkasten as a Family-Resemblance Category
+    file: Zettelkasten-as-a-Family-Resemblance-Category.md
+  - title: From Fleeting Notes to Project Notes
+    file: From-Fleeting-Notes-to-Project-Notes.md
+  - title: Indexing, Linking, and Rediscovery
+    file: Alphanumeric-Index.md
+appendices:
+  - title: Software Configuration
+    file: Zettelkasten-software-configuration.md
+  - title: Software Inventory
+    file: Zettelkasten-software-inventory.md
