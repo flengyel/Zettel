@@ -62,6 +62,16 @@ Use a different Python launcher:
 .\scripts\publish-software-inventory.ps1 -Python py
 ```
 
+## Routine update
+
+From the main repository root:
+
+```powershell
+make diff-wiki
+make publish-all
+make status
+```
+
 ## Parameters
 
 | Parameter | Default | Meaning |
