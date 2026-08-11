@@ -6,6 +6,26 @@
 
 It exists so the publishing workflow can be run from `cmd.exe`, PowerShell, or a Windows shell without typing the full PowerShell invocation.
 
+## Routine procedure
+
+From PowerShell in the main repository root, activate the repository's Python virtual environment:
+
+```powershell
+.\.venv\Scripts\Activate
+```
+
+Generate the software inventory and preview the Wiki diff without committing or pushing:
+
+```powershell
+.\scripts\publish-software-inventory.cmd -DiffOnly
+```
+
+After inspecting the diff, generate the inventory again, commit any substantive Wiki change, and push it:
+
+```powershell
+.\scripts\publish-software-inventory.cmd
+```
+
 ## Usage
 
 Run from the main repository root:
