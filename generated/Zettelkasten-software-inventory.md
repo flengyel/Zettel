@@ -1,6 +1,6 @@
 This page records the software inventory, synchronization components, repository tools, documentation, and support files used with my digital Zettelkasten.
 
-Last checked: 2026-07-07T10:07:30-04:00
+Last checked: 2026-08-11T15:38:27-04:00
 
 ## Zettelkasten software
 
@@ -9,7 +9,7 @@ Software used directly with the Zettelkasten.
 | Component | Role | Version/status |
 |---|---|---|
 | Obsidian | note editor and slip-box interface | 1.12.7 |
-| Zotero | reference manager | 9.0.5 |
+| Zotero | reference manager | 9.0.6 |
 | Better BibTeX | Zotero add-on for stable citation keys and bibliography export | manual |
 
 ## Obsidian plugins
@@ -38,10 +38,11 @@ Plugins installed inside the Obsidian vault.
 | Pandoc Reference List | Displays a formatted reference in the sidebar for each pandoc citekey present in the current document. | 2.0.25 |
 | Paste URL into selection | Paste URL "into" selected text to create markdown links. | 1.11.4 |
 | Periodic Notes | Create/manage your daily, weekly, and monthly notes | 0.0.17 |
-| QuickAdd | Quickly add new pages or content to your vault. | 2.12.3 |
+| QuickAdd | Quickly add new pages or content to your vault. | 2.19.1 |
 | Readability Score | Score the readabilty of your writing using the Flesch Reading Ease (FRE) formula. | 0.1.5 |
+| RSS Dashboard | A dashboard for organizing and consuming RSS feeds, YouTube channels, and podcasts with smart tagging, media playback, and seamless content flow. | 2.5.0 |
 | Style Settings | Offers controls for adjusting theme, plugin, and snippet CSS variables. | 1.0.9 |
-| Templater | Advanced templating and automation using handlebars-like syntax. | 2.20.6 |
+| Templater | Advanced templating and automation using handlebars-like syntax. | 2.24.3 |
 | TikZJax | Render LaTeX and TikZ diagrams in your notes | 0.5.2 |
 | Zotero Integration | Insert and import citations, bibliographies, notes, and PDF annotations from Zotero. | 3.2.1 |
 
@@ -71,8 +72,8 @@ Software used to maintain this repository and generated Wiki documentation. Thes
 | Component | Role | Version/status |
 |---|---|---|
 | Python | repository tooling | Python 3.14.4 |
-| Git | repository and Wiki updates | git version 2.55.0.windows.1 |
-| Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.127 |
+| Git | repository and Wiki updates | git version 2.55.0.windows.3 |
+| Visual Studio Code | editing repository scripts, templates, and Markdown files | 1.132 |
 
 ## Repository support files
 
