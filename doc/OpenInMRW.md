@@ -50,7 +50,8 @@ Moving the note needs no template change: the next invocation uses its current
 path. A keyboard shortcut for **Templater: Open in MRW** is optional.
 
 In the configured vault, **Alt+/** is assigned to this command after
-checking both Obsidian's effective bindings and Windows global registrations.
+checking all three scopes: Windows global shortcuts, VS Code (including
+extension bindings), and Obsidian's effective bindings.
 **Alt+M** remains **Insert math block**, **Alt+W** remains WikilinkTitle and
 **Alt+T** remains Timestamp. **Ctrl+Alt+M** is reserved by MobaXTerm and was
 removed from this command. Other machines need their own shortcut check.
