@@ -139,6 +139,22 @@ repository_files:
     category: repository_support_files
     role: Obsidian Templater template for appending note titles to WikiLinks
 
+  - path: templates/OpenInMRW.md
+    category: repository_support_files
+    role: Obsidian Templater command to open the current note in MRW without inserting text
+
+  - path: tests/open-in-mrw.test.cjs
+    category: repository_support_files
+    role: OpenInMRW template URI and selection-preservation checks
+
+  - path: doc/OpenInMRW.md
+    category: repository_documentation
+    role: OpenInMRW configuration, command use and checking limits
+
+  - path: python/prepare_book.py
+    category: repository_support_files
+    role: prepares wiki pages and README for a Pandoc book build
+
   - path: python/zettel_validate.py
     category: repository_support_files
     role: validates completed Markdown Zettels

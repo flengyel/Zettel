@@ -22,7 +22,7 @@ This README specifies the Markdown note format: the self-documenting note templa
 - `pandoc/` and `LaTeX/` — export and typesetting support files.
 - `python/` — Python validators, tests, generators, and local diagnostics.
 - `scripts/` — bootstrapping and publishing scripts.
-- `templates/` — Obsidian Templater templates for note creation and WikiLink title annotation.
+- `templates/` — Obsidian Templater templates for note creation, WikiLink title annotation, and [opening the current note in MRW](doc/OpenInMRW.md).
 
 The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) contains operational conventions, definitions, examples, software configuration, generated inventory pages, and methodological notes.
 
