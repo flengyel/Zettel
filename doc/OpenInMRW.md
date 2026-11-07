@@ -1,17 +1,19 @@
 # Open the current Obsidian note in MRW
 
-`templates/OpenInMRW.md` is a Templater navigation command. Run it while working
-in a note to open that note in MRW's Markdown preview and Contents. It inserts
-no link, imports no text and does not change the note's filename or metadata.
+Run **Templater: Open in MRW** while reading or editing a note. MRW opens its
+current file in Markdown preview and Contents. The command does not insert
+text, replace selections, save the note or import its contents.
 MRW 0.22.5 or later must be active in the intended VS Code workspace.
 
 ## Setup
 
 1. Copy `templates/OpenInMRW.md` into your configured Obsidian templates folder,
    alongside `Timestamp.md`, `NewFileTemplate.md` and `WikilinkTitle.md`.
-2. In Templater's **Template hotkeys**, add that template with **Insert** enabled
-   and **Create** disabled. This registers **Templater: Insert OpenInMRW** in the
-   command palette. A keyboard shortcut is optional.
+2. Add it under Templater's **Startup templates**, and enable startup templates
+   on this device. This file only registers **Templater: Open in MRW** when
+   Obsidian starts; it does not open MRW automatically. Do not add it to
+   **Template hotkeys** or use Insert/Create. Registration uses Templater 2.26's
+   startup mode and the Obsidian plugin command API.
 3. Create `mrw.json` in the vault's configuration directory (normally
    `.obsidian`). For Windows Obsidian and WSL, for example:
 
@@ -31,41 +33,50 @@ configuration; do not commit a private `mrw.json` to this repository.
 
 ## Use
 
-In Obsidian, open the note and run **Templater: Insert OpenInMRW**. MRW opens
-its current saved file. Obsidian's normal saving remains responsible for edits;
-MRW preserves an unsaved VS Code draft instead of replacing it. No clipboard
-transfer, CLI call or per-note link is required by the command.
+Open the note in Obsidian and run **Templater: Open in MRW**. The action reads
+the current filename when invoked. It works in reading view and editing view;
+cursor positions, selections and YAML are not processed. No clipboard transfer,
+CLI call or per-note link is needed.
 
-Templater's Insert action needs an editor. The command preserves an ordinary
-text selection, but refuses multiple cursors and a YAML selection: Templater would interpret returned
-front matter as a metadata edit. Clear that selection and run it again.
+Obsidian's normal saving remains responsible for edits. MRW opens the current
+saved file and preserves any unsaved VS Code draft instead of replacing it.
 
 The workspace and selected notes folder must match the link. If VS Code routes
 it to a different workspace, MRW offers **Copy Link and Open Workspace** in a
 separate window; then use **MRW: Open Link from Clipboard** there. The command
-does not switch workspaces, select a vault or synchronize a separate remote tree
-automatically. The relative filename locates a live note, not an immutable
-source revision or retained passage. Moving the note needs no template change;
-the next invocation uses its current path.
+does not select a vault or synchronize a separate remote tree automatically.
+The relative filename locates a live note, not an immutable source revision.
+Moving the note needs no template change: the next invocation uses its current
+path. A keyboard shortcut for **Templater: Open in MRW** is optional.
+
+In the configured vault, **Ctrl+Shift+M** is assigned to this command after
+checking both Obsidian's effective bindings and Windows global registrations.
+**Alt+M** remains **Insert math block**, **Alt+W** remains WikilinkTitle and
+**Alt+T** remains Timestamp. **Ctrl+Alt+M** is reserved by MobaXTerm and was
+removed from this command. Other machines need their own shortcut check.
 
 ## Checks
 
 Run `node --test tests/open-in-mrw.test.cjs` from this repository. The checks
-execute the template with a simulated Templater API and capture URI dispatch.
-They verify note identity, Unicode encoding, selected text, configuration errors
-and YAML refusal; they do not establish an observed desktop round trip.
+execute the startup registration and registered action with a simulated API.
+They verify registration without insertion, current-note identity in reading
+view, Unicode encoding, rejected insertion routes and configuration failures.
+They do not establish an observed desktop round trip.
 
 ### Observed checks — 2026-11-07
 
-The five template checks and all 46 existing Python checks pass. Python checks
-used an isolated environment with PyYAML 6.0.3. The manifest now includes the
-new template, guide and checks, and the previously omitted `prepare_book.py`.
-The existing generated software inventory was preserved.
+The four command-registration and action checks pass, as do all 46 existing
+Python checks in an isolated environment with PyYAML 6.0.3. The manifest includes
+the new files and the previously omitted `prepare_book.py`; the existing
+software-inventory snapshot was preserved.
 
-The command is registered in the configured vault's running Templater 2.26.0,
-with Insert enabled and Create disabled. The live Templater parser produced the
-current note's MRW URI with its selection returned unchanged; editor text and
-saved bytes were unchanged. URI dispatch was captured for this check. The
-MRW 0.22.5 receiving handler separately passed native VS Code/WSL checks for
-preview/Contents opening and draft preservation. An actual Obsidian menu click
-through the desktop URI router was not observed in this check.
+The configured vault's running Templater 2.26.0 registered **Open in MRW** via
+its real startup-template path. The user explicitly authorized enabling startup
+execution for this single registration template. The old Insert command is
+removed; the three earlier template commands and keyboard shortcuts remain.
+
+Invoking the registered action with desktop dispatch captured produced the
+current note's MRW address and left editor text and saved bytes unchanged.
+The MRW receiving handler separately passed three native VS Code/WSL checks,
+including preview/Contents opening and preserving a dirty note. A physical
+Obsidian menu click through the operating-system URI router was not observed.
