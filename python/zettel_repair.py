@@ -14,8 +14,9 @@ The initial repair set is deliberately conservative:
   separator space, but only when the filename stem and YAML ``id`` agree;
 * repair an H1 that copied the complete YAML ``title`` value, but only when
   the filename stem and YAML ``id`` agree;
-* append an empty ``## References`` section when the note lacks one and the
-  document does not end inside an open fenced code block.
+* append an empty ``## Research`` section when neither it nor the older
+  ``## References`` section exists and the document does not end inside an
+  open fenced code block.
 
 Exit status is 0 when every checked file is valid and no dry-run repairs are
 pending, 1 when repairs are available or validation failures remain, and 2 for
@@ -40,8 +41,8 @@ from zettel_validate import ValidationIssue, ZettelValidator, iter_markdown_file
 _FRONT_MATTER_DELIMITER = "---"
 _REFERENCE_SECTION_TITLE = "References"
 _TOP_LEVEL_KEY_RE = re.compile(r"^([A-Za-z0-9_-]+)\s*:")
-_REFERENCES_HEADING_RE = re.compile(
-    r"^[ \t]{0,3}##[ \t]+References(?:[ \t]+#+[ \t]*)?$"
+_RESEARCH_HEADING_RE = re.compile(
+    r"^[ \t]{0,3}##[ \t]+(?:Research|References)(?:[ \t]+#+[ \t]*)?$"
 )
 _H1_HEADING_RE = re.compile(
     r"^([ \t]{0,3})#[ \t]+(.+?)(?:[ \t]+#+[ \t]*)?$"
@@ -215,7 +216,7 @@ def _first_key_index(lines: Sequence[str], key: str) -> int | None:
     return None
 
 
-def _has_references_heading(normalized_text: str) -> bool:
+def _has_research_section(normalized_text: str) -> bool:
     fence_character: str | None = None
     fence_length = 0
 
@@ -231,7 +232,7 @@ def _has_references_heading(normalized_text: str) -> bool:
                 fence_length = 0
             continue
 
-        if fence_character is None and _REFERENCES_HEADING_RE.match(line):
+        if fence_character is None and _RESEARCH_HEADING_RE.match(line):
             return True
 
     return False
@@ -418,11 +419,11 @@ def _repair_h1_copied_from_frontmatter_title(
     )
 
 
-def _append_references_section(normalized_text: str) -> str:
+def _append_research_section(normalized_text: str) -> str:
     stripped = normalized_text.rstrip("\n")
     if stripped:
-        return f"{stripped}\n\n## References\n"
-    return "## References\n"
+        return f"{stripped}\n\n## Research\n"
+    return "## Research\n"
 
 
 def _validate_text(
@@ -539,18 +540,18 @@ def plan_repairs(
         + [_FRONT_MATTER_DELIMITER]
         + body_lines
     )
-    if not _has_references_heading(normalized):
+    if not _has_research_section(normalized):
         if _has_unclosed_fenced_code_block(normalized):
             skip_reason = (
                 "unclosed fenced code block prevents appending a visible "
-                "## References section"
+                "## Research section"
             )
         else:
-            normalized = _append_references_section(normalized)
+            normalized = _append_research_section(normalized)
             actions.append(
                 RepairAction(
-                    "add_references_section",
-                    "append empty ## References section",
+                    "add_research_section",
+                    "append empty ## Research section",
                 )
             )
 

@@ -25,4 +25,4 @@ reference-section-title: References
 
 ## SEE ALSO
 
-## References
+## Research

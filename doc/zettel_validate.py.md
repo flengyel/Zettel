@@ -10,7 +10,7 @@ For each completed Zettel:
 2. YAML `id` equals `ID`.
 3. YAML `title` equals `ID` followed by one space and the H1 text.
 4. The H1 is the first nonblank body line and is unique.
-5. `## SEE ALSO` and `## References` exist in that order.
+5. `## SEE ALSO` and `## Research` exist in that order. Older notes may use the heading named by `reference-section-title` (normally `References`) in place of Research. A separate generated bibliography does not duplicate the Research section.
 6. An ordinary note has, in `SEE ALSO`, at least one link to an alphabetic index note corresponding to the initial letter or digit of at least one H1 word.
 7. Special index notes have their fixed IDs and titles and are exempt from rule 6.
 

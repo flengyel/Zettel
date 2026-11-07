@@ -12,7 +12,7 @@ The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) explains how those ar
 
 ## Scope
 
-This README specifies the Markdown note format: the self-documenting note template, the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `References`, WikiLinks, hashtags, and citations.
+This README specifies the Markdown note format: the self-documenting note template, the `id`/`title`/H1 relationship, reserved index IDs, `SEE ALSO`, `Research`, WikiLinks, hashtags, and citations.
 
 ## Repository contents
 
@@ -33,7 +33,7 @@ For background on Zettelkasten practices, see [Introduction to the Zettelkasten 
 ## Self-documenting note specification
 
 The following self-documenting note specification includes explanatory
-definitions and index documentation. Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## References` sections. They do not include the explanatory definitions and index documentation below.
+definitions and index documentation. Ordinary notes use the YAML front matter, the H1 heading, their own body content, and the `## SEE ALSO` and `## Research` sections. They do not include the explanatory definitions and index documentation below.
 
 Replace the metavariables `<ID>` and `<TITLE>`; the angle brackets do not appear in a completed note. The metavariable `<ID>` is the unique, immutable ID of the note and is identical to the filename without the `.md` extension. An `<ID>` is a nonempty contiguous string with no whitespace and must be compatible with the target operating system's filename rules. Except for the reserved `<ID>` values below, this document does not prescribe further ID structure.
 
@@ -47,7 +47,12 @@ another line containing three consecutive dashes.
 The value of the `id:` property is `<ID>`. The value of the `title:` property consists of `<ID>`, one space, and `<TITLE>`.
 
 The `reference-section-title:` property is used by Pandoc as the heading  
-for a generated bibliography when the note contains Pandoc-style citations. The value of the `reference-section-title:` property is `References`, as shown below.
+for a generated bibliography when the note contains Pandoc-style citations. Its value remains `References`; the manually maintained `## Research` section holds references and research utilities, including MRW links.
+
+Zotero citations such as `[@citeKey]` remain in the note body. Pandoc resolves
+them into the **References** bibliography when exporting the Markdown.
+
+New notes use `## Research` in place of the former `## References` heading. Existing notes are not rewritten: the validator still accepts the former heading, and the repair tool leaves it intact. If neither section is present, a repair adds `## Research`.
 
 ```markdown
 ---
@@ -97,8 +102,8 @@ page of the Zettel Wiki. The `## SEE ALSO` section may include WikiLinks of
 related notes other than those appearing in the main body, one or more
 alphabetic or numeric index links, and optional hashtags.
 
-The `## References` section is present but may be empty. Here we have 
-included a reference on Zettelkasten.
+The `## Research` section is present but may be empty. It holds references and
+research utilities. Here we have included a reference on Zettelkasten.
 
 ## SEE ALSO
 
@@ -106,10 +111,17 @@ included a reference on Zettelkasten.
 
 #optional #hashtag
 
-## References
+## Research
 
 Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
 ```
+
+Place a note's MRW link under `## Research`, with **Open in MRW** as its label.
+Use **MRW: Copy Note Link for Obsidian** to copy the note's address, and change
+only its Markdown label. The link locates the current file by its workspace,
+notes folder and filename; changing a section heading does not change it.
+The separate **Templater: Open in MRW** command works without a per-note link;
+see the [setup and usage guide](doc/OpenInMRW.md).
 
 ## Security
 

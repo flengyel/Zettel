@@ -56,6 +56,14 @@ extension bindings), and Obsidian's effective bindings.
 **Alt+T** remains Timestamp. **Ctrl+Alt+M** is reserved by MobaXTerm and was
 removed from this command. Other machines need their own shortcut check.
 
+## Links in a note
+
+For a link stored in the note, use **MRW: Copy Note Link for Obsidian** and
+place the copied link under `## Research`. Change its label to **Open in MRW**,
+keeping the address intact. Research holds references and research utilities;
+`reference-section-title: References` continues to name Pandoc's generated
+bibliography. The Templater command above does not require a stored link.
+
 ## Checks
 
 Run `node --test tests/open-in-mrw.test.cjs` from this repository. The checks

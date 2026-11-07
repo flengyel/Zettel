@@ -12,7 +12,7 @@ The current repair set is deliberately narrow:
 2. Add a missing `reference-section-title: References` property.
 3. Normalize multiple spaces after the ID in the front-matter `title:` value to one separator space, but only when the filename stem and YAML `id:` already agree.
 4. Repair an H1 that copied the complete front-matter `title:` value, but only when the filename stem and YAML `id:` already agree.
-5. Append an empty `## References` section when that section is missing and the file does not end inside an open fenced code block.
+5. Append an empty `## Research` section when neither Research nor the older References section exists and the file does not end inside an open fenced code block. Existing section headings and their contents are left intact; the tool does not rename notes in bulk.
 
 The repair tool does not infer note content, move sections, rewrite duplicate headings, guess missing index links, repair mismatched filename/front-matter IDs, close unclosed fenced code blocks, or resolve malformed YAML.
 

@@ -6,8 +6,8 @@ The validator implements the conventions described by the vault owner:
 * YAML ``id`` is exactly ``ID``;
 * YAML ``title`` is exactly ``ID`` + one space + the H1 text;
 * trailing spaces in the H1/title text are ignored;
-* ``## SEE ALSO`` precedes ``## References`` (or the heading named by
-  ``reference-section-title``);
+* ``## SEE ALSO`` precedes ``## Research``; older notes may instead use the
+  heading named by ``reference-section-title``;
 * every ordinary Zettel links, from ``SEE ALSO``, to at least one alphabetic
   index note appropriate to at least one word in its H1;
 * the special index notes are exempt from that last rule.
@@ -568,30 +568,37 @@ class ZettelValidator:
                     line=see_also_headings[1].line,
                 )
 
-        references: list[Heading] = []
-        if reference_title is not None:
+        # Research is the manual section; reference-section-title names the
+        # generated bibliography. Accept older notes without rewriting them.
+        references = [
+            heading for heading in headings
+            if heading.level == 2 and heading.text == "Research"
+        ]
+        section_title = "Research"
+        if not references and reference_title is not None:
+            section_title = reference_title
             references = [
                 heading
                 for heading in headings
                 if heading.level == 2 and heading.text == reference_title
             ]
-            if not references:
-                self.append_issue(
-                    "missing_references",
-                    f"Missing '## {reference_title}' section.",
-                )
-            elif len(references) > 1:
-                self.append_issue(
-                    "duplicate_references",
-                    f"More than one '## {reference_title}' section was found.",
-                    line=references[1].line,
-                )
+        if not references and reference_title is not None:
+            self.append_issue(
+                "missing_references",
+                "Missing '## Research' section (the older bibliography heading is also accepted).",
+            )
+        elif len(references) > 1:
+            self.append_issue(
+                "duplicate_references",
+                f"More than one '## {section_title}' section was found.",
+                line=references[1].line,
+            )
 
         if first_see_also is not None and references:
             if first_see_also.line > references[0].line:
                 self.append_issue(
                     "order_issue",
-                    f"'## SEE ALSO' must precede '## {reference_title}'.",
+                    f"'## SEE ALSO' must precede '## {section_title}'.",
                     line=first_see_also.line,
                 )
 

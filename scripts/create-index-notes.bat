@@ -96,7 +96,7 @@ if exist "%FILE%" (
     echo [[0000.0000.00YZ]]%SEP%Y-Z%HARD_BREAK%
     echo [[0000.0000.0009]]%SEP%0-9%HARD_BREAK%
     echo(
-    echo ## References
+    echo ## Research
 )
 if errorlevel 1 (
     >&2 echo Error: failed to write "%FILE%"
@@ -128,7 +128,7 @@ if exist "%FILE%" (
     echo(
     echo [[0000.0000.0000]]%SEP%INDEX%HARD_BREAK%
     echo(
-    echo ## References
+    echo ## Research
 )
 if errorlevel 1 (
     >&2 echo Error: failed to write "%FILE%"

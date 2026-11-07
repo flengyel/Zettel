@@ -136,7 +136,7 @@ class ZettelRepairTests(unittest.TestCase):
             plan = plan_repairs(path, path.read_text(encoding="utf-8"))
             self.assertEqual(
                 [action.code for action in plan.actions],
-                ["add_id", "add_reference_section_title", "add_references_section"],
+                ["add_id", "add_reference_section_title", "add_research_section"],
             )
             self.assertFalse(plan.before.valid)
             self.assertTrue(plan.after.valid, plan.after.issues)
@@ -163,7 +163,8 @@ class ZettelRepairTests(unittest.TestCase):
             repaired = path.read_text(encoding="utf-8")
             self.assertIn("id: Repair202607060001\n", repaired)
             self.assertIn("reference-section-title: References\n", repaired)
-            self.assertIn("## References", repaired)
+            self.assertIn("## Research", repaired)
+            self.assertNotIn("## References", repaired)
             self.assert_valid(repaired, path)
 
     def test_whitespace_filename_id_is_not_repaired(self):
@@ -260,7 +261,7 @@ class ZettelRepairTests(unittest.TestCase):
             self.assertIn("title: TitleSep202607070001 Repair title separator\n", plan.repaired_text)
             self.assertIn("# Repair title separator\n", plan.repaired_text)
 
-    def test_append_references_section_can_improve_when_see_also_is_missing(self):
+    def test_append_research_section_can_improve_when_see_also_is_missing(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             path = self.write_note(
@@ -277,15 +278,15 @@ class ZettelRepairTests(unittest.TestCase):
 
             self.assertEqual(
                 [action.code for action in plan.actions],
-                ["add_references_section"],
+                ["add_research_section"],
             )
             self.assertTrue(plan.improves)
             self.assertEqual(plan.before.issue_count, 2)
             self.assertEqual(plan.after.issue_count, 1)
             self.assertEqual([issue.code for issue in plan.after.issues], ["missing_see_also"])
-            self.assertIn("## References", plan.repaired_text)
+            self.assertIn("## Research", plan.repaired_text)
 
-    def test_does_not_append_references_inside_unclosed_fenced_code_block(self):
+    def test_does_not_append_research_inside_unclosed_fenced_code_block(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             path = self.write_note(
@@ -304,6 +305,17 @@ class ZettelRepairTests(unittest.TestCase):
             self.assertFalse(plan.changed)
             self.assertIn("unclosed fenced code block", plan.skip_reason)
             self.assertEqual(plan.repaired_text, UNCLOSED_FENCE_MISSING_REFERENCES_NOTE)
+
+    def test_research_and_older_references_are_preserved(self):
+        text = H1_COPIED_TITLE_NOTE.replace("# H1Repair202607070001 Repair copied H1", "# Repair copied H1")
+        for heading in ["References", "Research"]:
+            with self.subTest(heading=heading):
+                note = text.replace("## References", "## " + heading)
+                note += "\n[Open in MRW](vscode://flengyel.mrw/note?v=1&target=unchanged)\n"
+                plan = plan_repairs("H1Repair202607070001.md", note)
+                self.assertTrue(plan.before.valid)
+                self.assertEqual(plan.actions, ())
+                self.assertEqual(plan.repaired_text, note)
 
     def test_output_escapes_characters_unsupported_by_stream_encoding(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -57,6 +57,31 @@ class ZettelValidatorTests(unittest.TestCase):
         _, result = self.validate()
         self.assertTrue(result)
 
+    def test_research_section_keeps_generated_bibliography_title(self):
+        text = VALID_NOTE.replace("## References", "## Research")
+        validator, result = self.validate(text)
+        self.assertTrue(result, validator.issues)
+        validator, result = self.validate(text + "\n## References\n\nGenerated bibliography.\n")
+        self.assertTrue(result, validator.issues)
+
+    def test_research_must_follow_see_also(self):
+        text = VALID_NOTE.replace("Body text.", "## Research\n\nBody text.").replace("## References", "")
+        validator, result = self.validate(text)
+        self.assertFalse(result)
+        self.assertIn("order_issue", {issue.code for issue in validator.issues})
+
+    def test_duplicate_research_is_reported(self):
+        text = VALID_NOTE.replace("## References", "## Research\n\n## Research")
+        validator, result = self.validate(text)
+        self.assertFalse(result)
+        self.assertIn("duplicate_references", {issue.code for issue in validator.issues})
+
+    def test_fenced_research_does_not_supply_section(self):
+        text = VALID_NOTE.replace("## References", "```markdown\n## Research\n```")
+        validator, result = self.validate(text)
+        self.assertFalse(result)
+        self.assertIn("missing_references", {issue.code for issue in validator.issues})
+
     def test_legacy_dotted_id_passes(self):
         old_id = "Philo.1a1.0.21.0503"
         text = VALID_NOTE.replace("Tikz202504272354", old_id)
