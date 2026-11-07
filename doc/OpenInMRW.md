@@ -49,7 +49,7 @@ The relative filename locates a live note, not an immutable source revision.
 Moving the note needs no template change: the next invocation uses its current
 path. A keyboard shortcut for **Templater: Open in MRW** is optional.
 
-In the configured vault, **Ctrl+Shift+M** is assigned to this command after
+In the configured vault, **Alt+/** is assigned to this command after
 checking both Obsidian's effective bindings and Windows global registrations.
 **Alt+M** remains **Insert math block**, **Alt+W** remains WikilinkTitle and
 **Alt+T** remains Timestamp. **Ctrl+Alt+M** is reserved by MobaXTerm and was
