@@ -4,7 +4,7 @@ This repository contains a Markdown note-format specification for my digital Zet
 
 ## Purpose
 
-This repository documents the software, configuration files, scripts, templates, and documentation used with a private digital Zettelkasten vault, using inspectable artifacts.
+This repository documents the software, configuration files, scripts, templates, and documentation used with a private digital Zettelkasten vault.
 
 The repository contains source-controlled artifacts: the Markdown note format, reserved index-note scheme, Obsidian Templater templates, validation scripts, export support files, generated software inventory, and script documentation.
 
@@ -22,7 +22,7 @@ This README specifies the Markdown note format: the self-documenting note templa
 - `pandoc/` and `LaTeX/` — export and typesetting support files.
 - `python/` — Python validators, tests, generators, and local diagnostics.
 - `scripts/` — bootstrapping and publishing scripts.
-- `templates/` — Obsidian Templater templates for note creation, WikiLink title annotation, and [opening the current note in MRW](doc/OpenInMRW.md).
+- `templates/` — Obsidian Templater templates for note creation and WikiLink title annotation.
 
 The [Zettel Wiki](https://github.com/flengyel/Zettel/wiki) contains operational conventions, definitions, examples, software configuration, generated inventory pages, and methodological notes.
 
@@ -47,12 +47,10 @@ another line containing three consecutive dashes.
 The value of the `id:` property is `<ID>`. The value of the `title:` property consists of `<ID>`, one space, and `<TITLE>`.
 
 The `reference-section-title:` property is used by Pandoc as the heading  
-for a generated bibliography when the note contains Pandoc-style citations. Its value remains `References`; the manually maintained `## Research` section holds references and research utilities, including MRW links.
+for a generated bibliography when the note contains Pandoc-style citations. Its value remains `References`; the manually maintained `## Research` section holds references and research utilities.
 
 Zotero citations such as `[@citeKey]` remain in the note body. Pandoc resolves
 them into the **References** bibliography when exporting the Markdown.
-
-New notes use `## Research` in place of the former `## References` heading. Existing notes are not rewritten: the validator still accepts the former heading, and the repair tool leaves it intact. If neither section is present, a repair adds `## Research`.
 
 ```markdown
 ---
@@ -115,13 +113,6 @@ research utilities. Here we have included a reference on Zettelkasten.
 
 Ahrens, Sönke. 2017. _How to Take Smart Notes_. North Charleston, SC: CreateSpace.
 ```
-
-Place a note's MRW link under `## Research`, with **Open in MRW** as its label.
-Use **MRW: Copy Note Link for Obsidian** to copy the note's address, and change
-only its Markdown label. The link locates the current file by its workspace,
-notes folder and filename; changing a section heading does not change it.
-The separate **Templater: Open in MRW** command works without a per-note link;
-see the [setup and usage guide](doc/OpenInMRW.md).
 
 ## Security
 
